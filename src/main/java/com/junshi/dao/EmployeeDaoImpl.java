@@ -1,11 +1,11 @@
-package com.howtodoinjava.dao;
+package com.junshi.dao;
 
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.howtodoinjava.entity.EmployeeEntity;
+import com.junshi.entity.EmployeeEntity;
 
 @Repository
 public class EmployeeDaoImpl implements EmployeeDAO  

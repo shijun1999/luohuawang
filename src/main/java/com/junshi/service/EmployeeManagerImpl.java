@@ -1,11 +1,11 @@
-package com.howtodoinjava.service;
+package com.junshi.service;
 
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.howtodoinjava.dao.EmployeeDAO;
-import com.howtodoinjava.entity.EmployeeEntity;
+import com.junshi.dao.EmployeeDAO;
+import com.junshi.entity.EmployeeEntity;
 
 public class EmployeeManagerImpl implements EmployeeManager {
 	//Employee dao injected by Spring context

@@ -1,11 +1,11 @@
-package com.howtodoinjava.controller;
+package com.junshi.controller;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.howtodoinjava.entity.EmployeeEntity;
-import com.howtodoinjava.service.EmployeeManager;
+import com.junshi.entity.EmployeeEntity;
+import com.junshi.service.EmployeeManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 

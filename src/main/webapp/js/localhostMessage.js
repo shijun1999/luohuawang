@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$.ajax({
-		url: 'localhostMessageAjax/fetchNotification',
+		url: '/',
 		type: 'post',
 		dataType: 'json',
 		success: function(json) {
@@ -40,7 +40,7 @@ $(document).ready(function(){
 	});
 
 	$.ajax({
-		url: 'localhostMessageAjax/fetchMessage',
+		url: '/',
 		type: 'post',
 		dataType: 'json',
 		success: function(json) {

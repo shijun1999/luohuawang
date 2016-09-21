@@ -1,4 +1,4 @@
-package com.howtodoinjava.entity;
+package com.junshi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

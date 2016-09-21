@@ -1,4 +1,4 @@
-package com.howtodoinjava.controller;
+package com.junshi.controller;
 
 import java.util.Map;
 

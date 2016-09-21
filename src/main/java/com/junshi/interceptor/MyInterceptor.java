@@ -1,7 +1,6 @@
-package com.howtodoinjava.interceptor;
+package com.junshi.interceptor;
 
 
-import java.util.*;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
