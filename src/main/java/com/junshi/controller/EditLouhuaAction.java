@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.junshi.entity.EmployeeEntity;
+import com.junshi.entity.LouhuaEntity;
 import com.junshi.service.EmployeeManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -16,9 +16,9 @@ public class EditEmployeeAction extends ActionSupport implements Preparable
 	//Logger configured using log4j
 	private static final Logger logger = Logger.getLogger(EditEmployeeAction.class);
 	//List of employees; Setter and Getter are below
-	private List<EmployeeEntity> employees;
+	private List<LouhuaEntity> employees;
 	//Employee object to be added; Setter and Getter are below
-	private EmployeeEntity employee;
+	private LouhuaEntity employee;
 	
 	//Employee manager injected by spring context; This is cool !!
 	private EmployeeManager employeeManager;
@@ -32,7 +32,7 @@ public class EditEmployeeAction extends ActionSupport implements Preparable
 
 	//This method will be called when a employee object is added
 	public String addEmployee() {
-		logger.info("addEmployee method called");
+		logger.info("addLouhua method called");
 		employeeManager.addEmployee(employee);
 		return SUCCESS;
 	}
@@ -55,19 +55,19 @@ public class EditEmployeeAction extends ActionSupport implements Preparable
 		this.employeeManager = employeeManager;
 	}
 
-	public List<EmployeeEntity> getEmployees() {
+	public List<LouhuaEntity> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(List<EmployeeEntity> employees) {
+	public void setEmployees(List<LouhuaEntity> employees) {
 		this.employees = employees;
 	}
 
-	public EmployeeEntity getEmployee() {
+	public LouhuaEntity getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(EmployeeEntity employee) {
+	public void setEmployee(LouhuaEntity employee) {
 		this.employee = employee;
 	}
 }

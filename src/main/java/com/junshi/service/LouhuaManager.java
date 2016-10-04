@@ -1,14 +1,14 @@
-package com.junshi.dao;
+package com.junshi.service;
 
 import java.util.List;
-import com.junshi.entity.EmployeeEntity;
 
-public interface EmployeeDAO 
-{
+import com.junshi.entity.Louhua;
+
+public interface EmployeeManager {
 	//This method will be called when a employee object is added
-    public void addEmployee(EmployeeEntity employee);
+    public void addEmployee(Louhua employee);
     //This method return list of employees in database
-    public List<EmployeeEntity> getAllEmployees();
+    public List<Louhua> getAllEmployees();
     //Deletes a employee by it's id
     public void deleteEmployee(Integer employeeId);
 }
