@@ -1,4 +1,4 @@
-package com.junshi.controller;
+package com.vancondos.actions;
 
 import java.util.Map;
 

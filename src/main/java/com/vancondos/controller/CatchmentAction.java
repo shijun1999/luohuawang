@@ -1,6 +1,6 @@
-package com.junshi.controller;
+package com.vancondos.actions;
 
-public class MainAction extends BaseAction
+public class CatchmentAction extends BaseAction
 {
 	public String load() {
 		getSession().clear();
