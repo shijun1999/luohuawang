@@ -1,11 +1,11 @@
-package com.junshi.dao;
+package com.vancondos.dao;
 
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.junshi.entity.LouhuaEntity;
+import com.vancondos.entity.LouhuaEntity;
 
 @Repository
 public class LouhuaDaoImpl implements LouhuaDAO

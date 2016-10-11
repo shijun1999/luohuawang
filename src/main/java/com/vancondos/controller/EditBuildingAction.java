@@ -1,10 +1,10 @@
-package com.vancondos.actions;
+package com.vancondos.controller;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.vancondos.entity.LouhuaEntity;
+import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.LouhuaManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -16,9 +16,9 @@ public class EditLouhuaAction extends ActionSupport implements Preparable
 	//Logger configured using log4j
 	private static final Logger logger = Logger.getLogger(EditLouhuaAction.class);
 	//List of louhuas; Setter and Getter are below
-	private List<LouhuaEntity> louhuas;
+	private List<BuildingEntity> louhuas;
 	//Louhua object to be added; Setter and Getter are below
-	private LouhuaEntity louhua;
+	private BuildingEntity louhua;
 	
 	//Louhua manager injected by spring context; This is cool !!
 	private LouhuaManager louhuaManager;
@@ -55,19 +55,19 @@ public class EditLouhuaAction extends ActionSupport implements Preparable
 		this.louhuaManager = louhuaManager;
 	}
 
-	public List<LouhuaEntity> getLouhuas() {
+	public List<BuildingEntity> getLouhuas() {
 		return louhuas;
 	}
 
-	public void setLouhuas(List<LouhuaEntity> louhuas) {
+	public void setLouhuas(List<BuildingEntity> louhuas) {
 		this.louhuas = louhuas;
 	}
 
-	public LouhuaEntity getLouhua() {
+	public BuildingEntity getLouhua() {
 		return louhua;
 	}
 
-	public void setLouhua(LouhuaEntity louhua) {
+	public void setLouhua(BuildingEntity louhua) {
 		this.louhua = louhua;
 	}
 }

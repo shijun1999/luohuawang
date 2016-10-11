@@ -1,7 +1,7 @@
-package com.junshi.dao;
+package com.vancondos.dao;
 
 import java.util.List;
-import com.junshi.entity.LouhuaEntity;
+import com.vancondos.entity.LouhuaEntity;
 
 public interface LouhuaDAO
 {
