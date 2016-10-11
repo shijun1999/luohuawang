@@ -4,31 +4,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="FLOOR_PLAN")
-public class FloorPlan {
+public class FloorPlanEntity {
+
+
+    private Integer id;
+
+    private BuildingEntity buildingEntity;
+
+    private String level;
+
+    private String interiorArea;
+
+    private String exteriorArea;
+
+    private String totalArea;
+
+    private String floorPlanPic;
 
     @Id
     @Column(name="ID")
     @GeneratedValue
-    private Integer id;
-
-    @Column(name="BUILD_ID")
-    private int buildId;
-
-    @Column(name="LEVEL")
-    private String level;
-
-    @Column(name="INTERIOR_AREA")
-    private String interiorArea;
-
-    @Column(name="EXTERIOR_AREA")
-    private String exteriorArea;
-
-    @Column(name="TOTAL_AREA")
-    private String totalArea;
-
-    @Column(name="FLOOR_PLAN_PIC")
-    private String floorPlanPic;
-
     public Integer getId() {
         return id;
     }
@@ -37,14 +32,17 @@ public class FloorPlan {
         this.id = id;
     }
 
-    public int getBuildId() {
-        return buildId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BUILD_ID", nullable = false)
+    public BuildingEntity getBuildingEntity() {
+        return buildingEntity;
     }
 
-    public void setBuildId(int buildId) {
-        this.buildId = buildId;
+    public void setBuildingEntity(BuildingEntity buildingEntity) {
+        this.buildingEntity = buildingEntity;
     }
 
+    @Column(name="LEVEL")
     public String getLevel() {
         return level;
     }
@@ -53,6 +51,7 @@ public class FloorPlan {
         this.level = level;
     }
 
+    @Column(name="INTERIOR_AREA")
     public String getInteriorArea() {
         return interiorArea;
     }
@@ -61,6 +60,7 @@ public class FloorPlan {
         this.interiorArea = interiorArea;
     }
 
+    @Column(name="EXTERIOR_AREA")
     public String getExteriorArea() {
         return exteriorArea;
     }
@@ -69,6 +69,7 @@ public class FloorPlan {
         this.exteriorArea = exteriorArea;
     }
 
+    @Column(name="TOTAL_AREA")
     public String getTotalArea() {
         return totalArea;
     }
@@ -77,6 +78,7 @@ public class FloorPlan {
         this.totalArea = totalArea;
     }
 
+    @Column(name="FLOOR_PLAN_PIC")
     public String getFloorPlanPic() {
         return floorPlanPic;
     }

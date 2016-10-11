@@ -157,7 +157,7 @@
                     key = isSet('key', config) ? config.key : null,
                     disabled = (url === false) && isDisabled,
                     actions = data.isDelete ? data.actions(false, true, disabled, url, key) : '',
-                    footer = data.footer.repl('{actions}', actions);
+                    footer = data.footer.repl('{controller}', actions);
                 return footer
                     .repl('{caption}', caption)
                     .repl('{width}', width)
@@ -262,9 +262,9 @@
             '</div>',
         tFooter = '<div class="file-thumbnail-footer">\n' +
             '    <div class="file-caption-name">{caption}</div>\n' +
-            '    {actions}\n' +
+            '    {controller}\n' +
             '</div>',
-        tActions = '<div class="file-actions">\n' +
+        tActions = '<div class="file-controller">\n' +
             '    <div class="file-footer-buttons">\n' +
             '        {upload}{delete}{other}' +
             '    </div>\n' +
@@ -863,13 +863,13 @@
             var self = this, config = self.fileActionSettings, footer, out,
                 template = self.getLayoutTemplate('footer');
             if (self.isUploadable) {
-                footer = template.repl('{actions}', self.renderFileActions(true, true, false, false, false));
+                footer = template.repl('{controller}', self.renderFileActions(true, true, false, false, false));
                 out = footer.repl('{caption}', caption)
                     .repl('{width}', width)
                     .repl('{indicator}', config.indicatorNew)
                     .repl('{indicatorTitle}', config.indicatorNewTitle);
             } else {
-                out = template.repl('{actions}', '')
+                out = template.repl('{controller}', '')
                     .repl('{caption}', caption)
                     .repl('{width}', width)
                     .repl('{indicator}', '')

@@ -1,74 +1,74 @@
 package com.vancondos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
 
 @Entity
-@Table(name="LOUHUA")
-public class LouhuaEntity {
-     
-    @Id
-    @Column(name="ID")
-    @GeneratedValue
-    private Integer id;
-     
-    @Column(name="NAME")
+@Table(name="BUILDING")
+public class BuildingEntity {
+
+    private Integer  id;
+
     private String name;
- 
-    @Column(name="LAT")
+
     private String lat;
- 
-    @Column(name="LNG")
+
     private String lng;
 
-    @Column(name="SHORT_NAME")
     private String shortName;
 
-    @Column(name="LONG_NAME")
     private String longName;
 
-    @Column(name="SHORT_DESC")
     private String shortDesc;
 
-    @Column(name="LONG_DESC")
     private String longDesc;
 
-    @Column(name="PRICE_FROM")
-    private int priceFrom;
+    private String priceRange;
 
-    @Column(name="PRICE_TO")
-    private int priceTo;
-
-    @Column(name="ADDRESS")
     private String address;
 
-    @Column(name="UNIT_NUMBER")
-    private int unitNumber;
+    private String unitNumber;
 
-    @Column(name="STROYS")
-    private int stroys;
+    private String stroys;
 
-    @Column(name="STYLE_OF_UNITS")
     private String styleOfUnits;
 
-    @Column(name="CONSTRUCTION")
     private String construction;
 
-    @Column(name="FEATURES")
     private String features;
 
-    @Column(name="ONSITE_AMENITIES")
     private String onsiteAmenities;
 
-    @Column(name="PUBLIC_TRANSPORTATION")
     private String publicTransportation;
 
-    @Column(name="NEARBY_AMENITIES")
     private String nearbyAmenities;
 
+    private Set<FloorPlanEntity> foorPlanEntities;
+
+    public     BuildingEntity(){
+        foorPlanEntities = new HashSet<FloorPlanEntity>();
+    }
+
+    @Id
+    @Column(name="ID", unique = true, nullable = false)
+    @GeneratedValue
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Column(name="NAME")
     public String getName() {
         return name;
     }
@@ -77,6 +77,7 @@ public class LouhuaEntity {
         this.name = name;
     }
 
+    @Column(name="LAT")
     public String getLat() {
         return lat;
     }
@@ -85,6 +86,7 @@ public class LouhuaEntity {
         this.lat = lat;
     }
 
+    @Column(name="LNG")
     public String getLng() {
         return lng;
     }
@@ -93,13 +95,7 @@ public class LouhuaEntity {
         this.lng = lng;
     }
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @Column(name="SHORT_NAME")
     public String getShortName() {
         return shortName;
     }
@@ -108,6 +104,7 @@ public class LouhuaEntity {
         this.shortName = shortName;
     }
 
+    @Column(name="LONG_NAME")
     public String getLongName() {
         return longName;
     }
@@ -116,6 +113,7 @@ public class LouhuaEntity {
         this.longName = longName;
     }
 
+    @Column(name="SHORT_DESC")
     public String getShortDesc() {
         return shortDesc;
     }
@@ -124,6 +122,7 @@ public class LouhuaEntity {
         this.shortDesc = shortDesc;
     }
 
+    @Column(name="LONG_DESC")
     public String getLongDesc() {
         return longDesc;
     }
@@ -132,22 +131,16 @@ public class LouhuaEntity {
         this.longDesc = longDesc;
     }
 
-    public int getPriceFrom() {
-        return priceFrom;
+    @Column(name="PRICE_RANGE")
+    public String getPriceRange() {
+        return priceRange;
     }
 
-    public void setPriceFrom(int priceFrom) {
-        this.priceFrom = priceFrom;
+    public void setPriceRange(String priceRange) {
+        this.priceRange = priceRange;
     }
 
-    public int getPriceTo() {
-        return priceTo;
-    }
-
-    public void setPriceTo(int priceTo) {
-        this.priceTo = priceTo;
-    }
-
+    @Column(name="ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -156,22 +149,25 @@ public class LouhuaEntity {
         this.address = address;
     }
 
-    public int getUnitNumber() {
+    @Column(name="UNIT_NUMBER")
+    public String getUnitNumber() {
         return unitNumber;
     }
 
-    public void setUnitNumber(int unitNumber) {
+    public void setUnitNumber(String unitNumber) {
         this.unitNumber = unitNumber;
     }
 
-    public int getStroys() {
+    @Column(name="STROYS")
+    public String getStroys() {
         return stroys;
     }
 
-    public void setStroys(int stroys) {
+    public void setStroys(String stroys) {
         this.stroys = stroys;
     }
 
+    @Column(name="STYLE_OF_UNITS")
     public String getStyleOfUnits() {
         return styleOfUnits;
     }
@@ -180,6 +176,7 @@ public class LouhuaEntity {
         this.styleOfUnits = styleOfUnits;
     }
 
+    @Column(name="CONSTRUCTION")
     public String getConstruction() {
         return construction;
     }
@@ -192,10 +189,12 @@ public class LouhuaEntity {
         return features;
     }
 
+    @Column(name="FEATURES")
     public void setFeatures(String features) {
         this.features = features;
     }
 
+    @Column(name="ONSITE_AMENITIES")
     public String getOnsiteAmenities() {
         return onsiteAmenities;
     }
@@ -204,6 +203,7 @@ public class LouhuaEntity {
         this.onsiteAmenities = onsiteAmenities;
     }
 
+    @Column(name="PUBLIC_TRANSPORTATION")
     public String getPublicTransportation() {
         return publicTransportation;
     }
@@ -212,11 +212,22 @@ public class LouhuaEntity {
         this.publicTransportation = publicTransportation;
     }
 
+    @Column(name="NEARBY_AMENITIES")
     public String getNearbyAmenities() {
         return nearbyAmenities;
     }
 
     public void setNearbyAmenities(String nearbyAmenities) {
         this.nearbyAmenities = nearbyAmenities;
+    }
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "buildingEntity")
+    public Set<FloorPlanEntity> getFoorPlanEntities() {
+        return foorPlanEntities;
+    }
+
+    public void setFoorPlanEntities(Set<FloorPlanEntity> foorPlanEntities) {
+        this.foorPlanEntities = foorPlanEntities;
     }
 }

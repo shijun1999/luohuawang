@@ -563,7 +563,7 @@ $(document).ready(function() {
 	});
 
 	$('#modal-wizard-container').ace_wizard();
-	$('#modal-wizard .wizard-actions .btn[data-dismiss=modal]').removeAttr('disabled');
+	$('#modal-wizard .wizard-controller .btn[data-dismiss=modal]').removeAttr('disabled');
 
 	if(!ace.vars['touch']) {
 

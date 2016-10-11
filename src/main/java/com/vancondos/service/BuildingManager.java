@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.vancondos.entity.BuildingEntity;
 
-public interface LouhuaManager {
+public interface BuildingManager {
 
-    public void addLouhua(BuildingEntity louhua);
+    public void addBuilding(BuildingEntity building);
 
-    public List<BuildingEntity> getAllLouhuas();
+    public List<BuildingEntity> getAllBuildings();
 
-    public void deleteLouhua(Integer louhuaId);
+    public void deleteBuilding(Integer buildingId);
 }

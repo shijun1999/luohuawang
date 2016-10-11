@@ -5,34 +5,34 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.vancondos.entity.LouhuaEntity;
+import com.vancondos.entity.BuildingEntity;
 
 @Repository
-public class LouhuaDaoImpl implements LouhuaDAO
+public class BuildingDaoImpl implements BuildingDAO
 {
 	//Session factory injected by spring context
     private SessionFactory sessionFactory;
 	
-    //This method will be called when a louhua object is added
+    //This method will be called when a building object is added
 	@Override
-	public void addLouhua(LouhuaEntity louhua) {
-		this.sessionFactory.getCurrentSession().save(louhua);
+	public void addBuilding(BuildingEntity building) {
+		this.sessionFactory.getCurrentSession().save(building);
 	}
 
-	//This method return list of louhuas in database
+	//This method return list of buildings in database
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<LouhuaEntity> getAllLouhuas() {
-		return this.sessionFactory.getCurrentSession().createQuery("from LouhuaEntity").list();
+	public List<BuildingEntity> getAllBuildings() {
+		return this.sessionFactory.getCurrentSession().createQuery("from BuildingEntity").list();
 	}
 
-	//Deletes a louhua by it's id
+	//Deletes a building by it's id
 	@Override
-	public void deleteLouhua(Integer louhuaId) {
-		LouhuaEntity louhuaEntity = (LouhuaEntity) sessionFactory.getCurrentSession()
-										.load(LouhuaEntity.class, louhuaId);
-        if (null != louhuaEntity) {
-        	this.sessionFactory.getCurrentSession().delete(louhuaEntity);
+	public void deleteBuilding(Integer buildingId) {
+		BuildingEntity buildingEntity = (BuildingEntity) sessionFactory.getCurrentSession()
+										.load(BuildingEntity.class, buildingId);
+        if (null != buildingEntity) {
+        	this.sessionFactory.getCurrentSession().delete(buildingEntity);
         }
 	}
 

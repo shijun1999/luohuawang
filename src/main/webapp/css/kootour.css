@@ -8,7 +8,7 @@
   background-color: white;
 }
 .exclusive-date-work {
-  background-color: #00CCCC;
+  background-color: #2277DD;
 }
 .main-content {
     margin-left: 0;
@@ -16,11 +16,11 @@
     padding: 0
 }
 .kootour-main-background-color {
-  background-color: #00cccc !important;
+  background-color: #2277DD !important;
 }
 
 .kootour-main-color {
-  color: #00cccc !important;
+  color: #2277DD !important;
 }
 
 .kootour-content-background-color {
@@ -40,22 +40,22 @@
 }
 
 .kootour-widget-color-main>.widget-header>.widget-toolbar:before {
-    border-color: #00cccc;
+    border-color: #2277dd;
     box-shadow: -1px 0 0 rgba(255,255,255,.2),inset 1px 0 0 rgba(255,255,255,.1)
 }
 
 .kootour-widget-color-main {
-    border-color: #00cccc !important;
+    border-color: #2277DD !important;
 }
 
 .kootour-widget-color-main>.widget-header {
-    border-color: #00cccc;
-    background: #00cccc
+    border-color: #2277DD;
+    background: #2277DD
 }
 
 .btn-white.kootour-btn-main {
-    border-color: #00cccc;
-    color: #00cccc!important;
+    border-color: #2277DD;
+    color: #2277DD!important;
 }
 
 
@@ -231,13 +231,13 @@
     position: absolute;
     top: 10px;
     right: 50px;
-    color: #00cccc !important;
+    color: #2277DD !important;
 }
 .travel-list .card-price {
     position: absolute;
     top: 150px;
     padding: 10px;
-    background-color: #00cccc !important;
+    background-color: #2277DD !important;
     color: #f5d10a;
     font-weight: bold;
     width: 50%;
@@ -267,7 +267,7 @@
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     background-image: none!important;
     transition: background-color .15s,border-color .15s,opacity .15s;
-    background-color: #00cccc !important;
+    background-color: #2277DD !important;
 }
 
 .bootstrap-duallistbox-container .info {
@@ -347,7 +347,7 @@
 .navbar-kootour {
   margin-bottom: 0;
   font-family: Avenir_Regular;
-  background-color: #00cccc;
+  background-color: #2277DD;
   height: 60px;
   z-index: 3;
   border-radius: 0;
@@ -438,7 +438,7 @@
 }
 .navbar-kootour .dropdown-menu > li > a {
   padding: 9px 20px;
-  color: #00cccc;
+  color: #2277DD;
   font-size: 16px;
 }
 .navbar-kootour .dropdown-menu > li:not(:last-child) > a {
@@ -455,7 +455,7 @@
   margin: 0;
 }
 .navbar-kootour .dropdown-dashboard .see-all {
-  color: #00cccc;
+  color: #2277DD;
   font-weight: bold;
   padding: 6px;
   display: block;
@@ -473,7 +473,7 @@
   padding: 6px;
   color: white;
   font-weight: bold;
-  background-color: #00cccc;
+  background-color: #2277DD;
 }
 
 
@@ -507,7 +507,7 @@
     display: block !important;
   }
   .navbar-kootour .navbar-collapse {
-    background-color: #00cccc;
+    background-color: #2277DD;
   }
   .navbar-kootour .navbar-text {
     margin-top: 20px;
@@ -525,8 +525,8 @@
     display: none;
   }
   .navbar-kootour.transparent {
-    background-color: #00cccc;
-    background: #00cccc;
+    background-color: #2277DD;
+    background: #2277DD;
   }
   .navbar-kootour .dropdown-menu > li:not(:last-child) > a {
     border: 0;
@@ -672,7 +672,7 @@ footer .footer-band {
 }
 .form-group.required .control-label:after {
   content: "*";
-  color: #00cccc;
+  color: #2277DD;
   padding: 8px;
 }
 /*
@@ -798,7 +798,7 @@ select.input-lg,
   content: 'Change Picture';
   display: inline-block;
   color: white;
-  background-color: #00cccc;
+  background-color: #2277DD;
   font-size: 18px;
   font-size: 1.8rem;
   padding: 8px 16px;
@@ -1068,7 +1068,7 @@ select.input-lg,
   display: flex;
   vertical-align: middle;
   align-items: center;
-  border-top: 10px solid #00CCCC;
+  border-top: 10px solid #2277DD;
   border-radius: 3px;
   box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   filter: brightness(100%);
@@ -1102,7 +1102,7 @@ select.input-lg,
 }
 /* Section */
 .border-section {
-  border-top: 10px solid #00CCCC;
+  border-top: 10px solid #2277DD;
   border-radius: 3px;
   box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
@@ -1121,7 +1121,7 @@ section.section.section-small {
 section.section {
   margin-top: 25px;
   background-color: white;
-  border-top: 10px solid #00CCCC;
+  border-top: 10px solid #2277DD;
   border-radius: 3px;
   box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
@@ -1178,7 +1178,7 @@ section.map {
 section.map > section.contact {
   font-family: Avenir_DemiBold;
   color: white;
-  background-color: #00cccc;
+  background-color: #2277DD;
   width: 370px;
   max-width: 100%;
   height: 258px;
@@ -1244,7 +1244,7 @@ section.map > section.contact p {
 .btn-kootour-bold {
   border-radius: 3px;
   color: white!important;
-  background-color: #00cccc!important;
+  background-color: #2277DD!important;
 }
 .btn-kootour-bold {
   font-family: Avenir_Bold;
@@ -1463,17 +1463,17 @@ section.map > section.contact p {
 }
 .datepicker .glyphicon-chevron-right:before,
 .datepicker .glyphicon-chevron-left:before {
-  color: #00cccc;
+  color: #2277DD;
 }
 .datepicker .picker-switch {
-  color: #00cccc;
+  color: #2277DD;
 }
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
-  background-color: #00cccc;
+  background-color: #2277DD;
 }
 .bootstrap-datetimepicker-widget table td.today:before {
-  border-bottom-color: #00cccc;
+  border-bottom-color: #2277DD;
 }
 .bootstrap-datetimepicker-widget table td.day:hover,
 .bootstrap-datetimepicker-widget table td.hour:hover,
@@ -1940,7 +1940,7 @@ section.notification {
   clear: both;
 }
 .message-wrapper .drt-right {
-  background-color: #00cccc;
+  background-color: #2277DD;
   max-width: 350px;
   float: right;
   clear: both;
@@ -2015,8 +2015,8 @@ section.notification {
   width: 75%!important;
 }
 .strength-wrapper .strong {
-  background-color: #00cccc;
-  border-color: #00cccc!important;
+  background-color: #2277DD;
+  border-color: #2277DD!important;
   width: 100%!important;
 }
 @media (min-width: 1200px) {
@@ -2072,13 +2072,13 @@ h2 {
   }
 }
 a {
-  color: #00cccc;
+  color: #2277DD;
 }
 a.nocolor {
   color: #333333;
 }
 a:hover {
-  color: #00cccc;
+  color: #2277DD;
 }
 a:hover,
 a:focus {
@@ -2099,13 +2099,13 @@ ul.list-style-none {
   font-size: 20px;
   font-size: 2rem;
   font-family: Avenir_DemiBold;
-  color: #00cccc;
+  color: #2277DD;
 }
 .initlineheight {
   line-height: 1.42857143;
 }
 .blue {
-  color: #00cccc;
+  color: #2277DD;
 }
 .black {
   color: black;
@@ -2115,7 +2115,7 @@ ul.list-style-none {
   max-width: calc(350px);
   margin: 15px auto;
   border-radius: 50%;
-  border: 3px solid #00cccc;
+  border: 3px solid #2277DD;
 }
 .phone-icon img {
   width: 100%;
@@ -2156,7 +2156,7 @@ ul.list-style-none {
 .user-thumbnail {
   width: 120px;
   height: 120px;
-  border: 3px solid #00cccc;
+  border: 3px solid #2277DD;
   margin-bottom: 15px;
   background-size: cover;
   background-position: center center;
@@ -2164,7 +2164,7 @@ ul.list-style-none {
 .user-small-thumbnail {
   width: 60px;
   height: 60px;
-  border: 1.5px solid #00cccc;
+  border: 1.5px solid #2277DD;
   margin-bottom: 7.5px;
   background-size: cover;
   background-position: center center;
@@ -2172,7 +2172,7 @@ ul.list-style-none {
 .user-extra-small-thumbnail {
   width: 45px;
   height: 45px;
-  border: 1.5px solid #00cccc;
+  border: 1.5px solid #2277DD;
   margin-bottom: 3.5px;
   background-size: cover;
   background-position: center center;
@@ -2199,13 +2199,13 @@ ul.indicators li:before {
 ul.indicators li.active:before {
   font-size: 35px;
   content: "• ";
-  color: #00cccc;
+  color: #2277DD;
 }
 .subtitle {
   /*display:block;*/
   font-size: 18px;
   font-size: 1.8rem;
-  color: #00cccc;
+  color: #2277DD;
 }
 .text-left {
   text-align: left !important;
@@ -2227,11 +2227,11 @@ ul.indicators li.active:before {
   .user-thumbnail {
     width: 60px;
     height: 60px;
-    border: 1.5px solid #00cccc;
+    border: 1.5px solid #2277DD;
   }
   .user-small-thumbnail {
     width: 30px;
     height: 30px;
-    border: 1.5px solid #00cccc;
+    border: 1.5px solid #2277DD;
   }
 }

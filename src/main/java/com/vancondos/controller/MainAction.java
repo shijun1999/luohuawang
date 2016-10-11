@@ -1,8 +1,8 @@
-package com.vancondos.actions;
+package com.vancondos.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vancondos.entity.LouhuaEntity;
-import com.vancondos.service.LouhuaManager;
+import com.vancondos.entity.BuildingEntity;
+import com.vancondos.service.BuildingManager;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import java.util.List;
 
 public class MainAction extends BaseAction
 {
-	//Louhua manager injected by spring context; This is cool !!
-	private LouhuaManager louhuaManager;
-	private List<LouhuaEntity> louhuas;
+	//Building manager injected by spring context; This is cool !!
+	private BuildingManager buildingManager;
+	private List<BuildingEntity> buildings;
 	private String jsonInString;
 
 	public String load() {
@@ -22,27 +22,27 @@ public class MainAction extends BaseAction
 		return "success";
 	}
 
-	public String execute() throws Exception {
+	public String display() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		louhuas = louhuaManager.getAllLouhuas();
-		jsonInString = mapper.writeValueAsString(louhuas);
+		buildings = buildingManager.getAllBuildings();
+		jsonInString = mapper.writeValueAsString(buildings);
 		return SUCCESS;
 }
 
-	public LouhuaManager getLouhuaManager() {
-		return louhuaManager;
+	public BuildingManager getBuildingManager() {
+		return buildingManager;
 	}
 
-	public void setLouhuaManager(LouhuaManager louhuaManager) {
-		this.louhuaManager = louhuaManager;
+	public void setBuildingManager(BuildingManager buildingManager) {
+		this.buildingManager = buildingManager;
 	}
 
-	public List<LouhuaEntity> getLouhuas() {
-		return louhuas;
+	public List<BuildingEntity> getBuildings() {
+		return buildings;
 	}
 
-	public void setLouhuas(List<LouhuaEntity> louhuas) {
-		this.louhuas = louhuas;
+	public void setBuildings(List<BuildingEntity> buildings) {
+		this.buildings = buildings;
 	}
 
 	public String getJsonInString() {

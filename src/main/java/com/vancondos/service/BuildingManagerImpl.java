@@ -8,28 +8,28 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vancondos.dao.BuildingDAO;
 import com.vancondos.entity.BuildingEntity;
 
-public class LouhuaManagerImpl implements LouhuaManager {
-    //Louhua dao injected by Spring context
+public class BuildingManagerImpl implements BuildingManager {
+    //building dao injected by Spring context
     private BuildingDAO buildingDAO;
 
-    //This method will be called when a louhua object is added
+    //This method will be called when a building object is added
     @Override
     @Transactional
-    public void addLouhua(BuildingEntity louhua) {
-        buildingDAO.addLouhua(louhua);
+    public void addBuilding(BuildingEntity building) {
+        buildingDAO.addBuilding(building);
     }
 
-    //This method return list of louhuas in database
+    //This method return list of buildings in database
     @Override
     @Transactional
-    public List<BuildingEntity> getAllLouhuas() {
-        return buildingDAO.getAllLouhuas();
+    public List<BuildingEntity> getAllBuildings() {
+        return buildingDAO.getAllBuildings();
     }
-    //Deletes a louhua by it's id
+    //Deletes a building by it's id
     @Override
     @Transactional
-    public void deleteLouhua(Integer louhuaId) {
-        buildingDAO.deleteLouhua(louhuaId);
+    public void deleteBuilding(Integer buildingId) {
+        buildingDAO.deleteBuilding(buildingId);
     }
 
     //This setter will be used by Spring context to inject the dao's instance

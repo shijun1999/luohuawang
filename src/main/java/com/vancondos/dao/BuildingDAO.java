@@ -1,13 +1,13 @@
 package com.vancondos.dao;
 
 import java.util.List;
-import com.vancondos.entity.LouhuaEntity;
+import com.vancondos.entity.BuildingEntity;
 
-public interface LouhuaDAO
+public interface BuildingDAO
 {
-    public void addLouhua(LouhuaEntity louhuaEntity);
+    public void addBuilding(BuildingEntity buildingEntity);
 
-    public List<LouhuaEntity> getAllLouhuas();
+    public List<BuildingEntity> getAllBuildings();
 
-    public void deleteLouhua(Integer louhuaId);
+    public void deleteBuilding(Integer buildingId);
 }

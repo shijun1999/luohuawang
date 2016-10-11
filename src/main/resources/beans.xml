@@ -18,19 +18,19 @@
     
     <!-- This bean has been referred fron struts.xml file; So type it correctly; -->
     <!-- Make scope prototype; This is really important. -->
-    <bean name="editEmployeeAction" class="com.junshi.controller.EditEmployeeAction" scope="prototype">
-	     <property name="employeeManager">
-	        <ref bean="employeeManager"/>
+    <bean name="editBuildingAction" class="com.vancondos.controller.EditBuildingAction" scope="prototype">
+	     <property name="buildingManager">
+	        <ref bean="buildingManager"/>
 	     </property>
     </bean>
     
     <!-- These beans are injected automatically by spring context -->
-    <bean id="employeeDAO" class="com.junshi.dao.EmployeeDaoImpl">
+    <bean id="buildingDAO" class="com.vancondos.dao.BuildingDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-    <bean id="employeeManager" class="com.junshi.service.EmployeeManagerImpl">
-        <property name="employeeDAO" ref="employeeDAO"/>
+    <bean id="buildingManager" class="com.vancondos.service.BuildingManagerImpl">
+        <property name="buildingDAO" ref="buildingDAO"/>
     </bean>
     
     <!-- Configure jdbc.properties -->
@@ -46,8 +46,7 @@
         p:password="${jdbc.password}" />
  
 	<!-- Configure hibernate session factory -->    
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation">
             <value>classpath:hibernate.cfg.xml</value>

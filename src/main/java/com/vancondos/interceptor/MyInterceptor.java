@@ -1,4 +1,4 @@
-package com.junshi.interceptor;
+package com.vancondos.interceptor;
 
 
 import com.opensymphony.xwork2.ActionInvocation;

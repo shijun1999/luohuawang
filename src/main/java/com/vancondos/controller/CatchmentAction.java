@@ -1,4 +1,4 @@
-package com.vancondos.actions;
+package com.vancondos.controller;
 
 public class CatchmentAction extends BaseAction
 {
