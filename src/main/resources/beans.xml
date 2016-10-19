@@ -23,6 +23,12 @@
 	        <ref bean="buildingManager"/>
 	     </property>
     </bean>
+
+    <bean name="addOrEditBuildingAction" class="com.vancondos.controller.AddOrEditBuildingAction" scope="prototype">
+        <property name="buildingManager">
+            <ref bean="buildingManager"/>
+        </property>
+    </bean>
     
     <!-- These beans are injected automatically by spring context -->
     <bean id="buildingDAO" class="com.vancondos.dao.BuildingDaoImpl">

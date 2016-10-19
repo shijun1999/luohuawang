@@ -1,24 +1,6 @@
-package com.vancondos.entity;
+package com.vancondos.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.OneToMany;
-import javax.persistence.FetchType;
-
-@Entity
-@Table(name="BUILDING")
-public class BuildingEntity {
-
-    private Integer  id;
+public class BuildingModel {
 
     private String name;
 
@@ -58,19 +40,6 @@ public class BuildingEntity {
 
     private String nearbyAmenities;
 
-    private Set<FloorPlanEntity> floorPlanEntities= new HashSet<FloorPlanEntity>();
-
-    @Id
-    @Column(name="ID", unique = true, nullable = false)
-    @GeneratedValue
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Column(name="NAME")
     public String getName() {
         return name;
     }
@@ -79,7 +48,6 @@ public class BuildingEntity {
         this.name = name;
     }
 
-    @Column(name="LAT")
     public String getLat() {
         return lat;
     }
@@ -88,7 +56,6 @@ public class BuildingEntity {
         this.lat = lat;
     }
 
-    @Column(name="LNG")
     public String getLng() {
         return lng;
     }
@@ -97,7 +64,6 @@ public class BuildingEntity {
         this.lng = lng;
     }
 
-    @Column(name="SHORT_NAME")
     public String getShortName() {
         return shortName;
     }
@@ -106,7 +72,6 @@ public class BuildingEntity {
         this.shortName = shortName;
     }
 
-    @Column(name="LONG_NAME")
     public String getLongName() {
         return longName;
     }
@@ -115,7 +80,6 @@ public class BuildingEntity {
         this.longName = longName;
     }
 
-    @Column(name="SHORT_DESC")
     public String getShortDesc() {
         return shortDesc;
     }
@@ -124,7 +88,6 @@ public class BuildingEntity {
         this.shortDesc = shortDesc;
     }
 
-    @Column(name="LONG_DESC")
     public String getLongDesc() {
         return longDesc;
     }
@@ -133,7 +96,6 @@ public class BuildingEntity {
         this.longDesc = longDesc;
     }
 
-    @Column(name="PRICE_RANGE")
     public String getPriceRange() {
         return priceRange;
     }
@@ -142,7 +104,6 @@ public class BuildingEntity {
         this.priceRange = priceRange;
     }
 
-    @Column(name="ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -151,7 +112,6 @@ public class BuildingEntity {
         this.address = address;
     }
 
-    @Column(name="CITY")
     public String getCity() {
         return city;
     }
@@ -160,7 +120,6 @@ public class BuildingEntity {
         this.city = city;
     }
 
-    @Column(name="AREA")
     public String getArea() {
         return area;
     }
@@ -169,7 +128,6 @@ public class BuildingEntity {
         this.area = area;
     }
 
-    @Column(name="UNIT_NUMBER")
     public String getUnitNumber() {
         return unitNumber;
     }
@@ -178,7 +136,6 @@ public class BuildingEntity {
         this.unitNumber = unitNumber;
     }
 
-    @Column(name="STROYS")
     public String getStroys() {
         return stroys;
     }
@@ -187,7 +144,6 @@ public class BuildingEntity {
         this.stroys = stroys;
     }
 
-    @Column(name="STYLE_OF_UNITS")
     public String getStyleOfUnits() {
         return styleOfUnits;
     }
@@ -196,7 +152,6 @@ public class BuildingEntity {
         this.styleOfUnits = styleOfUnits;
     }
 
-    @Column(name="CONSTRUCTION")
     public String getConstruction() {
         return construction;
     }
@@ -209,12 +164,10 @@ public class BuildingEntity {
         return features;
     }
 
-    @Column(name="FEATURES")
     public void setFeatures(String features) {
         this.features = features;
     }
 
-    @Column(name="ONSITE_AMENITIES")
     public String getOnsiteAmenities() {
         return onsiteAmenities;
     }
@@ -223,7 +176,6 @@ public class BuildingEntity {
         this.onsiteAmenities = onsiteAmenities;
     }
 
-    @Column(name="PUBLIC_TRANSPORTATION")
     public String getPublicTransportation() {
         return publicTransportation;
     }
@@ -232,27 +184,11 @@ public class BuildingEntity {
         this.publicTransportation = publicTransportation;
     }
 
-    @Column(name="NEARBY_AMENITIES")
     public String getNearbyAmenities() {
         return nearbyAmenities;
     }
 
     public void setNearbyAmenities(String nearbyAmenities) {
         this.nearbyAmenities = nearbyAmenities;
-    }
-
-    @OneToMany(mappedBy = "buildingEntity")
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-    public Set<FloorPlanEntity> getFloorPlanEntities() {
-        return floorPlanEntities;
-    }
-
-    public void setFloorPlanEntities(Set<FloorPlanEntity> floorPlanEntities) {
-        this.floorPlanEntities = floorPlanEntities;
-        if (this.floorPlanEntities!=null){
-            for (FloorPlanEntity floorPlanEntity :floorPlanEntities){
-                floorPlanEntity.setBuildingEntity(this);
-            }
-        }
     }
 }

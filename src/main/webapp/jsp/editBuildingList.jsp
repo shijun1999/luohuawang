@@ -48,6 +48,8 @@
 		    <th align="left">lat</th>
 		    <th align="left">lng</th>
 			<th align="left">edit</th>
+
+			<th align="left">edit/add</th>
 		</tr>
 
 		<c:forEach items="${buildings}" var="emp">
@@ -56,6 +58,8 @@
 		        <td>${emp.lat}</td>
 		        <td>${emp.lng}</td>
 		        <td><a href="delete/${emp.id}">delete</a> <a href="edit/${emp.id}">delete</a></td>
+				<td><a href="addOrUpdate">addOrUpdate</a> </td>
+
 		    </tr>
 		</c:forEach>
 	</table>

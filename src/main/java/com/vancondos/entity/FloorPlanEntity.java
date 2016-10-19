@@ -33,7 +33,7 @@ public class FloorPlanEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BUILD_ID", nullable = false)
+    @JoinColumn(name = "BUILDING_ID", nullable = false)
     public BuildingEntity getBuildingEntity() {
         return buildingEntity;
     }

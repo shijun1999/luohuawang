@@ -1,4 +1,4 @@
-<!-- http://localhost:8080/louhuawang/main/display -->
+<!-- http://localhost:8080/louhuawang/main -->
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -310,7 +310,6 @@
 <script src="js/moment.min.js"></script>
 <script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/HoldOn.min.js"></script>
-<script src="js/localhostCourseList.js"></script>
 <script src="js/localhostHeader.js" type="text/javascript"></script>
 
 <!-- inline scripts related to this page -->

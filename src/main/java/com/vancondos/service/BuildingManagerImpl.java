@@ -3,6 +3,7 @@ package com.vancondos.service;
 
 import java.util.List;
 
+import com.vancondos.entity.FloorPlanEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vancondos.dao.BuildingDAO;
@@ -16,6 +17,11 @@ public class BuildingManagerImpl implements BuildingManager {
     @Override
     @Transactional
     public void addBuilding(BuildingEntity building) {
+        if (building!=null && building.getFloorPlanEntities()!=null){
+            for (FloorPlanEntity floorPlanEntity :building.getFloorPlanEntities()){
+                floorPlanEntity.setBuildingEntity(building);
+            }
+        }
         buildingDAO.addBuilding(building);
     }
 
