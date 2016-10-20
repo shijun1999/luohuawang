@@ -47,8 +47,14 @@
         <action name="add" class="com.vancondos.controller.EditBuildingAction" method="addBuilding">
             <result type="redirect">list</result>
         </action>
+        <!--
         <action name="delete/*" class="com.vancondos.controller.EditBuildingAction" method="deleteBuilding">
             <param name="building.id">{1}</param>
+            <result type="redirect">list</result>
+        </action>
+-->
+
+        <action name="delete" class="com.vancondos.controller.EditBuildingAction" method="deleteBuilding">
             <result type="redirect">list</result>
         </action>
 
