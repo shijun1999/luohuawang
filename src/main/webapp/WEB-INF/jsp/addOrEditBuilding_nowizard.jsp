@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
-    <title>Edit Course | Kootour</title>
+    <title>Edit Building</title>
 
     <meta name="description" content="overview &amp; stats">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -14,6 +14,7 @@
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-dialog.min.css"/>
+    <link href="css/HoldOn.min.css" rel="stylesheet">
     <link rel="stylesheet" href="summernote/summernote.css"/>
 </head>
 
@@ -30,7 +31,7 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <form class="form-horizontal" id="course_form" method="post">
+                                    <form class="form-horizontal" id="add_building_form" method="post" target="_self">
                                         <h4 class="lighter block kootour-main-color">1.名称</h4>
                                         <div class="form-validator">
                                             <div class="clearfix">
@@ -178,7 +179,7 @@
                                             </tbody>
                                         </table>
 
-                                        <s:submit key="label.add" name="submit" id="button"></s:submit>
+                                        <button id="button" type="submit" key="label.add" name="submit">Submit</button>
                                     </form>
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->

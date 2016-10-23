@@ -18,13 +18,13 @@
     
     <!-- This bean has been referred fron struts.xml file; So type it correctly; -->
     <!-- Make scope prototype; This is really important. -->
-    <bean name="editBuildingAction" class="com.vancondos.controller.EditBuildingAction" scope="prototype">
+    <bean name="editBuildingAction" class="com.vancondos.actions.EditBuildingAction" scope="prototype">
 	     <property name="buildingManager">
 	        <ref bean="buildingManager"/>
 	     </property>
     </bean>
 
-    <bean name="addOrEditBuildingAction" class="com.vancondos.controller.AddOrEditBuildingAction" scope="prototype">
+    <bean name="addOrEditBuildingAction" class="com.vancondos.actions.AddOrEditBuildingAction" scope="prototype">
         <property name="buildingManager">
             <ref bean="buildingManager"/>
         </property>

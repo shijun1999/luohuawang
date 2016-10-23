@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function () {
+
 
     $('#shortDesc').summernote({
         height: 100,                 // set editor height
@@ -11,8 +12,9 @@ $(document).ready(function() {
         maxHeight: null             // set maximum height of editor
     });
 
-    $("#button").click(function(){
-        HoldOn.open({message:"Cloning...",theme:"sk-dot"});
+    $("#add_building_form").submit(function (e) {
+
+        HoldOn.open({message: "handle...", theme: "sk-dot"});
 
         var entity = new Object();
         entity.name = $("#name").val();
@@ -24,7 +26,7 @@ $(document).ready(function() {
         entity.longDesc = $("#longDesc").summernote('code');
 
         var cities = $("#city").val();
-        if (cities != null && cities != ""){
+        if (cities != null && cities != "") {
             entity.city = cities.join(";");
         }
 
@@ -34,10 +36,10 @@ $(document).ready(function() {
 
         var inArray = new Array();
 
-        $("tr[name=floorPlan]").each(function(){
+        $("tr[name=floorPlan]").each(function () {
 
             var level = $(this).find('input:eq(0)').val();
-            if (level != null && level !=""){
+            if (level != null && level != "") {
                 var subEntity = new Object();
                 subEntity.level = level;
                 subEntity.interiorArea = $(this).find('input:eq(1)').val();
@@ -48,46 +50,52 @@ $(document).ready(function() {
         });
 
         entity.floorPlanEntities = inArray;
-        alert ("before $.ajax")
+
+        console.log("Before ajax");
         $.ajax({
             url: 'addBuilding',
             type: 'post',
             dataType: 'json',
             data: {"jsonFromAdd": JSON.stringify(entity)},
-            success: function(json) {
+            success: function (json) {
+                console.log("we are success");
                 var obj = JSON.parse(json);
-                alert("Success" + json);
-                HoldOn.close();
+
                 if (obj.result == 'success') {
-                    window.location.href="main";
+                    window.location.href = "main";
                 } else {
                     BootstrapDialog.show({
                         title: 'Error',
                         message: obj.message,
                         buttons: [{
                             label: 'Close',
-                            action: function(dialog) {
+                            action: function (dialog) {
                                 dialog.close();
                             }
                         }]
                     });
                 }
             },
-            error: function(json) {
+            error: function (json) {
                 var obj = JSON.parse(json);
-                alert("error" + json);
+                HoldOn.close();
                 BootstrapDialog.show({
                     title: 'Error',
                     message: obj.message,
                     buttons: [{
                         label: 'Close',
-                        action: function(dialog) {
+                        action: function (dialog) {
                             dialog.close();
                         }
                     }]
                 });
             }
         });
+        e.preventDefault();
+        e.unbind();
+
+        HoldOn.close();
+
     });
 
 });

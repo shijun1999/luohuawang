@@ -1,4 +1,4 @@
-package com.vancondos.controller;
+package com.vancondos.actions;
 
 import java.util.Map;
 

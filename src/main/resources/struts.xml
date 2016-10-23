@@ -16,10 +16,11 @@
     	This this is set to false; then struts will try to find mapping for 
     	URL "/10" instaed of "/delete/10"
      -->
-    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.enable.SlashesInActionNames" value="false"/>
+    <constant name="struts.convention.result.path" value="/WEB-INF/jsp/"/>
 
     <!-- Normal Action mappings are defined here -->
-    <package name="default" namespace="" extends="json-default">
+    <package name="default" extends="json-default,struts-default">
         <!-- Two things to Notice:
              1) class is set to 'editEmployeeAction' which is bean defined by Spring context
              2) We have given the method to be called here as well;
@@ -32,41 +33,6 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="MyInterceptorStack"/>
-
-        <action name="main" class="com.vancondos.controller.MainAction" method="display">
-            <result name="success">/jsp/main.jsp</result>
-        </action>
-
-        <action name="catchment" class="com.vancondos.controller.CatchmentAction" method="execute">
-            <result name="success">/jsp/catchment.jsp</result>
-        </action>
-
-        <action name="list" class="com.vancondos.controller.EditBuildingAction" method="listBuildings">
-            <result>/jsp/editBuildingList.jsp</result>
-        </action>
-        <action name="add" class="com.vancondos.controller.EditBuildingAction" method="addBuilding">
-            <result type="redirect">list</result>
-        </action>
-        <!--
-        <action name="delete/*" class="com.vancondos.controller.EditBuildingAction" method="deleteBuilding">
-            <param name="building.id">{1}</param>
-            <result type="redirect">list</result>
-        </action>
--->
-
-        <action name="delete" class="com.vancondos.controller.EditBuildingAction" method="deleteBuilding">
-            <result type="redirect">list</result>
-        </action>
-
-        <action name="addOrUpdate" class="com.vancondos.controller.AddOrEditBuildingAction" method="load">
-            <result>/jsp/addOrEditBuilding_nowizard.jsp</result>
-        </action>
-
-        <action name="addBuilding" class="com.vancondos.controller.AddOrEditBuildingAction" method="addBuilding">
-            <result type="json">
-                <param name="root">jsonStr</param>
-            </result>
-        </action>
     </package>
 
 </struts>

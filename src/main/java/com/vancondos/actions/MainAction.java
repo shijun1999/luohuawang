@@ -1,16 +1,21 @@
-package com.vancondos.controller;
+package com.vancondos.actions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 
 import java.util.List;
 
-
-
+@Namespace("/")
+@Results({
+		@Result(name="success",location="main.jsp")
+})
 public class MainAction extends BaseAction
 {
-	//Building manager injected by spring context; This is cool !!
 	private BuildingManager buildingManager;
 	private List<BuildingEntity> buildings;
 	private String jsonInString;
@@ -19,9 +24,10 @@ public class MainAction extends BaseAction
 		getSession().clear();
 		//TODO lang id hard code
 		getSession().put("LT_SESSION_KEY_LANGID", "en");
-		return "success";
+		return SUCCESS;
 	}
 
+	@Action(value="main")
 	public String display() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		buildings = buildingManager.getAllBuildings();
