@@ -69,7 +69,7 @@
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/editBuildingList.js"></script>
+<script src="js/listBuilding.js"></script>
 </body>
 </html>
 

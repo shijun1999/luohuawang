@@ -18,7 +18,7 @@
     
     <!-- This bean has been referred fron struts.xml file; So type it correctly; -->
     <!-- Make scope prototype; This is really important. -->
-    <bean name="editBuildingAction" class="com.vancondos.actions.EditBuildingAction" scope="prototype">
+    <bean name="listBuildingAction" class="com.vancondos.actions.ListBuildingAction" scope="prototype">
 	     <property name="buildingManager">
 	        <ref bean="buildingManager"/>
 	     </property>

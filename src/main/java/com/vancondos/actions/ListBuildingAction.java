@@ -11,13 +11,13 @@ import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
-public class EditBuildingAction extends ActionSupport implements Preparable	
+public class ListBuildingAction extends ActionSupport implements Preparable
 {
 	private static final long serialVersionUID = 1L;
 
 	private static final String ADD_UPDATE= "addOrUpdate";
 	//Logger configured using log4j
-	private static final Logger logger = Logger.getLogger(EditBuildingAction.class);
+	private static final Logger logger = Logger.getLogger(ListBuildingAction.class);
 	//List of buildings; Setter and Getter are below
 	private List<BuildingEntity> buildings;
 	//Building object to be added; Setter and Getter are below
@@ -28,7 +28,7 @@ public class EditBuildingAction extends ActionSupport implements Preparable
 
 	@Action(value="list",
 			results={
-					@Result(name="success", location="editBuildingList.jsp")}
+					@Result(name="success", location="listBuilding.jsp")}
 	)
 	public String listBuildings() {
 		logger.info("listBuildings method called");
