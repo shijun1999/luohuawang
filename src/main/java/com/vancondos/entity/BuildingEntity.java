@@ -241,7 +241,8 @@ public class BuildingEntity {
         this.nearbyAmenities = nearbyAmenities;
     }
 
-    @OneToMany(mappedBy = "buildingEntity")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "buildingEntity")
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     public Set<FloorPlanEntity> getFloorPlanEntities() {
         return floorPlanEntities;

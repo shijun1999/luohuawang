@@ -10,7 +10,7 @@ import org.apache.struts2.convention.annotation.Results;
 
 import java.util.List;
 
-@Namespace("/")
+
 @Results({
 		@Result(name="success",location="main.jsp")
 })

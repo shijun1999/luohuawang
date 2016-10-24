@@ -34,93 +34,11 @@
     <link rel="stylesheet" href="css/ace-part2.min.css" class="ace-main-stylesheet"/>
     <![endif]-->
 
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="css/ace-ie.min.css"/>
-    <![endif]-->
 
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="js/ace-extra.min.js"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
 
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
     </script>
 
-    <script>
-        var myCenter = new google.maps.LatLng(40.7413549, -73.9980244);
-        var markers = [];
-
-        function initialize() {
-            var items =JSON.parse('${jsonInString}');
-            var ary = [];
-
-            for (var i = 0; i < items.length; i++) {
-                var emp = items[i];
-                var myCenter1 = new google.maps.LatLng(emp.lat, emp.lng);
-                var gp = {
-                    title: emp.name,
-                 location: myCenter1
-                 }
-                 ary.push(gp);
-            }
-
-            var mapProp = {
-                center: myCenter,
-                zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
-            var largeInfowindow = new google.maps.InfoWindow();
-            var bounds = new google.maps.LatLngBounds();
-
-            for (var i = 0; i < ary.length; i++) {
-                // Get the position from the location array.
-                var position = ary[i].location;
-                var title = ary[i].title;
-                // Create a marker per location, and put into markers array.
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: position,
-                    title: title,
-                    animation: google.maps.Animation.DROP,
-                    id: i
-                });
-                // Push the marker to our array of markers.
-                markers.push(marker);
-                // Create an onclick event to open an infowindow at each marker.
-                 marker.addListener('click', function() {
-                    populateInfoWindow(this, largeInfowindow);
-                });
-                bounds.extend(markers[i].position);
-            }
-            // Extend the boundaries of the map for each marker
-            map.fitBounds(bounds);
-        }
-
-        function populateInfoWindow(marker, infowindow) {
-            // Check to make sure the infowindow is not already opened on this marker.
-            if (infowindow.marker != marker) {
-                infowindow.marker = marker;
-                infowindow.setContent('<div>' + marker.title + '</div>');
-                infowindow.open(map, marker);
-                // Make sure the marker property is cleared if the infowindow is closed.
-                infowindow.addListener('closeclick',function(){
-                    infowindow.setMarker(null);
-                });
-            }
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
 </head>
 
 <body class="no-skin">
@@ -300,6 +218,7 @@
     if ('ontouchstart' in document.documentElement) document.write("<script src='/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 <script src="js/localhostHeader.js" type="text/javascript"></script>
 
