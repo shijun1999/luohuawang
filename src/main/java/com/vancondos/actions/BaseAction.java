@@ -15,6 +15,8 @@ import org.apache.struts2.util.ServletContextAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
+import static org.apache.struts2.ServletActionContext.getServletContext;
+
 public class BaseAction extends ActionSupport
         implements Preparable, ServletRequestAware, ServletResponseAware, ServletContextAware, SessionAware {
     /**
@@ -26,6 +28,8 @@ public class BaseAction extends ActionSupport
     private HttpServletRequest request;
     private HttpServletResponse response;
     private ServletContext context;
+
+    static public String projectRoot = getServletContext().getRealPath("/");
 
     public void setSession(Map<String, Object> session) {
         this.session = session;

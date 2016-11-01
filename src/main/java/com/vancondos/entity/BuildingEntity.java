@@ -60,6 +60,8 @@ public class BuildingEntity {
 
     private Set<FloorPlanEntity> floorPlanEntities= new HashSet<FloorPlanEntity>();
 
+    private Set<InputImageEntity> inputImageEntities= new HashSet<InputImageEntity>();
+
     @Id
     @Column(name="ID", unique = true, nullable = false)
     @GeneratedValue
@@ -253,6 +255,23 @@ public class BuildingEntity {
         if (this.floorPlanEntities!=null){
             for (FloorPlanEntity floorPlanEntity :floorPlanEntities){
                 floorPlanEntity.setBuildingEntity(this);
+            }
+        }
+    }
+
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "buildingEntity")
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    public Set<InputImageEntity> getInputImageEntities() {
+        return inputImageEntities;
+    }
+
+    public void setInputImageEntities(Set<InputImageEntity> inputImageEntities) {
+        this.inputImageEntities = inputImageEntities;
+        if (this.inputImageEntities!=null){
+            for (InputImageEntity inputImageEntity :inputImageEntities){
+                inputImageEntity.setBuildingEntity(this);
             }
         }
     }

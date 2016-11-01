@@ -1,7 +1,9 @@
 package com.vancondos.actions;
 
 import java.util.List;
+import java.util.Map;
 
+import com.vancondos.common.Const;
 import org.apache.log4j.Logger;
 
 import com.vancondos.entity.BuildingEntity;
@@ -9,84 +11,88 @@ import com.vancondos.service.BuildingManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Result;
 
-public class ListBuildingAction extends ActionSupport implements Preparable
-{
-	private static final long serialVersionUID = 1L;
+public class ListBuildingAction extends BaseAction {
+    private static final long serialVersionUID = 1L;
 
-	private static final String ADD_UPDATE= "addOrUpdate";
-	//Logger configured using log4j
-	private static final Logger logger = Logger.getLogger(ListBuildingAction.class);
-	//List of buildings; Setter and Getter are below
-	private List<BuildingEntity> buildings;
-	//Building object to be added; Setter and Getter are below
-	private BuildingEntity building;
-	
-	//Building manager injected by spring context; This is cool !!
-	private BuildingManager buildingManager;
+    private static final String ADD_UPDATE = "addOrUpdate";
+    //Logger configured using log4j
+    private static final Logger logger = Logger.getLogger(ListBuildingAction.class);
+    //List of buildings; Setter and Getter are below
+    private List<BuildingEntity> buildings;
+    //Building object to be added; Setter and Getter are below
+    private BuildingEntity building;
 
-	@Action(value="list",
-			results={
-					@Result(name="success", location="listBuilding.jsp")}
-	)
-	public String listBuildings() {
-		logger.info("listBuildings method called");
-		buildings = buildingManager.getAllBuildings();
-		return SUCCESS;
-	}
+    //Building manager injected by spring context; This is cool !!
+    private BuildingManager buildingManager;
 
-	@Action(value="add",
-			results={@Result(name="success", location="list", type="redirect")}
-	)
-	public String addBuilding() {
-		logger.info("addBuilding method called");
-		buildingManager.addBuilding(building);
-		return SUCCESS;
-	}
+    @Action(value = "list",
+            results = {
+                    @Result(name = "success", location = "listBuilding.jsp")}
+    )
+    public String listBuildings() {
+        logger.info("listBuildings method called");
+        buildings = buildingManager.getAllBuildings();
+        return SUCCESS;
+    }
+//
+//	@Action(value="add",
+//			results={@Result(name="success", location="list", type="redirect")}
+//	)
+//	public String addBuilding() {
+//		logger.info("addBuilding method called");
+//		buildingManager.addBuilding(building);
+//		return SUCCESS;
+//	}
 
-	@Action(value="delete",
-			results={@Result(name="success", location="list", type="redirect")}
-	)
-	public String deleteBuilding() {
-		logger.info("deleteBuilding method called");
-		buildingManager.deleteBuilding(building.getId());
-		return SUCCESS;
-	}
+    @Action(value = "delete",
+            results = {@Result(name = "success", location = "list", type = "redirect")}
+    )
 
-	@Action(value="addOrUpdate",
-			results={@Result(name=ADD_UPDATE, location="addOrEditBuilding_nowizard.jsp")}
-	)
-	public String addOrUpdate() {
-//		logger.info("listBuildings method called");
-//		buildings = buildingManager.getAllBuildings();
-		return ADD_UPDATE;
-	}
-	
-	//This method will be called before any of Action method is invoked;
-	//So some pre-processing if required.
-	@Override
-	public void prepare() throws Exception {
-		building = null;
-	}
+    public String deleteBuilding() {
+        logger.info("deleteBuilding method called");
+        buildingManager.deleteBuilding(building.getId());
+        return SUCCESS;
+    }
 
-	public void setBuildingManager(BuildingManager buildingManager) {
-		this.buildingManager = buildingManager;
-	}
+    @Actions({
+            @Action(value = "add", results = {@Result(name = ADD_UPDATE, location = "addOrEditBuilding.jsp")}),
+            @Action(value = "update", results = {@Result(name = ADD_UPDATE, location = "addOrEditBuilding.jsp")})
+    })
+    public String addOrUpdate() {
+        Map<String, Object> session = getSession();
+        if (building != null) {
+            session.put(Const.UPDATED_BUILDING_ID_KEY, building.getId());
+        }
+        return ADD_UPDATE;
+    }
 
-	public List<BuildingEntity> getBuildings() {
-		return buildings;
-	}
+    //This method will be called before any of Action method is invoked;
+    //So some pre-processing if required.
+    @Override
+    public void prepare() throws Exception {
+        building = null;
+    }
 
-	public void setBuildings(List<BuildingEntity> buildings) {
-		this.buildings = buildings;
-	}
+    public void setBuildingManager(BuildingManager buildingManager) {
+        this.buildingManager = buildingManager;
+    }
 
-	public BuildingEntity getBuilding() {
-		return building;
-	}
+    public List<BuildingEntity> getBuildings() {
+        return buildings;
+    }
 
-	public void setBuilding(BuildingEntity building) {
-		this.building = building;
-	}
+    public void setBuildings(List<BuildingEntity> buildings) {
+        this.buildings = buildings;
+    }
+
+    public BuildingEntity getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(BuildingEntity building) {
+        this.building = building;
+    }
 }

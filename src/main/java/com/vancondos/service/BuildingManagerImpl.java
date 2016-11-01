@@ -1,9 +1,12 @@
 package com.vancondos.service;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.vancondos.entity.FloorPlanEntity;
+import com.vancondos.entity.InputImageEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vancondos.dao.BuildingDAO;
@@ -21,6 +24,24 @@ public class BuildingManagerImpl implements BuildingManager {
             for (FloorPlanEntity floorPlanEntity :building.getFloorPlanEntities()){
                 floorPlanEntity.setBuildingEntity(building);
             }
+        }
+        buildingDAO.addBuilding(building);
+    }
+
+    @Override
+    @Transactional
+    public void addimgNamesToBuilding(List<String> imgNames, BuildingEntity building) {
+        if (building!=null && imgNames!=null && !imgNames.isEmpty()){
+            int i=0;
+            Set<InputImageEntity> inputImageEntitySet = new HashSet<InputImageEntity>();
+            for (String imgName :imgNames){
+                InputImageEntity inputImageEntity = new InputImageEntity();
+                inputImageEntity.setBuildingEntity(building);
+                inputImageEntity.setName(imgName);
+                inputImageEntity.setSort(i);
+                i++;
+            }
+            building.setInputImageEntities(inputImageEntitySet);
         }
         buildingDAO.addBuilding(building);
     }
