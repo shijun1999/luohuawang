@@ -2,42 +2,62 @@ package com.vancondos.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 
 import com.vancondos.entity.BuildingEntity;
 
 @Repository
-public class BuildingDaoImpl implements BuildingDAO
-{
-	//Session factory injected by spring context
+public class BuildingDaoImpl implements BuildingDAO {
+    //Session factory injected by spring context
     private SessionFactory sessionFactory;
-	
+
     //This method will be called when a building object is added
-	@Override
-	public void addBuilding(BuildingEntity building) {
-		this.sessionFactory.getCurrentSession().save(building);
-	}
+    @Override
+    public void addBuilding(BuildingEntity building) {
+        getSession().save(building);
+    }
 
-	//This method return list of buildings in database
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<BuildingEntity> getAllBuildings() {
-		return this.sessionFactory.getCurrentSession().createQuery("from BuildingEntity").list();
-	}
+    //This method return list of buildings in database
+    @Override
+    public List<BuildingEntity> getAllBuildings() {
+        return getSession().createQuery("from BuildingEntity").list();
+    }
 
-	//Deletes a building by it's id
-	@Override
-	public void deleteBuilding(Integer buildingId) {
-		BuildingEntity buildingEntity = (BuildingEntity) sessionFactory.getCurrentSession()
-										.load(BuildingEntity.class, buildingId);
+    //Deletes a building by it's id
+    @Override
+    public void deleteBuilding(Integer buildingId) {
+        BuildingEntity buildingEntity = (BuildingEntity) getSession().load(BuildingEntity.class, buildingId);
         if (null != buildingEntity) {
-        	this.sessionFactory.getCurrentSession().delete(buildingEntity);
+            getSession().delete(buildingEntity);
         }
-	}
+    }
 
-	//This setter will be used by Spring context to inject the sessionFactory instance
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    @Override
+    public BuildingEntity getBuildingById(Integer buildingId) {
+
+        String hql = "FROM BuildingEntity WHERE id = :building_id";
+        Query query = getSession().createQuery(hql);
+        query.setInteger("building_id", buildingId);
+        List<BuildingEntity> results = query.list();
+        if (results.isEmpty()) {
+            throw new RuntimeException("Cannot find a building with Id " + buildingId.toString());
+        } else if (results.size() > 1) {
+            throw new RuntimeException("More than one building with Id " + buildingId.toString());
+        }
+        BuildingEntity buildingEntity = results.get(0);
+
+        return buildingEntity;
+    }
+
+    //This setter will be used by Spring context to inject the sessionFactory instance
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    private Session getSession() {
+        return this.sessionFactory.getCurrentSession();
+    }
 }

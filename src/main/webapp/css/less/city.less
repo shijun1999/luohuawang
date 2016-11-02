@@ -1,17 +1,17 @@
 .cities-wrapper {
 }
 
-.cities-wrapper .city-wrapper {
+.cities-wrapper .cities-wrapper {
 	
 }
 
-.city-wrapper {
+.cities-wrapper {
 	position: relative;
 	margin-bottom: 30px;
 	height: 350px;
 }
 
-.city-wrapper .city-illustration {
+.cities-wrapper .cities-illustration {
     height: 350px;
     position: relative;
     background-size: cover;
@@ -25,16 +25,16 @@
     -webkit-filter: brightness(100%);
 }
 
-.city-wrapper .city-illustration:hover {
+.cities-wrapper .cities-illustration:hover {
    -webkit-filter: brightness(85%);
     filter: brightness(85%);
 }
 
-.city-wrapper a {
+.cities-wrapper a {
 	 text-decoration: none;
 }
 
-.city-wrapper span {
+.cities-wrapper span {
     font-family: Avenir_DemiBold;
     color: white;
     .font-size(@cityLabelFontSize);
@@ -48,7 +48,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .city-wrapper span {
+    .cities-wrapper span {
         .font-size(@cityLabelFontSizeSmallScreen);
     }
 }

@@ -65,6 +65,8 @@ public class ListBuildingAction extends BaseAction {
         Map<String, Object> session = getSession();
         if (building != null) {
             session.put(Const.UPDATED_BUILDING_ID_KEY, building.getId());
+        }else if (session.get(Const.UPDATED_BUILDING_ID_KEY)!=null){
+            session.put(Const.UPDATED_BUILDING_ID_KEY, null);
         }
         return ADD_UPDATE;
     }

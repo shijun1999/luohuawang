@@ -10,6 +10,9 @@ public interface BuildingManager {
 
     public List<BuildingEntity> getAllBuildings();
 
+
+    public BuildingEntity getBuildingById(Integer buildingId);
+
     public void deleteBuilding(Integer buildingId);
 
     public void addimgNamesToBuilding(List<String> imgNames, BuildingEntity building);

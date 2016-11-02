@@ -17,66 +17,107 @@ import java.util.Map;
 
 @ParentPackage("json-default")
 @Results({
-		@Result(name = "json", type="json", params={"root", "jsonStr"})
+        @Result(name = "json", type = "json", params = {"root", "jsonStr"})
 })
-public class AddOrEditBuildingAction extends BaseAction
-{
-	BuildingManager buildingManager;
+public class AddOrEditBuildingAction extends BaseAction {
+    BuildingManager buildingManager;
 
-	private String jsonStr;
+    private String jsonStr;
 
-	private String jsonFromAdd;
+    private String jsonFromAdd;
 
-	String RETURN_JSON = "json";
+    String RETURN_JSON = "json";
 
-	@Action(value="addBuilding")
-	public String addBuilding(){
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		Gson gson = new Gson();
-		try{
-			BuildingEntity buildingEntity = gson.fromJson(jsonFromAdd, BuildingEntity.class);
+    @Action(value = "editBuildingInit")
+    public String editBuildingInit() {
+        Map<String, Object> jsonMap = new HashMap<String, Object>();
+        Gson gson = new Gson();
 
-			Map<String, Object> session = getSession();
+        Map<String, Object> session = getSession();
+        if (session == null) {
+            jsonMap.put("result", "error");
+            jsonStr = gson.toJson(jsonMap);
+            return RETURN_JSON;
+        }
 
-			if ( session.get(Const.INPUT_IMG_DEST_LIST_KEY)!=null){
-				List<String> imageNameList = (List<String>)session.get(Const.INPUT_IMG_DEST_LIST_KEY);
-				buildingManager.addimgNamesToBuilding(imageNameList, buildingEntity);
-			}
+        // if update_building_id is null, the ajax is from Add building web page
+        if ( session.get(Const.UPDATED_BUILDING_ID_KEY) == null){
+            jsonMap.put("result", "success");
+            jsonMap.put("message", "success");
+            jsonMap.put("data", new BuildingEntity());
+            jsonStr = gson.toJson(jsonMap);
+            return RETURN_JSON;
+        }
 
-			buildingManager.addBuilding(buildingEntity);
+        Integer buildingId = (Integer) getSession().get(Const.UPDATED_BUILDING_ID_KEY);
 
-			jsonMap.put("result", "success");
-			jsonStr= gson.toJson(jsonMap);
+        try {
 
-			System.out.println("This is success");
-		}catch(Exception e){
-			jsonMap.put("result", "error");
-			jsonMap.put("message",this.getClass().getName() + ":<br>" + e.getMessage());
-			jsonStr= gson.toJson(jsonMap);
+            BuildingEntity buildingEntity = buildingManager.getBuildingById(buildingId);
 
-			System.out.println("This is error");
-		}
-		return RETURN_JSON;
-	}
+            jsonMap.put("result", "success");
+            jsonMap.put("message", "success");
+            jsonMap.put("data", buildingEntity);
+            jsonStr = gson.toJson(jsonMap);
+        } catch (Exception e) {
+            jsonMap.put("result", "error");
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+            jsonStr = gson.toJson(jsonMap);
 
-	public String getJsonFromAdd() {
-		return jsonFromAdd;
-	}
+            System.out.println("This is error");
+        }
+        return RETURN_JSON;
 
-	public void setJsonFromAdd(String jsonFromAdd) {
-		this.jsonFromAdd = jsonFromAdd;
-	}
+    }
 
-	public String getJsonStr() {
-		return jsonStr;
-	}
+    @Action(value = "addBuilding")
+    public String addBuilding() {
+        Map<String, Object> jsonMap = new HashMap<String, Object>();
+        Gson gson = new Gson();
+        try {
+            BuildingEntity buildingEntity = gson.fromJson(jsonFromAdd, BuildingEntity.class);
 
-	public void setJsonStr(String jsonStr) {
-		this.jsonStr = jsonStr;
-	}
+            Map<String, Object> session = getSession();
 
-	public void setBuildingManager(BuildingManager buildingManager) {
-		this.buildingManager = buildingManager;
-	}
+            if (session.get(Const.INPUT_IMG_DEST_LIST_KEY) != null) {
+                List<String> imageNameList = (List<String>) session.get(Const.INPUT_IMG_DEST_LIST_KEY);
+                buildingManager.addimgNamesToBuilding(imageNameList, buildingEntity);
+            }
+
+            buildingManager.addBuilding(buildingEntity);
+
+            jsonMap.put("result", "success");
+            jsonStr = gson.toJson(jsonMap);
+
+            System.out.println("This is success");
+        } catch (Exception e) {
+            jsonMap.put("result", "error");
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+            jsonStr = gson.toJson(jsonMap);
+
+            System.out.println("This is error");
+        }
+        return RETURN_JSON;
+    }
+
+    public String getJsonFromAdd() {
+        return jsonFromAdd;
+    }
+
+    public void setJsonFromAdd(String jsonFromAdd) {
+        this.jsonFromAdd = jsonFromAdd;
+    }
+
+    public String getJsonStr() {
+        return jsonStr;
+    }
+
+    public void setJsonStr(String jsonStr) {
+        this.jsonStr = jsonStr;
+    }
+
+    public void setBuildingManager(BuildingManager buildingManager) {
+        this.buildingManager = buildingManager;
+    }
 
 }

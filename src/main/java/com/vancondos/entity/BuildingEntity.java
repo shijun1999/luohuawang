@@ -38,7 +38,7 @@ public class BuildingEntity {
 
     private String address;
 
-    private String city;
+    private String cities;
 
     private String area;
 
@@ -154,12 +154,12 @@ public class BuildingEntity {
     }
 
     @Column(name="CITY")
-    public String getCity() {
-        return city;
+    public String getCities() {
+        return cities;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCities(String cities) {
+        this.cities = cities;
     }
 
     @Column(name="AREA")

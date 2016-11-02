@@ -10,4 +10,6 @@ public interface BuildingDAO
     public List<BuildingEntity> getAllBuildings();
 
     public void deleteBuilding(Integer buildingId);
+
+    public BuildingEntity getBuildingById(Integer buildingId);
 }

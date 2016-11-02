@@ -118,7 +118,7 @@
                                                     <hr>
                                                     <h4 class="lighter block kootour-main-color">3.地址</h4>
                                                     <div class="form-validator"><div class="clearfix">
-                                                        <input id="Address" type="text" name="Address" class="form-control" name="Address"/>
+                                                        <input id="address" type="text" name="address" class="form-control" name="address"/>
                                                     </div></div>
                                                     <hr>
                                                     <h4 class="lighter block kootour-main-color">4.简述</h4>
@@ -133,7 +133,7 @@
                                                     <hr>
                                                     <h4 class="lighter block kootour-main-color">6.CITY</h4>
                                                     <div class="form-validator"><div class="clearfix">
-                                                        <select multiple="" class="chosen-select form-control" id="city" data-placeholder="Choose a city..." name="city">
+                                                        <select multiple="" class="chosen-select form-control" id="cities" data-placeholder="Choose a cities..." name="cities">
                                                             <option value="Vancouver">Vancouver</option>
                                                             <option value="WestVancouver">West Vancouver</option>
                                                             <option value="Richmond">Richmond</option>
@@ -151,14 +151,14 @@
                                                 </div>
                                                 <div class="step-pane" data-step="2">
                                                     <h4 class="lighter block kootour-main-color">7.楼层</h4>
-                                                    <div class="form-validator"><div class="clearfix"><input type="text" id="overview" name="overview" style="display:none"></div></div>
+                                                    <div class="form-validator"><div class="clearfix"><input type="text" id="stroys" name="stroys"></div></div>
                                                     <hr>
                                                     <h4 class="lighter block kootour-main-color">8.建商</h4>
 
-                                                    <div class="form-validator"><div class="clearfix"><input type="text" id="itinerary" name="itinerary" style="display:none"></div></div>
+                                                    <div class="form-validator"><div class="clearfix"><input type="text" id="construction" name="construction"></div></div>
                                                     <hr>
                                                     <h4 class="lighter block kootour-main-color">9.公共交通</h4>
-
+                                                    <div class="form-validator"><div class="clearfix"><input type="text" id="publicTransportation" name="publicTransportation"></div></div>
                                                 </div>
                                                 <div class="step-pane" data-step="3">
                                                     <h4 class="lighter block kootour-main-color">10.楼层平面图</h4>
@@ -242,36 +242,29 @@
 
 </div><!-- /.main-container -->
 
-<!-- basic scripts -->
-
-<!--[if !IE]> -->
 <script src="js/jquery-2.2.0.min.js"></script>
-
-<!-- <![endif]-->
-
 <script src="js/bootstrap.min.js"></script>
 
 <!-- ace scripts -->
 <script src="js/ace-elements.min.js"></script>
 <script src="js/ace.min.js"></script>
 
-<script src="js/fileinput.js"></script>
-<script src="summernote/summernote.min.js"></script>
-<script src="js/fuelux.wizard.min.js"></script>
-<script src="js/localhostCourseEdit.js"></script>
-
 <!-- page specific plugin scripts -->
-<script src="/js/chosen.jquery.min.js"></script>
-<script src="/js/moment.min.js"></script>
-<script src="/js/daterangepicker.js"></script>
-<script src="/js/bootbox.min.js"></script>
-<script src="/js/jquery.validate.min.js"></script>
-<script src="/js/jquery.timepicker.min.js"></script>
-<script src="/js/jquery.datepair.min.js"></script>
-<script src="/js/jquery.nestable.min.js"></script>
-<script src="/js/HoldOn.min.js"></script>
-<script src="/js/bootstrap-dialog.min.js"></script>
-<script src="/js/localhostHeader.js" type="text/javascript"></script>
-
+<script src="js/chosen.jquery.min.js"></script>
+<script src="summernote/summernote.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+<script src="js/bootbox.min.js"></script>
+<script src="js/fileinput.js"></script>
+<script src="js/fuelux.wizard.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/jquery.datepair.min.js"></script>
+<script src="js/jquery.nestable.min.js"></script>
+<script src="js/HoldOn.min.js"></script>
+<script src="js/bootstrap-dialog.min.js"></script>
+<script src="js/localhostCourseEdit.js"></script>
+<script src="js/localhostHeader.js" type="text/javascript"></script>
 </body>
 </html>
+

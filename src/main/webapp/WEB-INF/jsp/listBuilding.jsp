@@ -51,10 +51,7 @@
     </s:form>
 </c:if>
 
-
-<s:form method="post" action="add">
-    <s:submit key="label.add" name="submit"></s:submit>
-</s:form>
+<a href="add">Add Building</a>
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
