@@ -1,6 +1,7 @@
 package com.vancondos.service;
 
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,31 +20,16 @@ public class BuildingManagerImpl implements BuildingManager {
     //This method will be called when a building object is added
     @Override
     @Transactional
-    public void addBuilding(BuildingEntity building) {
-        if (building != null && building.getFloorPlanEntities() != null) {
-            for (FloorPlanEntity floorPlanEntity : building.getFloorPlanEntities()) {
-                floorPlanEntity.setBuildingEntity(building);
-            }
-        }
-        buildingDAO.addBuilding(building);
-    }
+    public void addOrUpdateBuilding(BuildingEntity building, Set<FloorPlanEntity> floorPlanArray) {
 
-    @Override
-    @Transactional
-    public void addimgNamesToBuilding(List<String> imgNames, BuildingEntity building) {
-        if (building != null && imgNames != null && !imgNames.isEmpty()) {
-            int i = 0;
-            Set<InputImageEntity> inputImageEntitySet = new HashSet<InputImageEntity>();
-            for (String imgName : imgNames) {
-                InputImageEntity inputImageEntity = new InputImageEntity();
-                inputImageEntity.setBuildingEntity(building);
-                inputImageEntity.setName(imgName);
-                inputImageEntity.setSort(i);
-                i++;
+        buildingDAO.addOrUpdateBuilding(building);
+
+        if (floorPlanArray!= null && !floorPlanArray.isEmpty()) {
+            for (FloorPlanEntity floorPlanEntity : floorPlanArray) {
+                floorPlanEntity.setBuildingEntity(building);
+                buildingDAO.addOrUpdateFloorPlanEntity(floorPlanEntity);
             }
-            building.setInputImageEntities(inputImageEntitySet);
         }
-        buildingDAO.addBuilding(building);
     }
 
     //This method return list of buildings in database

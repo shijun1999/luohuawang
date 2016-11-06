@@ -1,18 +1,10 @@
 package com.vancondos.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.OneToMany;
-import javax.persistence.FetchType;
 
 @Entity
 @Table(name="BUILDING")
@@ -244,8 +236,7 @@ public class BuildingEntity {
     }
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "buildingEntity")
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "buildingEntity", orphanRemoval = true)
     public Set<FloorPlanEntity> getFloorPlanEntities() {
         return floorPlanEntities;
     }
@@ -261,8 +252,7 @@ public class BuildingEntity {
 
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "buildingEntity")
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "buildingEntity", orphanRemoval = true)
     public Set<InputImageEntity> getInputImageEntities() {
         return inputImageEntities;
     }

@@ -1,6 +1,12 @@
 package com.vancondos.entity;
 
+import com.vancondos.util.json.GsonExclusion;
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="INPUT_IMAGE")
@@ -8,6 +14,7 @@ public class InputImageEntity {
 
     private Integer id;
 
+    @GsonExclusion
     private BuildingEntity buildingEntity;
 
     private String name;
@@ -25,8 +32,10 @@ public class InputImageEntity {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+
     @JoinColumn(name = "BUILDING_ID", nullable = false)
+    @Cascade(value={CascadeType.ALL})
     public BuildingEntity getBuildingEntity() {
         return buildingEntity;
     }

@@ -2,10 +2,13 @@ package com.vancondos.dao;
 
 import java.util.List;
 import com.vancondos.entity.BuildingEntity;
+import com.vancondos.entity.FloorPlanEntity;
 
 public interface BuildingDAO
 {
-    public void addBuilding(BuildingEntity buildingEntity);
+    public void addOrUpdateBuilding(BuildingEntity buildingEntity);
+
+    public void addOrUpdateFloorPlanEntity(FloorPlanEntity floorPlanEntity);
 
     public List<BuildingEntity> getAllBuildings();
 

@@ -1,12 +1,14 @@
 package com.vancondos.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.vancondos.entity.BuildingEntity;
+import com.vancondos.entity.FloorPlanEntity;
 
 public interface BuildingManager {
 
-    public void addBuilding(BuildingEntity building);
+    public void addOrUpdateBuilding(BuildingEntity building, Set<FloorPlanEntity> floorPlanArray);
 
     public List<BuildingEntity> getAllBuildings();
 
@@ -15,5 +17,4 @@ public interface BuildingManager {
 
     public void deleteBuilding(Integer buildingId);
 
-    public void addimgNamesToBuilding(List<String> imgNames, BuildingEntity building);
 }

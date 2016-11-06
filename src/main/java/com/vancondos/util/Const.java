@@ -1,4 +1,4 @@
-package com.vancondos.common;
+package com.vancondos.util;
 
 public class Const {
 

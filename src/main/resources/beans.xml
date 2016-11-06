@@ -28,15 +28,32 @@
         <property name="buildingManager">
             <ref bean="buildingManager"/>
         </property>
+        <property name="imageManager">
+            <ref bean="imageManager"/>
+        </property>
+    </bean>
+
+    <bean name="manipulateImageAction" class="com.vancondos.actions.ManipulateImageAction" scope="prototype">
+        <property name="imageManager">
+            <ref bean="imageManager"/>
+        </property>
     </bean>
     
     <!-- These beans are injected automatically by spring context -->
     <bean id="buildingDAO" class="com.vancondos.dao.BuildingDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean id="inputImageDAO" class="com.vancondos.dao.InputImageDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
     <bean id="buildingManager" class="com.vancondos.service.BuildingManagerImpl">
         <property name="buildingDAO" ref="buildingDAO"/>
+    </bean>
+
+    <bean id="imageManager" class="com.vancondos.service.ImageManagerImpl">
+        <property name="inputImageDAO" ref="inputImageDAO"/>
     </bean>
     
     <!-- Configure jdbc.properties -->

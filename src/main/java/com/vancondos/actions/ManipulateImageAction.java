@@ -1,7 +1,8 @@
 package com.vancondos.actions;
 
 import com.google.gson.Gson;
-import com.vancondos.common.Const;
+import com.vancondos.service.ImageManager;
+import com.vancondos.util.Const;
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
 import org.apache.commons.io.FileUtils;
@@ -13,15 +14,14 @@ import org.apache.struts2.convention.annotation.Results;
 import java.io.File;
 import java.util.*;
 
-import static com.vancondos.common.Const.INPUT_IMG_DEST;
+import static com.vancondos.util.Const.INPUT_IMG_DEST;
 
 @ParentPackage("json-default")
 @Results({
         @Result(name = "json", type = "json", params = {"root", "jsonStr"})
 })
-public class UploadImageAction extends UploadImageModel {
-    private BuildingManager buildingManager;
-    private List<BuildingEntity> buildings;
+public class ManipulateImageAction extends ManipulateImageModel {
+    private ImageManager imageManager;
     private String jsonInString;
 
     private String jsonStr;
@@ -69,20 +69,36 @@ public class UploadImageAction extends UploadImageModel {
         return rtnStr;
     }
 
-    public BuildingManager getBuildingManager() {
-        return buildingManager;
+    @Action(value="deleteImage")
+    public String deleteImage() {
+        String rtnStr = "json";
+        Map<String, Object> jsonMap = new HashMap<String, Object> ();
+        Gson gson = new Gson();
+
+        try {
+            String imageId = getImageId();
+            Integer imageIdInt = Integer.parseInt(imageId);
+
+            imageManager.deleteImage(imageIdInt);
+
+                jsonMap.put("result", "success");
+                jsonMap.put("message", "success");
+                jsonStr = gson.toJson(jsonMap);
+
+        } catch (Exception e) {
+            jsonMap.put("result", "error");
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+            jsonStr = gson.toJson(jsonMap);
+        }
+        return rtnStr;
     }
 
-    public void setBuildingManager(BuildingManager buildingManager) {
-        this.buildingManager = buildingManager;
+    public ImageManager getImageManager() {
+        return imageManager;
     }
 
-    public List<BuildingEntity> getBuildings() {
-        return buildings;
-    }
-
-    public void setBuildings(List<BuildingEntity> buildings) {
-        this.buildings = buildings;
+    public void setImageManager(ImageManager imageManager) {
+        this.imageManager = imageManager;
     }
 
     public String getJsonInString() {

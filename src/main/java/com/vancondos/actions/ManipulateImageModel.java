@@ -4,11 +4,11 @@ package com.vancondos.actions;
 import java.io.File;
 import java.util.List;
 
-public class UploadImageModel extends BaseAction {
+public class ManipulateImageModel extends BaseAction {
     private File file;//populated from input webpage,
     private String fileFileName;//populated from input webpage,i.e. Capture.JPG
     private List<String> uploadedFileName;
-    private String coursePictureIdentiNo;
+    private String imageId;
 
     public File getFile() {
         return file;
@@ -34,11 +34,11 @@ public class UploadImageModel extends BaseAction {
         this.uploadedFileName = uploadedFileName;
     }
 
-    public String getCoursePictureIdentiNo() {
-        return coursePictureIdentiNo;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setCoursePictureIdentiNo(String coursePictureIdentiNo) {
-        this.coursePictureIdentiNo = coursePictureIdentiNo;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 }

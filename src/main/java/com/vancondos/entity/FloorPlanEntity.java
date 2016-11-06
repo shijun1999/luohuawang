@@ -1,5 +1,9 @@
 package com.vancondos.entity;
 
+import com.vancondos.util.json.GsonExclusion;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +13,7 @@ public class FloorPlanEntity {
 
     private Integer id;
 
+    @GsonExclusion
     private BuildingEntity buildingEntity;
 
     private String level;
@@ -32,7 +37,8 @@ public class FloorPlanEntity {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @Cascade(value={CascadeType.ALL})
     @JoinColumn(name = "BUILDING_ID", nullable = false)
     public BuildingEntity getBuildingEntity() {
         return buildingEntity;

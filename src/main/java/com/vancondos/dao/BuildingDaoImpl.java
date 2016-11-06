@@ -2,6 +2,7 @@ package com.vancondos.dao;
 
 import java.util.List;
 
+import com.vancondos.entity.FloorPlanEntity;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
@@ -16,8 +17,13 @@ public class BuildingDaoImpl implements BuildingDAO {
 
     //This method will be called when a building object is added
     @Override
-    public void addBuilding(BuildingEntity building) {
-        getSession().save(building);
+    public void addOrUpdateBuilding(BuildingEntity building) {
+        getSession().saveOrUpdate(building);
+    }
+
+    @Override
+    public void addOrUpdateFloorPlanEntity(FloorPlanEntity floorPlanEntity){
+        getSession().saveOrUpdate(floorPlanEntity);
     }
 
     //This method return list of buildings in database

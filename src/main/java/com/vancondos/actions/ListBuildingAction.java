@@ -3,13 +3,11 @@ package com.vancondos.actions;
 import java.util.List;
 import java.util.Map;
 
-import com.vancondos.common.Const;
+import com.vancondos.util.Const;
 import org.apache.log4j.Logger;
 
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.Preparable;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Result;
@@ -41,9 +39,9 @@ public class ListBuildingAction extends BaseAction {
 //	@Action(value="add",
 //			results={@Result(name="success", location="list", type="redirect")}
 //	)
-//	public String addBuilding() {
-//		logger.info("addBuilding method called");
-//		buildingManager.addBuilding(building);
+//	public String addOrUpdateBuilding() {
+//		logger.info("addOrUpdateBuilding method called");
+//		buildingManager.addOrUpdateBuilding(building);
 //		return SUCCESS;
 //	}
 
@@ -52,7 +50,7 @@ public class ListBuildingAction extends BaseAction {
     )
 
     public String deleteBuilding() {
-        logger.info("deleteBuilding method called");
+        logger.info("deleteImageEntity method called");
         buildingManager.deleteBuilding(building.getId());
         return SUCCESS;
     }

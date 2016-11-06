@@ -17,21 +17,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 
     <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="css/HoldOn.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap-dialog.min.css"/>
+    <link rel="stylesheet" href="/css/HoldOn.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css"/>
 
     <!-- text fonts -->
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
+    <link rel="stylesheet" href="/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
 
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <link rel="stylesheet" href="/css/ace-part2.min.css" class="ace-main-stylesheet"/>
     <![endif]-->
 
 
@@ -194,12 +194,12 @@
 <!-- basic scripts -->
 
 <!--[if !IE]> -->
-<script src="js/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery-2.2.0.min.js"></script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
-<script src="js/jquery.1.11.1.min.js"></script>
+<script src="/js/jquery.1.11.1.min.js"></script>
 <![endif]-->
 
 <!--[if !IE]> -->
@@ -211,10 +211,10 @@
 
 
 
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
 
-<script src="js/localhostHeader.js" type="text/javascript"></script>
+<script src="/js/localhostHeader.js" type="text/javascript"></script>
 
 <!-- inline scripts related to this page -->
 </body>
