@@ -3,6 +3,7 @@ package com.vancondos.actions;
 import com.google.gson.Gson;
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
+import com.vancondos.util.json.GsonTaoFun;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -40,7 +41,7 @@ public class MainAjaxAction extends BaseAction
 
 private void populateJsonString(String status,String message,Object data){
 	Map<String, Object> jsonMap = new HashMap<String, Object>();
-	Gson gson = new Gson();
+	Gson gson = GsonTaoFun.gson;
 
 	jsonMap.put("result", status);
 	jsonMap.put("message", message);

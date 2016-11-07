@@ -1,5 +1,6 @@
 package com.vancondos.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.vancondos.entity.FloorPlanEntity;
@@ -29,7 +30,13 @@ public class BuildingDaoImpl implements BuildingDAO {
     //This method return list of buildings in database
     @Override
     public List<BuildingEntity> getAllBuildings() {
-        return getSession().createQuery("from BuildingEntity").list();
+        List<BuildingEntity> list = new ArrayList<BuildingEntity>();
+        try {
+            list = getSession().createQuery("from BuildingEntity").list();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return list;
     }
 
     //Deletes a building by it's id
