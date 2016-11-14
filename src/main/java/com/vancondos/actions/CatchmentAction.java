@@ -5,7 +5,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
 @Results({
-		@Result(name="success",location="catchment.jsp")
+		@Result(name="success",location="main.jsp")
 })
 public class CatchmentAction extends BaseAction
 {

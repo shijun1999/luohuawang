@@ -21,8 +21,8 @@ $(document).ready(function () {
             entity.lng = $("#LNG").val();
 
             entity.address = $("#address").val();
-            //entity.shortDesc = $("#shortDesc").summernote('code');
-            //entity.longDesc = $("#longDesc").summernote('code');
+            entity.shortDesc = $("#shortDesc").summernote('code');
+            entity.longDesc = $("#longDesc").summernote('code');
 
             var cities = $("#cities").val();
             if (cities != null && cities != "") {
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
                     if (obj.result == 'success') {
                         HoldOn.close();
-                        window.location.href = "main";
+                        window.location.href = "list";
                     } else {
                         BootstrapDialog.show({
                             title: 'Error',
@@ -139,8 +139,8 @@ $(document).ready(function () {
                 $("#LNG").val(buildingEntity.lng);
                 $("#address").val(buildingEntity.address);
 
-                //$("#shortDesc").summernote('code', buildingEntity.shortDesc);
-                //$('#longDesc').summernote('code', buildingEntity.longDesc);
+                $("#shortDesc").summernote('code', buildingEntity.shortDesc);
+                $('#longDesc').summernote('code', buildingEntity.longDesc);
 
                 var cities = buildingEntity.cities;
                 if (cities != null) {

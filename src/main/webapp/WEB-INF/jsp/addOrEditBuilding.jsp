@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="utf-8">
-    <title>Edit Course | Kootour</title>
+    <title>Edit Course</title>
 
     <meta name="description" content="overview &amp; stats">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -132,18 +132,19 @@
                                                     <div class="form-validator">
                                                         <div class="clearfix">
                                                             <input id="address" type="text" name="address"
-                                                                   class="form-control" name="address"/>
+                                                                   class="form-control"/>
                                                         </div>
                                                     </div>
                                                     <hr>
 
                                                     <h4 class="lighter block kootour-main-color">4.简述</h4>
-                                                    <div id="shortDesc"></div>
+                                                    <div id="shortDesc" name="shortDesc"></div>
                                                     <hr>
 
                                                     <h4 class="lighter block kootour-main-color">5.详细描述</h4>
-                                                    <div id="longDesc"></div>
+                                                    <div id="longDesc" name="longDesc"></div>
                                                     <hr>
+
                                                     <h4 class="lighter block kootour-main-color">6.CITY</h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix">
@@ -314,21 +315,13 @@
 <script src="/js/ace.min.js"></script>
 
 <!-- page specific plugin scripts -->
-<script src="/js/chosen.jquery.min.js"></script>
 <script src="/summernote/summernote.min.js"></script>
-<script src="/js/moment.min.js"></script>
-<script src="/js/daterangepicker.js"></script>
-<script src="/js/bootbox.min.js"></script>
 <script src="/js/fileinput.js"></script>
 <script src="/js/fuelux.wizard.min.js"></script>
 <script src="/js/jquery.validate.min.js"></script>
-<script src="/js/jquery.timepicker.min.js"></script>
-<script src="/js/jquery.datepair.min.js"></script>
-<script src="/js/jquery.nestable.min.js"></script>
 <script src="/js/HoldOn.min.js"></script>
-<script src="/js/bootstrap-dialog.min.js"></script>
-<script src="/js/localhostCourseEdit.js"></script>
-<script src="/js/localhostHeader.js" type="text/javascript"></script>
+<script src="/js/addOrEditBuilding.js"></script>
+
 </body>
 </html>
 

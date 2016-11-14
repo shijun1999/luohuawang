@@ -1,8 +1,8 @@
 var myCenter = new google.maps.LatLng(40.7413549, -73.9980244);
-var markers = [];
 
 function initialize() {
     var items;
+
     $.ajax({
         url: 'loadBuildingOnMap',
         type: 'post',
@@ -44,17 +44,8 @@ function initialize() {
     });
 
     function buildMap() {
-        var ary = [];
 
-        for (var i = 0; i < items.length; i++) {
-            var emp = items[i];
-            var myCenter1 = new google.maps.LatLng(emp.lat, emp.lng);
-            var gp = {
-                title: emp.name,
-                location: myCenter1
-            }
-            ary.push(gp);
-        }
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
         var mapProp = {
             center: myCenter,
@@ -62,46 +53,72 @@ function initialize() {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
-        var largeInfowindow = new google.maps.InfoWindow();
+        var infoBubble = new InfoBubble(
+            {
+                map: map,
+                //content: '<div class="phoneytext">Some label</div>',
+                //position: new google.maps.LatLng(-35, 151),
+                shadowStyle: 1,
+                padding: 50,
+                backgroundColor: 'lightblue',
+                borderRadius: 4,
+                arrowSize: 10,
+                borderWidth: 1,
+                borderColor: '#2c2c2c',
+                disableAutoPan: false,
+                hideCloseButton: true,
+                arrowPosition: 30,
+                backgroundClassName: 'phoney',
+                arrowStyle: 2,
+                minHeight:50,
+                maxHeight:200,
+                maxWidth: 300
+            });
         var bounds = new google.maps.LatLngBounds();
 
-        for (var i = 0; i < ary.length; i++) {
-            // Get the position from the location array.
-            var position = ary[i].location;
-            var title = ary[i].title;
-            // Create a marker per location, and put into markers array.
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+
+            var gp = {
+                title: item.name,
+                location: new google.maps.LatLng(item.lat, item.lng),
+                br:4,
+                ba:3,
+                sqFt:1005,
+                status:'Active',
+                type:'SFR'
+            }
+
             var marker = new google.maps.Marker({
                 map: map,
-                position: position,
-                title: title,
+                position: gp.location,
+                title: gp.title,
                 animation: google.maps.Animation.DROP,
                 id: i
             });
-            // Push the marker to our array of markers.
-            markers.push(marker);
             // Create an onclick event to open an infowindow at each marker.
             marker.addListener('click', function () {
-                populateInfoWindow(this, largeInfowindow);
+                openInfoBub(this, gp, infoBubble);
             });
-            bounds.extend(markers[i].position);
+            bounds.extend(marker.position);
         }
         // Extend the boundaries of the map for each marker
         map.fitBounds(bounds);
-    }
-}
 
-function populateInfoWindow(marker, infowindow) {
-    // Check to make sure the infowindow is not already opened on this marker.
-    if (infowindow.marker != marker) {
-        infowindow.marker = marker;
-        infowindow.setContent('<div>' + marker.title + '</div>');
-        infowindow.open(map, marker);
-        // Make sure the marker property is cleared if the infowindow is closed.
-        infowindow.addListener('closeclick',function(){
-            infowindow.setMarker(null);
-        });
+        function openInfoBub(marker, gp, infowindow) {
+
+            contentString = '<img style="width:187px;height:140px;border:silver solid 1px;cursor:point"' +
+                'src = "//update//images//1478400474888.jpg" name="preview" alt="loading..." title="click here to see"' +
+                ' onclick=""';
+            infowindow.content = contentString;
+            infowindow.position = gp.location;
+
+            infowindow.open(map, marker);
+            // Make sure the marker property is cleared if the infowindow is closed.
+            //  infowindow.addListener('closeclick',function(){
+            //      infowindow.setMarker(null);
+
+        }
     }
 }
 

@@ -49,7 +49,7 @@ public class AddOrEditBuildingAction extends BaseAction {
         }
 
         // if update_building_id is null, the ajax is from Add building web page
-        if ( session.get(Const.UPDATED_BUILDING_ID_KEY) == null){
+        if (session.get(Const.UPDATED_BUILDING_ID_KEY) == null) {
             jsonMap.put("result", "success");
             jsonMap.put("message", "success");
             jsonMap.put("data", new BuildingEntity());
@@ -65,7 +65,7 @@ public class AddOrEditBuildingAction extends BaseAction {
 
             jsonMap.put("result", "success");
             jsonMap.put("message", "success");
-            jsonMap.put("imageUrl", "\\"+ INPUT_IMG_DEST);
+            jsonMap.put("imageUrl", "\\" + INPUT_IMG_DEST);
             jsonMap.put("data", buildingEntity);
             jsonStr = GsonTaoFun.gson.toJson(jsonMap);
 
@@ -76,7 +76,7 @@ public class AddOrEditBuildingAction extends BaseAction {
             jsonStr = gson.toJson(jsonMap);
 
             System.out.println("This is error");
-        }catch(StackOverflowError t)  {
+        } catch (StackOverflowError t) {
             jsonMap.put("result", "error");
             jsonMap.put("message", this.getClass().getName() + ":<br>" + t.getMessage());
             jsonStr = gson.toJson(jsonMap);
@@ -90,21 +90,22 @@ public class AddOrEditBuildingAction extends BaseAction {
     @Action(value = "addEditBuilding")
     public String addEditBuilding() {
         Map<String, Object> jsonMap = new HashMap<String, Object>();
+        Map<String, Object> session = getSession();
         try {
             BuildingEntity buildingEntity = GsonTaoFun.gson.fromJson(jsonFromAddBuilding, BuildingEntity.class);
 
-            Type type = new TypeToken<Set<FloorPlanEntity>>() {}.getType();
+            Type type = new TypeToken<Set<FloorPlanEntity>>() {
+            }.getType();
 
             Set<FloorPlanEntity> floorPlanEntities = GsonTaoFun.gson.fromJson(jsonFromAddFloorPlanEntities, type);
 
-            Map<String, Object> session = getSession();
 
             if (session.get(Const.INPUT_IMG_DEST_LIST_KEY) != null) {
                 List<String> imageNameList = (List<String>) session.get(Const.INPUT_IMG_DEST_LIST_KEY);
                 imageManager.addImgNamesToBuilding(imageNameList, buildingEntity);
             }
 
-            buildingManager.addOrUpdateBuilding(buildingEntity,floorPlanEntities);
+            buildingManager.addOrUpdateBuilding(buildingEntity, floorPlanEntities);
 
             jsonMap.put("result", "success");
             jsonStr = GsonTaoFun.gson.toJson(jsonMap);
@@ -117,6 +118,7 @@ public class AddOrEditBuildingAction extends BaseAction {
 
             System.out.println("This is error");
         }
+        session.put(Const.INPUT_IMG_DEST_LIST_KEY, null);
         return RETURN_JSON;
     }
 

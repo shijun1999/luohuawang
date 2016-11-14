@@ -1,19 +1,13 @@
 package com.vancondos.actions;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 
 import java.util.List;
 
 
-@Results({
-        @Result(name = "success", location = "main.jsp")
-})
 public class MainAction extends BaseAction {
     private BuildingManager buildingManager;
     private List<BuildingEntity> buildings;
@@ -26,10 +20,46 @@ public class MainAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "main")
-    public String display() throws Exception {
+    @Action(value = "main",
+            results = {
+                    @Result(name = "success", location = "main.jsp")}
+    )
+    public String main() throws Exception {
         return SUCCESS;
     }
+
+    @Action(value = "morgagecalculate",
+            results = {
+                    @Result(name = "success", location = "commontools/morgagecalculate.jsp")}
+    )
+    public String morgagecalculate() throws Exception {
+        return SUCCESS;
+    }
+
+    @Action(value = "affordablepayment",
+            results = {
+                    @Result(name = "success", location = "commontools/affordablepayment.jsp")}
+    )
+    public String affordablepayment() throws Exception {
+        return SUCCESS;
+    }
+
+    @Action(value = "realestateterm",
+            results = {
+                    @Result(name = "success", location = "commontools/realestateterm.jsp")}
+    )
+    public String realestateterm() throws Exception {
+        return SUCCESS;
+    }
+
+    @Action(value = "affordabilityCalculatorWidget",
+            results = {
+                    @Result(name = "success", location = "commontools/AffordabilityCalculatorWidget.jsp")}
+    )
+    public String affordabilityCalculatorWidget() throws Exception {
+        return SUCCESS;
+    }
+
 
     public BuildingManager getBuildingManager() {
         return buildingManager;
