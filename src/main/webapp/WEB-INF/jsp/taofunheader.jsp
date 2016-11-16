@@ -65,7 +65,7 @@
                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-first td-menu-item td-normal-menu menu-item-154">
                                 <a href="main">首页</a></li>
                             <li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-421">
-                                <a href="http://www.ladichan.com/?cat=35">热门城市</a></li>
+                                <a href="vancities">热门城市</a></li>
                             <li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-150">
                                 <a href="http://www.ladichan.com/?cat=21">楼花转让</a></li>
                             <li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-151">

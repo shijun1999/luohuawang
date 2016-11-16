@@ -60,6 +60,14 @@ public class MainAction extends BaseAction {
         return SUCCESS;
     }
 
+    @Action(value = "vancities",
+            results = {
+                    @Result(name = "success", location = "vancities.jsp")}
+    )
+    public String vancities() throws Exception {
+        return SUCCESS;
+    }
+
 
     public BuildingManager getBuildingManager() {
         return buildingManager;
