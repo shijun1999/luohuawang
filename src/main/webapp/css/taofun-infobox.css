@@ -1,0 +1,41 @@
+.infobox_outer{
+	width: 200px;
+	position: absolute;
+	visibility: visible;
+	left: 39.9499px; top: 181.741px; cursor: default;
+}
+.infobox_inner {
+	border: 1px solid black;
+	border-radius: 2px 2px 2px 2px;
+	box-shadow: 0 0 8px #000000;
+	color: #FFFFFF;
+	float: left;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	height: 96px;
+	margin-top: -18px;
+	padding: 1px;
+	width: 195px;
+}
+
+.img_close{
+	position: relative;
+	cursor: pointer;
+	margin: 12px 5px 2px 2px;
+	width:10px;
+	height:10px;
+}
+.infobox_doc{
+	float: left; font-family: arial; font-size: 12px; background-color: rgb(255, 255, 255); margin-top: 0px; width: 195px;
+}
+.infobox_title{
+	float: left; color: rgb(255, 255, 255); padding: 2px; font-size: 11px; line-height: 12px;
+	background: none repeat scroll 0% 0% rgb(162, 49, 47); width: 190px;
+}
+.infobox_detail{
+	color: rgb(23, 55, 94);
+	line-height: 14px;
+	font-size: 11px;
+	width: 112px;
+	float: left;
+}

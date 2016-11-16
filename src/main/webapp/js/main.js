@@ -45,34 +45,40 @@ function initialize() {
 
     function buildMap() {
 
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        // var mapProp = {
+        //     center: myCenter,
+        //     zoom: 13,
+        //     mapTypeId: google.maps.MapTypeId.ROADMAP
+        // };
+        //
+        // var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-        var mapProp = {
-            center: myCenter,
+        map = new google.maps.Map(document.getElementById('googleMap'), {
             zoom: 13,
+            center: myCenter,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+        });
 
         var infoBubble = new InfoBubble(
             {
                 map: map,
-                //content: '<div class="phoneytext">Some label</div>',
-                //position: new google.maps.LatLng(-35, 151),
+                content: '',
                 shadowStyle: 1,
-                padding: 50,
+                padding: 2,
                 backgroundColor: 'lightblue',
                 borderRadius: 4,
-                arrowSize: 10,
+                arrowSize: 15,
                 borderWidth: 1,
                 borderColor: '#2c2c2c',
-                disableAutoPan: false,
-                hideCloseButton: true,
+                disableAutoPan: true,
+                hideCloseButton: false,
                 arrowPosition: 30,
-                backgroundClassName: 'phoney',
+                //backgroundClassName: 'phoney',
                 arrowStyle: 2,
-                minHeight:50,
-                maxHeight:200,
-                maxWidth: 300
+                minHeight: 100,
+                maxHeight:140,
+                minWidth: 150,
+                maxWidth: 210
             });
         var bounds = new google.maps.LatLngBounds();
 
@@ -82,11 +88,11 @@ function initialize() {
             var gp = {
                 title: item.name,
                 location: new google.maps.LatLng(item.lat, item.lng),
-                br:4,
-                ba:3,
-                sqFt:1005,
-                status:'Active',
-                type:'SFR'
+                br: 4,
+                ba: 3,
+                sqFt: 1005,
+                status: 'Active',
+                type: 'SFR'
             }
 
             var marker = new google.maps.Marker({
@@ -98,6 +104,7 @@ function initialize() {
             });
             // Create an onclick event to open an infowindow at each marker.
             marker.addListener('click', function () {
+                //infoBubble.open(map, marker);
                 openInfoBub(this, gp, infoBubble);
             });
             bounds.extend(marker.position);
@@ -107,11 +114,20 @@ function initialize() {
 
         function openInfoBub(marker, gp, infowindow) {
 
-            contentString = '<img style="width:187px;height:140px;border:silver solid 1px;cursor:point"' +
-                'src = "//update//images//1478400474888.jpg" name="preview" alt="loading..." title="click here to see"' +
-                ' onclick=""';
+            contentString =
+                '<div class="infobox_title">' +
+                '15765 Lodestone Lane, Hacie...' +
+                '</div>' +
+                '<div style="float: left; width: 67px; margin-left: 6px;">' +
+                '<img width="60px" height="70px" border="0" align="absmiddle" src="http://photo3.proxiopro.com/p2/50311714/0.jpg?t=1477927189" style="cursor:pointer;">' +
+                '</div>' +
+                '<div class="infobox_detail">' +
+                '<span style="font-weight: bold; ">USD 1,588,000</span>' +
+                '<br>Hacienda Heights<br>California<br>91745<br>USA' +
+                '</div>';
+
             infowindow.content = contentString;
-            infowindow.position = gp.location;
+            //infowindow.position = gp.location;
 
             infowindow.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.

@@ -23,7 +23,7 @@ public class BuildingDaoImpl implements BuildingDAO {
     }
 
     @Override
-    public void addOrUpdateFloorPlanEntity(FloorPlanEntity floorPlanEntity){
+    public void addOrUpdateFloorPlanEntity(FloorPlanEntity floorPlanEntity) {
         getSession().saveOrUpdate(floorPlanEntity);
     }
 
@@ -33,7 +33,7 @@ public class BuildingDaoImpl implements BuildingDAO {
         List<BuildingEntity> list = new ArrayList<BuildingEntity>();
         try {
             list = getSession().createQuery("from BuildingEntity").list();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return list;
@@ -42,7 +42,7 @@ public class BuildingDaoImpl implements BuildingDAO {
     //Deletes a building by it's id
     @Override
     public void deleteBuilding(Integer buildingId) {
-        BuildingEntity buildingEntity = (BuildingEntity) getSession().load(BuildingEntity.class, buildingId);
+        BuildingEntity buildingEntity = getBuildingById(buildingId);
         if (null != buildingEntity) {
             getSession().delete(buildingEntity);
         }
