@@ -113,8 +113,6 @@
 
 <div><br></div>
 <jsp:include page="taofunfoot.jsp"/>
-</div><!--close content div-->
-<!-- </div>--close td-outer-wrap-->
 
 
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
