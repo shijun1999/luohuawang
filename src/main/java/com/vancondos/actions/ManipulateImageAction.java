@@ -3,8 +3,6 @@ package com.vancondos.actions;
 import com.google.gson.Gson;
 import com.vancondos.service.ImageManager;
 import com.vancondos.util.Const;
-import com.vancondos.entity.BuildingEntity;
-import com.vancondos.service.BuildingManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -27,8 +25,8 @@ public class ManipulateImageAction extends ManipulateImageModel {
     private String jsonStr;
 
     @SuppressWarnings("unchecked")
-    @Action(value = "uploadImage")
-    public String uploadImage() {
+    @Action(value = "uploadBuildingImage")
+    public String uploadBuildingImage() {
         String rtnStr = "json";
         Map<String, Object> jsonMap = new HashMap<String, Object>();
         Gson gson = new Gson();
@@ -40,8 +38,8 @@ public class ManipulateImageAction extends ManipulateImageModel {
             jsonMap.put("result", "error");
             jsonStr = gson.toJson(jsonMap);
             return rtnStr;
-        }else if ( session.get(Const.INPUT_IMG_DEST_LIST_KEY)!=null){
-            imageNameList = (List<String>)session.get(Const.INPUT_IMG_DEST_LIST_KEY);
+        }else if ( session.get(Const.INPUT_BUILDING_IMG_DEST_LIST_KEY)!=null){
+            imageNameList = (List<String>)session.get(Const.INPUT_BUILDING_IMG_DEST_LIST_KEY);
         }
 
         try {
@@ -60,7 +58,39 @@ public class ManipulateImageAction extends ManipulateImageModel {
             jsonStr = gson.toJson(jsonMap);
 
             imageNameList.add(newName);
-            session.put(Const.INPUT_IMG_DEST_LIST_KEY, imageNameList);
+            session.put(Const.INPUT_BUILDING_IMG_DEST_LIST_KEY, imageNameList);
+        } catch (Exception e) {
+            jsonMap.put("result", "error");
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+            jsonStr = gson.toJson(jsonMap);
+        }
+        return rtnStr;
+    }
+
+
+    @SuppressWarnings("unchecked")
+    @Action(value = "uploadVanCityImage")
+    public String uploadVanCityImage() {
+        String rtnStr = "json";
+        Map<String, Object> jsonMap = new HashMap<String, Object>();
+        Gson gson = new Gson();
+
+        try {
+            File srcFile = getFile();
+            String srcFileName = getFileFileName();
+            String suffix = srcFileName.substring(srcFileName.lastIndexOf("."));
+            String newName = Calendar.getInstance().getTimeInMillis() + suffix;
+
+            File destFile = new File(projectRoot + Const.INPUT_VAN_CITY_IMG_DEST + newName);
+
+            FileUtils.copyFile(srcFile, destFile, true);
+
+            jsonMap.put("result", "success");
+            jsonMap.put("message", "success");
+            jsonMap.put("copyFile", newName);
+            jsonMap.put("imageUrl", "\\" + Const.INPUT_VAN_CITY_IMG_DEST);
+            jsonStr = gson.toJson(jsonMap);
+
         } catch (Exception e) {
             jsonMap.put("result", "error");
             jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());

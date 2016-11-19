@@ -8,5 +8,6 @@
         <mapping class="com.vancondos.entity.BuildingEntity" />
         <mapping class="com.vancondos.entity.FloorPlanEntity" />
         <mapping class="com.vancondos.entity.InputImageEntity" />
+        <mapping class="com.vancondos.entity.VanCityEntity" />
     </session-factory>
 </hibernate-configuration>

@@ -9,6 +9,7 @@ public class GsonTaoFun {
     static public Gson gson = new GsonBuilder()
             .setExclusionStrategies(new GsonExclusionStrategy())
             .serializeNulls()
+            .registerTypeAdapter(Boolean.class,new BooleanTypeAdapter())
             .create();
 
     static class GsonExclusionStrategy implements ExclusionStrategy {

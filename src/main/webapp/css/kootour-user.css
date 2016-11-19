@@ -513,6 +513,7 @@ select.input-lg,
   visibility: hidden;
   color: transparent;
 }
+/*
 .file-input::before {
   content: 'Change Picture';
   display: inline-block;
@@ -528,7 +529,7 @@ select.input-lg,
   cursor: pointer;
   width: 100%;
   text-align: center;
-}
+}  */
 .file-input:hover::before {
   background-color: #66cccc;
   color: white;

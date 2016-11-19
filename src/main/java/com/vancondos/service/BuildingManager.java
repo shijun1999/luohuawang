@@ -12,9 +12,7 @@ public interface BuildingManager {
 
     public List<BuildingEntity> getAllBuildings();
 
-
     public BuildingEntity getBuildingById(Integer buildingId);
 
     public void deleteBuilding(Integer buildingId);
-
 }

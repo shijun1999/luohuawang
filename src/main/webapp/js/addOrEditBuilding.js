@@ -116,7 +116,7 @@ $(document).ready(function () {
         showCaption: false,//是否显示标题
         browseClass: "btn btn-primary", //按钮样式
         maxFileCount: 5,
-        uploadUrl: "uploadImage",
+        uploadUrl: "uploadBuildingImage",
         allowedFileExtensions: ["jpg", "png", "jpeg"],
         maxFileSize: 5000
     });

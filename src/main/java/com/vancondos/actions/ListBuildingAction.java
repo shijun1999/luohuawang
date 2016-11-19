@@ -3,6 +3,8 @@ package com.vancondos.actions;
 import java.util.List;
 import java.util.Map;
 
+import com.vancondos.entity.VanCityEntity;
+import com.vancondos.service.VanCityManager;
 import com.vancondos.util.Const;
 import org.apache.log4j.Logger;
 
@@ -20,51 +22,66 @@ public class ListBuildingAction extends BaseAction {
     private static final Logger logger = Logger.getLogger(ListBuildingAction.class);
     //List of buildings; Setter and Getter are below
     private List<BuildingEntity> buildings;
+    private List<VanCityEntity> vanCities;
     //Building object to be added; Setter and Getter are below
     private BuildingEntity building;
+    private VanCityEntity vanCity;
 
     //Building manager injected by spring context; This is cool !!
     private BuildingManager buildingManager;
+
+    private VanCityManager vanCityManager;
 
     @Action(value = "list",
             results = {
                     @Result(name = "success", location = "listBuilding.jsp")}
     )
     public String listBuildings() {
-        logger.info("listBuildings method called");
         buildings = buildingManager.getAllBuildings();
+        vanCities = vanCityManager.getAllVanCities();
         return SUCCESS;
     }
-//
-//	@Action(value="add",
-//			results={@Result(name="success", location="list", type="redirect")}
-//	)
-//	public String addOrUpdateBuilding() {
-//		logger.info("addOrUpdateBuilding method called");
-//		buildingManager.addOrUpdateBuilding(building);
-//		return SUCCESS;
-//	}
 
-    @Action(value = "delete",
+    @Action(value = "deleteBuilding",
             results = {@Result(name = "success", location = "list", type = "redirect")}
     )
-
     public String deleteBuilding() {
-        logger.info("deleteImageEntity method called");
         buildingManager.deleteBuilding(building.getId());
         return SUCCESS;
     }
 
+    @Action(value = "deleteVanCity",
+            results = {@Result(name = "success", location = "list", type = "redirect")}
+    )
+    public String deleteVanCity() {
+        vanCityManager.deleteVanCity(vanCity.getId());
+        return SUCCESS;
+    }
+
     @Actions({
-            @Action(value = "add", results = {@Result(name = ADD_UPDATE, location = "addOrEditBuilding.jsp")}),
-            @Action(value = "update", results = {@Result(name = ADD_UPDATE, location = "addOrEditBuilding.jsp")})
+            @Action(value = "addBuilding", results = {@Result(name = ADD_UPDATE, location = "addOrEditBuilding.jsp")}),
+            @Action(value = "updateBuilding", results = {@Result(name = ADD_UPDATE, location = "addOrEditBuilding.jsp")})
     })
-    public String addOrUpdate() {
+    public String addOrUpdateBuilding() {
         Map<String, Object> session = getSession();
         if (building != null) {
             session.put(Const.UPDATED_BUILDING_ID_KEY, building.getId());
         }else if (session.get(Const.UPDATED_BUILDING_ID_KEY)!=null){
             session.put(Const.UPDATED_BUILDING_ID_KEY, null);
+        }
+        return ADD_UPDATE;
+    }
+
+    @Actions({
+            @Action(value = "addVanCity", results = {@Result(name = ADD_UPDATE, location = "addOrEditVanCity.jsp")}),
+            @Action(value = "updateVanCity", results = {@Result(name = ADD_UPDATE, location = "addOrEditVanCity.jsp")})
+    })
+    public String addOrUpdateVanCity() {
+        Map<String, Object> session = getSession();
+        if (vanCity != null) {
+            session.put(Const.UPDATED_VAN_CITY_ID_KEY,vanCity.getId());
+        }else if (session.get(Const.UPDATED_VAN_CITY_ID_KEY)!=null){
+            session.put(Const.UPDATED_VAN_CITY_ID_KEY, null);
         }
         return ADD_UPDATE;
     }
@@ -94,5 +111,25 @@ public class ListBuildingAction extends BaseAction {
 
     public void setBuilding(BuildingEntity building) {
         this.building = building;
+    }
+
+    public void setVanCityManager(VanCityManager vanCityManager) {
+        this.vanCityManager = vanCityManager;
+    }
+
+    public List<VanCityEntity> getVanCities() {
+        return vanCities;
+    }
+
+    public void setVanCities(List<VanCityEntity> vanCities) {
+        this.vanCities = vanCities;
+    }
+
+    public VanCityEntity getVanCity() {
+        return vanCity;
+    }
+
+    public void setVanCity(VanCityEntity vanCity) {
+        this.vanCity = vanCity;
     }
 }

@@ -794,22 +794,7 @@ select.input-lg,
   visibility: hidden;
   color: transparent;
 }
-.file-input::before {
-  content: 'Change Picture';
-  display: inline-block;
-  color: white;
-  background-color: #2277DD;
-  font-size: 18px;
-  font-size: 1.8rem;
-  padding: 8px 16px;
-  border-radius: 3px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-}
+
 .file-input:hover::before {
   background-color: #66cccc;
   color: white;
@@ -833,7 +818,7 @@ select.input-lg,
     margin-top: 15px;
   }
 }
-*/
+
 .carousel-kootour {
   position: relative;
 }

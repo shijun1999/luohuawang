@@ -47,6 +47,10 @@
     <bean id="inputImageDAO" class="com.vancondos.dao.InputImageDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean id="vanCityDAO" class="com.vancondos.dao.VanCityDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
     <bean id="buildingManager" class="com.vancondos.service.BuildingManagerImpl">
         <property name="buildingDAO" ref="buildingDAO"/>
@@ -54,6 +58,10 @@
 
     <bean id="imageManager" class="com.vancondos.service.ImageManagerImpl">
         <property name="inputImageDAO" ref="inputImageDAO"/>
+    </bean>
+
+    <bean id="vanCityManager" class="com.vancondos.service.VanCityManagerImpl">
+        <property name="vanCityDAO" ref="vanCityDAO"/>
     </bean>
     
     <!-- Configure jdbc.properties -->

@@ -30,12 +30,7 @@ public class BuildingDaoImpl implements BuildingDAO {
     //This method return list of buildings in database
     @Override
     public List<BuildingEntity> getAllBuildings() {
-        List<BuildingEntity> list = new ArrayList<BuildingEntity>();
-        try {
-            list = getSession().createQuery("from BuildingEntity").list();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        List<BuildingEntity> list =  getSession().createQuery("from BuildingEntity").list();
         return list;
     }
 
@@ -60,9 +55,8 @@ public class BuildingDaoImpl implements BuildingDAO {
         } else if (results.size() > 1) {
             throw new RuntimeException("More than one building with Id " + buildingId.toString());
         }
-        BuildingEntity buildingEntity = results.get(0);
 
-        return buildingEntity;
+        return results.get(0);
     }
 
     //This setter will be used by Spring context to inject the sessionFactory instance

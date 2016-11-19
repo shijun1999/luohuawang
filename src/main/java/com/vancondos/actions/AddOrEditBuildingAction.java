@@ -100,8 +100,8 @@ public class AddOrEditBuildingAction extends BaseAction {
             Set<FloorPlanEntity> floorPlanEntities = GsonTaoFun.gson.fromJson(jsonFromAddFloorPlanEntities, type);
 
 
-            if (session.get(Const.INPUT_IMG_DEST_LIST_KEY) != null) {
-                List<String> imageNameList = (List<String>) session.get(Const.INPUT_IMG_DEST_LIST_KEY);
+            if (session.get(Const.INPUT_BUILDING_IMG_DEST_LIST_KEY) != null) {
+                List<String> imageNameList = (List<String>) session.get(Const.INPUT_BUILDING_IMG_DEST_LIST_KEY);
                 imageManager.addImgNamesToBuilding(imageNameList, buildingEntity);
             }
 
@@ -118,7 +118,7 @@ public class AddOrEditBuildingAction extends BaseAction {
 
             System.out.println("This is error");
         }
-        session.put(Const.INPUT_IMG_DEST_LIST_KEY, null);
+        session.put(Const.INPUT_BUILDING_IMG_DEST_LIST_KEY, null);
         return RETURN_JSON;
     }
 
