@@ -84,6 +84,9 @@
                             <li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-421">
                                 <a href="list">后台管理</a>
                             </li>
+                            <li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-421">
+                                <a href="test">test</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

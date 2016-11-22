@@ -21,11 +21,6 @@
 
     <!-- text fonts -->
 
-    <!-- ace styles -->
-    <link rel="stylesheet" href="/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
-
-    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="/css/HoldOn.min.css"/>
 
     <!-- kootour stles -->

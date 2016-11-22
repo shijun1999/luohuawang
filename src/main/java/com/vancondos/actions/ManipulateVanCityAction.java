@@ -11,19 +11,52 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ParentPackage("json-default")
 @Results({
         @Result(name = "json", type = "json", params = {"root", "jsonStr"})
 })
-public class AddOrEditVanCityAction extends BaseAction {
+public class ManipulateVanCityAction extends BaseAction {
 
     private VanCityManager vanCityManager;
     private String jsonStr;
     private String jsonFromWeb;
 
     String RETURN_JSON = "json";
+
+
+    @Action(value = "listVanCityInit")
+    public String listVanCityInit() {
+        Map<String, Object> jsonMap = new HashMap<String, Object>();
+        Gson gson = GsonTaoFun.gson;
+
+        try {
+            List<VanCityEntity> vanCityEntityList = vanCityManager.getAllVanCities();
+
+            jsonMap.put("result", "success");
+            jsonMap.put("message", "success");
+            jsonMap.put("data", vanCityEntityList);
+
+            jsonStr = GsonTaoFun.gson.toJson(jsonMap);
+
+            System.out.println("This is success");
+        } catch (Exception e) {
+            jsonMap.put("result", "error");
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+            jsonStr = gson.toJson(jsonMap);
+
+            System.out.println("This is error");
+        } catch (StackOverflowError t) {
+            jsonMap.put("result", "error");
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + t.getMessage());
+            jsonStr = gson.toJson(jsonMap);
+
+            System.out.println("This is Stack Overflow Error");
+        }
+        return RETURN_JSON;
+    }
 
     @Action(value = "editVanCityInit")
     public String editVanCityInit() {

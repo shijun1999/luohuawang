@@ -20,7 +20,7 @@ public class VanCityDAOImpl implements VanCityDAO {
 
     @Override
     public List<VanCityEntity> getAllVanCitys() {
-        List<VanCityEntity> list = getSession().createQuery("from VanCityEntity").list();
+        List<VanCityEntity> list = getSession().createQuery("from VanCityEntity vce order by vce.order").list();
         return list;
     }
 

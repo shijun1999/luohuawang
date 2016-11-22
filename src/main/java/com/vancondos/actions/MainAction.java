@@ -1,3 +1,4 @@
+//ladichan.com
 package com.vancondos.actions;
 
 import com.vancondos.entity.BuildingEntity;
@@ -65,6 +66,15 @@ public class MainAction extends BaseAction {
                     @Result(name = "success", location = "vancities.jsp")}
     )
     public String vancities() throws Exception {
+        return SUCCESS;
+    }
+
+
+    @Action(value = "test",
+            results = {
+                    @Result(name = "success", location = "test/template.jsp")}
+    )
+    public String test() throws Exception {
         return SUCCESS;
     }
 
