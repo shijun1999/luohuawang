@@ -24,6 +24,12 @@
 	     </property>
     </bean>
 
+    <bean name="VanCityAction" class="com.vancondos.actions.VanCityAction" scope="prototype">
+        <property name="vanCityManager">
+            <ref bean="vanCityManager"/>
+        </property>
+    </bean>
+
     <bean name="addOrEditBuildingAction" class="com.vancondos.actions.AddOrEditBuildingAction" scope="prototype">
         <property name="buildingManager">
             <ref bean="buildingManager"/>

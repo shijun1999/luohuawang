@@ -61,6 +61,7 @@
 
                                         <hr>
                                         <form class="form-horizontal" id="van_city_form" method="post">
+
                                             <input type="hidden" id="vanCityId" name="vanCityId"
                                                    value="<s:property value="#session.updated_van_city_id_key"/>">
                                             <input type="hidden" id="picture" name="picture">
@@ -142,17 +143,11 @@
 <script src="/js/fileinput.js"></script>
 <script src="/js/jquery.validate.min.js"></script>
 <script src="/js/HoldOn.min.js"></script>
+<script src="/js/bootstrap-dialog.min.js"></script>
 <script src="/js/addOrEditVanCity.js"></script>
 
 <script>
     $("#input-dim-1").fileinput({
-       /* language: 'en', //设置语言
-        showCaption: false,//是否显示标题
-        browseClass: "btn btn-primary", //按钮样式
-        maxFileCount: 5,
-        uploadUrl: "uploadBuildingImage",
-        allowedFileExtensions: ["jpg", "png", "jpeg"],
-        maxFileSize: 5000*/
         uploadUrl: "uploadVanCityImage", // server upload action
         uploadAsync: false,
         showUpload: false, // hide upload button

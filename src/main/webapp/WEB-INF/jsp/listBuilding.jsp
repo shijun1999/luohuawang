@@ -8,6 +8,7 @@
 
     <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
     <link rel="stylesheet" href="/css/taofun.css"/>
+    <link rel="stylesheet" href="/css/morecontent.css"/>
 </head>
 
 <body>
@@ -90,15 +91,19 @@
                                         <tr>
                                             <th>CityName</th>
                                             <th>description</th>
+                                            <th>Order</th>
                                             <th>edit</th>
                                             <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach items="${vanCities}" var="emp">
+
                                             <tr>
                                                 <td>${emp.cityNameC} (${emp.cityNameE})</td>
-                                                <td>${emp.description}</td>
+                                                <td ><div class="more">${emp.description} </div></td>
+
+                                                <td>${emp.order}</td>
                                                 <td>
                                                     <button id="update-${emp.id}" name="vanCity" type="submit">update</button>
                                                 </td>
@@ -128,5 +133,6 @@
 <script src="/js/jquery-2.2.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/listBuilding.js"></script>
+<script src="/js/morecontent.js"></script>
 </body>
 </html>

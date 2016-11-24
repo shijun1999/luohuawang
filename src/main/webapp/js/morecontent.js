@@ -1,3 +1,4 @@
+$(document).ready(function () {
     // Configure/customize these variables.
     var showChar = 100;  // How many characters are shown by default
     var ellipsestext = "...";
@@ -5,7 +6,7 @@
     var lesstext = "Show less";
 
     $('.more').each(function () {
-        var content = $(this).html();
+        var content = $(this).text();
 
         if (content.length > showChar) {
 
@@ -31,3 +32,4 @@
         $(this).prev().toggle();
         return false;
     });
+})

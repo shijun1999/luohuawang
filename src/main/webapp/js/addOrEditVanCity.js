@@ -73,25 +73,6 @@ $(document).ready(function () {
                 $("#cityNameC").val(vanCityEntity.cityNameC);
                 $("#sort").val(vanCityEntity.order);
                 $("#desc").summernote('code', vanCityEntity.description);
-
-/*
-                if (inputImageEntityList != null && inputImageEntityList.length > 0) {
-                    $("#uploaded-images").children().remove();
-
-                    for (var n in inputImageEntityList) {
-                        var html = '' +
-                            '<div id="' + inputImageEntityList[n].id + '" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">' +
-                            '<a href="#" class="pic-link" target="_blank">' +
-                            '<img width="100%" src="' + uploadPath + inputImageEntityList[n].name + '" style="display: inline;">' +
-                            '</a>' +
-                            '<div class="space-8"></div>' +
-                            '<div class="center"><button onClick="deleteImage(\'' + inputImageEntityList[n].id + '\')" type="button" class="btn btn-white kootour-btn-main"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Delete</button></div>' +
-                            '<div class="space-8"></div>' +
-                            '</div>';
-                        $("#uploaded-images").append(html);
-                    }
-                }
-*/
             } else {
                 BootstrapDialog.show({
                     title: 'Error',
@@ -129,6 +110,7 @@ function addEditVanCity() {
     obj.order = $("#sort").val();
     obj.onTopbar = $("#onTopbar").val();
     obj.picture = $("#picture").val();
+    obj.id = $("#vanCityId").val();
 
     $.ajax({
         url: 'addEditVanCity',

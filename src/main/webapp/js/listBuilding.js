@@ -22,9 +22,6 @@ $(document).ready(function () {
             }
             $("#building_list_form").submit();
         }
-
-
     });
-
 });
 

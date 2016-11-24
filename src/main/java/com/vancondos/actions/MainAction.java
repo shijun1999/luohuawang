@@ -12,7 +12,6 @@ import java.util.List;
 public class MainAction extends BaseAction {
     private BuildingManager buildingManager;
     private List<BuildingEntity> buildings;
-    private String jsonInString;
 
     public String load() {
         getSession().clear();
@@ -69,7 +68,6 @@ public class MainAction extends BaseAction {
         return SUCCESS;
     }
 
-
     @Action(value = "test",
             results = {
                     @Result(name = "success", location = "test/template.jsp")}
@@ -93,13 +91,5 @@ public class MainAction extends BaseAction {
 
     public void setBuildings(List<BuildingEntity> buildings) {
         this.buildings = buildings;
-    }
-
-    public String getJsonInString() {
-        return jsonInString;
-    }
-
-    public void setJsonInString(String jsonInString) {
-        this.jsonInString = jsonInString;
     }
 }

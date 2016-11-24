@@ -10,6 +10,8 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
+import static com.vancondos.util.Const.INPUT_VAN_CITY_IMG_DEST;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,7 @@ public class ManipulateVanCityAction extends BaseAction {
     private VanCityManager vanCityManager;
     private String jsonStr;
     private String jsonFromWeb;
+    private String vanCityId;
 
     String RETURN_JSON = "json";
 
@@ -34,6 +37,11 @@ public class ManipulateVanCityAction extends BaseAction {
 
         try {
             List<VanCityEntity> vanCityEntityList = vanCityManager.getAllVanCities();
+
+            for (VanCityEntity vanCityEntity :vanCityEntityList){
+                String pic = vanCityEntity.getPicture();
+                vanCityEntity.setPicture("/upload/images/vanCity/" + pic);
+            }
 
             jsonMap.put("result", "success");
             jsonMap.put("message", "success");
@@ -91,13 +99,16 @@ public class ManipulateVanCityAction extends BaseAction {
             jsonStr = GsonTaoFun.gson.toJson(jsonMap);
 
             System.out.println("This is success");
+            throw new Exception("this is for error test only");
         } catch (Exception e) {
+            jsonMap = new HashMap<String, Object>();
             jsonMap.put("result", "error");
             jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
             jsonStr = gson.toJson(jsonMap);
 
             System.out.println("This is error");
         } catch (StackOverflowError t) {
+            jsonMap = new HashMap<String, Object>();
             jsonMap.put("result", "error");
             jsonMap.put("message", this.getClass().getName() + ":<br>" + t.getMessage());
             jsonStr = gson.toJson(jsonMap);
@@ -135,6 +146,14 @@ public class ManipulateVanCityAction extends BaseAction {
 
     public void setVanCityManager(VanCityManager vanCityManager) {
         this.vanCityManager = vanCityManager;
+    }
+
+    public String getVanCityId() {
+        return vanCityId;
+    }
+
+    public void setVanCityId(String vanCityId) {
+        this.vanCityId = vanCityId;
     }
 
     public String getJsonStr() {
