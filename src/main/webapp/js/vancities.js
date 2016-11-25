@@ -39,30 +39,11 @@ $(document).ready(function () {
                     }
                 })
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: obj.message,
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
+                runErrorDialog(obj.message);
             }
         },
         error: function (json) {
-            var obj = JSON.parse(json);
-            BootstrapDialog.show({
-                title: 'Error',
-                message: obj.message,
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+            runErrorDialog(err.responseText);
         }
     });
 });
@@ -102,4 +83,18 @@ function morecontent(){
         $(this).prev().toggle();
         return false;
     });
+
+    function runErrorDialog(msg){
+        BootstrapDialog.show({
+            title: 'Error',
+            message: msg,
+            buttons: [{
+                label: 'Close',
+                action: function (dialog) {
+                    dialog.close();
+                    window.location.href = "list";
+                }
+            }]
+        });
+    }
 }

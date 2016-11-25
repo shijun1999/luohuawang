@@ -1,143 +1,80 @@
 package com.vancondos.actions;
 
-import com.google.gson.Gson;
+import com.vancondos.common.AjaxHandleException;
 import com.vancondos.entity.VanCityEntity;
 import com.vancondos.service.VanCityManager;
 import com.vancondos.util.Const;
 import com.vancondos.util.json.GsonTaoFun;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 
-import static com.vancondos.util.Const.INPUT_VAN_CITY_IMG_DEST;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ParentPackage("json-default")
-@Results({
-        @Result(name = "json", type = "json", params = {"root", "jsonStr"})
-})
-public class ManipulateVanCityAction extends BaseAction {
+public class ManipulateVanCityAction extends AjaxAction {
 
     private VanCityManager vanCityManager;
-    private String jsonStr;
-    private String jsonFromWeb;
     private String vanCityId;
-
-    String RETURN_JSON = "json";
 
 
     @Action(value = "listVanCityInit")
     public String listVanCityInit() {
-        Map<String, Object> jsonMap = new HashMap<String, Object>();
-        Gson gson = GsonTaoFun.gson;
 
         try {
             List<VanCityEntity> vanCityEntityList = vanCityManager.getAllVanCities();
 
-            for (VanCityEntity vanCityEntity :vanCityEntityList){
-                String pic = vanCityEntity.getPicture();
-                vanCityEntity.setPicture("/upload/images/vanCity/" + pic);
+            for (VanCityEntity vanCityEntity : vanCityEntityList) {
+                resetVanCityPic(vanCityEntity);
             }
 
-            jsonMap.put("result", "success");
-            jsonMap.put("message", "success");
-            jsonMap.put("data", vanCityEntityList);
-
-            jsonStr = GsonTaoFun.gson.toJson(jsonMap);
-
-            System.out.println("This is success");
+            return handleJsonSuccess(vanCityEntityList);
         } catch (Exception e) {
-            jsonMap.put("result", "error");
-            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
-            jsonStr = gson.toJson(jsonMap);
-
-            System.out.println("This is error");
-        } catch (StackOverflowError t) {
-            jsonMap.put("result", "error");
-            jsonMap.put("message", this.getClass().getName() + ":<br>" + t.getMessage());
-            jsonStr = gson.toJson(jsonMap);
-
-            System.out.println("This is Stack Overflow Error");
+            return handleException(e);
         }
-        return RETURN_JSON;
     }
 
     @Action(value = "editVanCityInit")
     public String editVanCityInit() {
-        Map<String, Object> jsonMap = new HashMap<String, Object>();
-        Gson gson = new Gson();
-
         Map<String, Object> session = getSession();
-        if (session == null) {
-            jsonMap.put("result", "error");
-            jsonStr = gson.toJson(jsonMap);
-            return RETURN_JSON;
-        }
-
-        // if update_building_id is null, the ajax is from Add building web page
-        if (session.get(Const.UPDATED_VAN_CITY_ID_KEY) == null) {
-            jsonMap.put("result", "success");
-            jsonMap.put("message", "success");
-            jsonMap.put("data", new VanCityEntity());
-            jsonStr = gson.toJson(jsonMap);
-            return RETURN_JSON;
-        }
-
-        Integer vanCityId = (Integer) getSession().get(Const.UPDATED_VAN_CITY_ID_KEY);
-
         try {
+            if (session == null) {
+                throw new AjaxHandleException("The session is not existing");
+            }
+
+            // if update_building_id is null, the ajax is requested for new building added
+            if (session.get(Const.UPDATED_VAN_CITY_ID_KEY) == null) {
+                return handleJsonSuccess(new VanCityEntity());
+            }
+
+            Integer vanCityId = (Integer) getSession().get(Const.UPDATED_VAN_CITY_ID_KEY);
+
             VanCityEntity vanCityEntity = vanCityManager.getVanCityById(vanCityId);
+            resetVanCityPic(vanCityEntity);
 
-            jsonMap.put("result", "success");
-            jsonMap.put("message", "success");
-            jsonMap.put("data", vanCityEntity);
-
-            jsonStr = GsonTaoFun.gson.toJson(jsonMap);
-
-            System.out.println("This is success");
-            throw new Exception("this is for error test only");
-        } catch (Exception e) {
-            jsonMap = new HashMap<String, Object>();
-            jsonMap.put("result", "error");
-            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
-            jsonStr = gson.toJson(jsonMap);
-
-            System.out.println("This is error");
+            return handleJsonSuccess(vanCityEntity);
+       } catch (AjaxHandleException e) {
+            return handleException(e);
         } catch (StackOverflowError t) {
-            jsonMap = new HashMap<String, Object>();
-            jsonMap.put("result", "error");
-            jsonMap.put("message", this.getClass().getName() + ":<br>" + t.getMessage());
-            jsonStr = gson.toJson(jsonMap);
-
-            System.out.println("This is Stack Overflow Error");
+            return handleException(t);
         }
-        return RETURN_JSON;
     }
 
     @Action(value = "addEditVanCity")
     public String addEditVanCity() {
-        Map<String, Object> jsonMap = new HashMap<String, Object>();
         try {
             VanCityEntity vanCityEntity = GsonTaoFun.gson.fromJson(jsonFromWeb, VanCityEntity.class);
-
             vanCityManager.addOrUpdateVanCity(vanCityEntity);
 
-            jsonMap.put("result", "success");
-            jsonStr = GsonTaoFun.gson.toJson(jsonMap);
-
-            System.out.println("This is success");
+            return handleJsonSuccess(vanCityEntity);
         } catch (Exception e) {
-            jsonMap.put("result", "error");
-            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
-            jsonStr = GsonTaoFun.gson.toJson(jsonMap);
-
-            System.out.println("This is error");
+            return handleException(e);
         }
-        return RETURN_JSON;
+    }
+
+    private void resetVanCityPic(VanCityEntity vanCityEntity) {
+        String pic = vanCityEntity.getPicture();
+        if (pic != null && !pic.isEmpty()) {
+            vanCityEntity.setPicture("/upload/images/vanCity/" + pic);
+        }
     }
 
     public VanCityManager getVanCityManager() {
@@ -154,21 +91,5 @@ public class ManipulateVanCityAction extends BaseAction {
 
     public void setVanCityId(String vanCityId) {
         this.vanCityId = vanCityId;
-    }
-
-    public String getJsonStr() {
-        return jsonStr;
-    }
-
-    public void setJsonStr(String jsonStr) {
-        this.jsonStr = jsonStr;
-    }
-
-    public String getJsonFromWeb() {
-        return jsonFromWeb;
-    }
-
-    public void setJsonFromWeb(String jsonFromWeb) {
-        this.jsonFromWeb = jsonFromWeb;
     }
 }

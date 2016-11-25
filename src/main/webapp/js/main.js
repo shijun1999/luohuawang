@@ -15,43 +15,16 @@ function initialize() {
                 items = obj.data;
                 buildMap();
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: obj.message,
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
+                runErrorDialog(obj.message);
             }
         },
-        error: function (json) {
-            var obj = JSON.parse(json);
+        error: function (error) {
             HoldOn.close();
-            BootstrapDialog.show({
-                title: 'Error',
-                message: obj.message,
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+            runErrorDialog(err.responseText);
         }
     });
 
     function buildMap() {
-
-        // var mapProp = {
-        //     center: myCenter,
-        //     zoom: 13,
-        //     mapTypeId: google.maps.MapTypeId.ROADMAP
-        // };
-        //
-        // var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
         map = new google.maps.Map(document.getElementById('googleMap'), {
             zoom: 13,
@@ -127,7 +100,6 @@ function initialize() {
                 '</div>';
 
             infowindow.content = contentString;
-            //infowindow.position = gp.location;
 
             infowindow.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.
@@ -137,6 +109,22 @@ function initialize() {
         }
     }
 }
+
+
+function runErrorDialog(msg){
+    BootstrapDialog.show({
+        title: 'Error',
+        message: msg,
+        buttons: [{
+            label: 'Close',
+            action: function (dialog) {
+                dialog.close();
+                window.location.href = "list";
+            }
+        }]
+    });
+}
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
  

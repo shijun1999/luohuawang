@@ -5,17 +5,27 @@ $(document).ready(function () {
         maxHeight: null            // set maximum height of editor
     });
 
-
-/*    $("#input-dim-1").fileinput({
-        language: 'en', //设置语言
-        showCaption: false,//是否显示标题
-        browseClass: "btn btn-primary", //按钮样式
-        maxFileCount: 5,
-        uploadUrl: "uploadBuildingImage",
-        allowedFileExtensions: ["jpg", "png", "jpeg"],
-        maxFileSize: 5000
-    });*/
-
+    $("#input-dim-1").fileinput({
+        uploadUrl: "uploadVanCityImage", // server upload action
+        uploadAsync: false,
+        showUpload: false, // hide upload button
+        showRemove: false, // hide remove button
+        showPreview:false,
+        minFileCount: 1,
+        maxFileCount: 3
+    }).on("filebatchselected", function(event, files) {
+        // trigger upload method immediately after files are selected
+        $("#input-dim-1").fileinput("upload");
+    }).on('filebatchuploadsuccess', function(event, data) {
+        var response = data.response;
+        var obj = JSON.parse(response);
+        var copyFile = obj.copyFile;
+        var imageUrl = obj.imageUrl;
+        $("#picture").val(copyFile);
+        var html = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+            '<img width="100%" src="' + imageUrl + copyFile + '" style="display: inline;"> </div>' ;
+        $("#uploaded-images").html(html);
+    });
 
     $('#van_city_form').validate({
         errorElement: 'div',
@@ -47,16 +57,7 @@ $(document).ready(function () {
         },
 
         invalidHandler: function (form) {
-            BootstrapDialog.show({
-                title: 'Error',
-                message: 'You missed some fields. They have been highlighted below.',
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+            runErrorDialog('You missed some fields. They have been highlighted below.');
         }
     });
 
@@ -73,31 +74,19 @@ $(document).ready(function () {
                 $("#cityNameC").val(vanCityEntity.cityNameC);
                 $("#sort").val(vanCityEntity.order);
                 $("#desc").summernote('code', vanCityEntity.description);
+
+                imageHtml = '<span class="center">There is no image here.</span>';
+                if (vanCityEntity.picture!=""){
+                    imageHtml = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+                        '<img width="100%" src="' + vanCityEntity.picture + '" style="display: inline;"> </div>' ;
+                }
+                $("#uploaded-images").html(imageHtml);
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: obj.message,
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
+                runErrorDialog(obj.message);
             }
         },
-        error: function (json) {
-            var obj = JSON.parse(json);
-            BootstrapDialog.show({
-                title: 'Error',
-                message: obj.message,
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+        error: function (err) {
+            runErrorDialog(err.responseText);
         }
     });
 });
@@ -122,31 +111,26 @@ function addEditVanCity() {
             if (obj.result == 'success') {
                 window.location.href = "list";
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: obj.message,
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
+                runErrorDialog(obj.message);
             }
         },
-        error: function (json) {
-            var obj = JSON.parse(json);
-            BootstrapDialog.show({
-                title: 'Error',
-                message: obj.message,
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+        error: function (err) {
+            runErrorDialog(err.responseText);
         }
+    });
+}
+
+function runErrorDialog(msg){
+    BootstrapDialog.show({
+        title: 'Error',
+        message: msg,
+        buttons: [{
+            label: 'Close',
+            action: function (dialog) {
+                dialog.close();
+                window.location.href = "list";
+            }
+        }]
     });
 }
 

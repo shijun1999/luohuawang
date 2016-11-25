@@ -3,16 +3,13 @@ $(document).ready(function () {
     $('#fuelux-wizard-container')
         .ace_wizard()
         .on('actionclicked.fu.wizard', function (e, info) {
-
         })
         .on('finished.fu.wizard', function (e) {
-
             HoldOn.open({message: "handle...", theme: "sk-dot"});
 
             var entity = new Object();
-
             var entity_id = $("#buildingId").val();
-            if (entity_id != null && entity_id !=""){
+            if (entity_id != null && entity_id != "") {
                 entity.id = entity_id;
             }
 
@@ -57,8 +54,10 @@ $(document).ready(function () {
                 url: 'addEditBuilding',
                 type: 'post',
                 dataType: 'json',
-                data: {"jsonFromAddBuilding": JSON.stringify(entity),
-                    "jsonFromAddFloorPlanEntities": JSON.stringify(inArray),},
+                data: {
+                    "jsonFromWeb": JSON.stringify(entity),
+                    "jsonFromAddFloorPlanEntities": JSON.stringify(inArray),
+                },
                 success: function (json) {
                     var obj = JSON.parse(json);
 
@@ -66,31 +65,11 @@ $(document).ready(function () {
                         HoldOn.close();
                         window.location.href = "list";
                     } else {
-                        BootstrapDialog.show({
-                            title: 'Error',
-                            message: obj.message,
-                            buttons: [{
-                                label: 'Close',
-                                action: function (dialog) {
-                                    dialog.close();
-                                }
-                            }]
-                        });
+                        runErrorDialog(obj.message);
                     }
                 },
-                error: function (json) {
-                    var obj = JSON.parse(json);
-                    HoldOn.close();
-                    BootstrapDialog.show({
-                        title: 'Error',
-                        message: obj.message,
-                        buttons: [{
-                            label: 'Close',
-                            action: function (dialog) {
-                                dialog.close();
-                            }
-                        }]
-                    });
+                error: function (err) {
+                    runErrorDialog(err.responseText);
                 }
             });
         })
@@ -165,10 +144,10 @@ $(document).ready(function () {
                 var inputImageEntityList = buildingEntity.inputImageEntities;
 
                 inputImageEntityList = inputImageEntityList.sort(
-                    function(a,b) {
+                    function (a, b) {
                         var x = a.id;
                         var y = b.id;
-                        return x<y?-1:x>y?1:0;
+                        return x < y ? -1 : x > y ? 1 : 0;
                     }
                 )
 
@@ -181,7 +160,7 @@ $(document).ready(function () {
                         var html = '' +
                             '<div id="' + inputImageEntityList[n].id + '" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">' +
                             '<a href="#" class="pic-link" target="_blank">' +
-                            '<img width="100%" src="' + uploadPath + inputImageEntityList[n].name + '" style="display: inline;">' +
+                            '<img width="100%" src="' + inputImageEntityList[n].name + '" style="display: inline;">' +
                             '</a>' +
                             '<div class="space-8"></div>' +
                             '<div class="center"><button onClick="deleteImage(\'' + inputImageEntityList[n].id + '\')" type="button" class="btn btn-white kootour-btn-main"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Delete</button></div>' +
@@ -190,32 +169,12 @@ $(document).ready(function () {
                         $("#uploaded-images").append(html);
                     }
                 }
-
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: obj.message,
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
+                runErrorDialog(obj.message);
             }
         },
-        error: function (json) {
-            var obj = JSON.parse(json);
-            BootstrapDialog.show({
-                title: 'Error',
-                message: obj.message,
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+        error: function (err) {
+            runErrorDialog(err.responseText);
         }
     });
 });
@@ -235,30 +194,27 @@ function deleteImage(imageId) {
             if (obj.result == 'success') {
                 $("#" + imageId).remove();
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: obj.message,
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
+                runErrorDialog(obj.message);
             }
         },
-        error: function (json) {
-            var obj = JSON.parse(json);
-            BootstrapDialog.show({
-                title: 'Error',
-                message: obj.message,
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialog) {
-                        dialog.close();
-                    }
-                }]
-            });
+        error: function (err) {
+            runErrorDialog(err.responseText);
         }
     });
 }
+
+function runErrorDialog(msg) {
+    HoldOn.close();
+    BootstrapDialog.show({
+        title: 'Error',
+        message: msg,
+        buttons: [{
+            label: 'Close',
+            action: function (dialog) {
+                dialog.close();
+                window.location.href = "list";
+            }
+        }]
+    });
+}
+

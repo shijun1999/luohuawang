@@ -19,10 +19,6 @@ import static org.apache.struts2.ServletActionContext.getServletContext;
 
 public class BaseAction extends ActionSupport
         implements Preparable, ServletRequestAware, ServletResponseAware, ServletContextAware, SessionAware {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 7720865502093820229L;
 
     private Map<String, Object> session;
     private HttpServletRequest request;
@@ -67,6 +63,8 @@ public class BaseAction extends ActionSupport
         return context;
     }
 
+    //This method will be called before any of Action method is invoked;
+    //So some pre-processing if required.
     @Override
     public void prepare() throws Exception {
     }

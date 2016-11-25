@@ -121,6 +121,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/infobubble.js"></script>
+<script src="/js/bootstrap-dialog.min.js"></script>
 
 <div class="infobox_outer">
     <img class="img_close" src="icon_close.png" align="right">

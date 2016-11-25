@@ -4,7 +4,7 @@ package com.vancondos.actions;
 import java.io.File;
 import java.util.List;
 
-public class ManipulateImageModel extends BaseAction {
+public class ManipulateImageModel extends AjaxAction {
     private File file;//populated from input webpage,
     private String fileFileName;//populated from input webpage,i.e. Capture.JPG
     private List<String> uploadedFileName;

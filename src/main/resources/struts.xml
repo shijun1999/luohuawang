@@ -33,6 +33,41 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="MyInterceptorStack"/>
-    </package>
 
+        <global-results>
+            <result name="exception">/exception.jsp</result>
+            <result name="runtime_exception">/exception/runtimeException.jsp</result>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="exception"></exception-mapping>
+            <exception-mapping exception="java.lang.Error" result="error"></exception-mapping>
+            <exception-mapping exception="java.lang.RuntimeException" result="runtime_exception"></exception-mapping>
+        </global-exception-mappings>
+
+        <action name="main">
+            <result>/WEB-INF/jsp/main.jsp</result>
+        </action>
+
+        <action name="morgagecalculate">
+            <result>/WEB-INF/jsp/vanfuncommontools/morgagecalculate.jsp</result>
+        </action>
+
+        <action name="affordablepayment">
+            <result>/WEB-INF/jsp/vanfuncommontools/affordablepayment.jsp</result>
+        </action>
+
+        <action name="realestateterm">
+            <result>/WEB-INF/jsp/vanfuncommontools/realestateterm.jsp</result>
+        </action>
+
+        <action name="vancities">
+            <result>/WEB-INF/jsp/vancities.jsp</result>
+        </action>
+
+        <action name="test">
+            <result>/WEB-INF/jsp/test/template.jsp</result>
+        </action>
+    </package>
 </struts>

@@ -1,17 +1,17 @@
-<%@ page import="com.vancondos.util.Const" %>
+<!doctype html >
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-
-<!DOCTYPE html>
-<html lang="en">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta charset="utf-8">
-    <title>Edit Course</title>
+    <title>温哥华淘房网</title>
 
-    <meta name="description" content="overview &amp; stats">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
+    <link rel="stylesheet" href="/css/taofun.css"/>
+    <link rel="stylesheet" href="/css/morecontent.css"/>
+
+    //----------------
+
 
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -50,19 +50,17 @@
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
-    <!--[if lte IE 8]>
+    <!--[if lte IE 8]> -->
     <script src="/js/html5shiv.min.js"></script>
     <script src="/js/respond.min.js"></script>
-    <![endif]-->
 </head>
 
-<body class="no-skin">
-<div class="main-container container" id="main-container">
+<body>
+<jsp:include page="taofunheader.jsp"/>
 
+<div class="main-container container" id="main-container">
     <div class="main-content">
         <div class="main-content-inner">
-
-
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -305,7 +303,9 @@
         </div>
     </div><!-- /.main-content -->
 
-</div><!-- /.main-container -->
+</div>
+
+<jsp:include page="taofunfoot.jsp"/>
 
 <script src="/js/jquery-2.2.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -320,6 +320,7 @@
 <script src="/js/fuelux.wizard.min.js"></script>
 <script src="/js/jquery.validate.min.js"></script>
 <script src="/js/HoldOn.min.js"></script>
+<script src="/js/bootstrap-dialog.min.js"></script>
 <script src="/js/addOrEditBuilding.js"></script>
 
 </body>

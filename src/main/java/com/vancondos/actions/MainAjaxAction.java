@@ -1,76 +1,39 @@
 package com.vancondos.actions;
 
-import com.google.gson.Gson;
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
-import com.vancondos.util.json.GsonTaoFun;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+public class MainAjaxAction extends AjaxAction {
+    private BuildingManager buildingManager;
+    private List<BuildingEntity> buildings;
 
-@ParentPackage("json-default")
-@Results({
-		@Result(name = "json", type="json", params={"root", "jsonStr"})
-})
-public class MainAjaxAction extends BaseAction
-{
-	static String RTN_STR = "json";
-	private BuildingManager buildingManager;
-	private List<BuildingEntity> buildings;
-	private String jsonStr;
+    @Action(value = "loadBuildingOnMap")
+    public String loadBuilding() {
+        try {
+            buildings = buildingManager.getAllBuildings();
 
-	@Action(value="loadBuildingOnMap")
-	public String loadBuilding() {
-		try {
+            return handleJsonSuccess(buildings);
+        } catch (Exception e) {
+            return handleJsonError(e);
+        }
+    }
 
-			buildings = buildingManager.getAllBuildings();
+    public BuildingManager getBuildingManager() {
+        return buildingManager;
+    }
 
-			populateJsonString(SUCCESS,SUCCESS,buildings);
+    public void setBuildingManager(BuildingManager buildingManager) {
+        this.buildingManager = buildingManager;
+    }
 
-		}catch(Exception e){
-			populateJsonString(ERROR,this.getClass().getName() + ":<br>" + e.getMessage(),buildings);
-		}
-		return RTN_STR;
-}
+    public List<BuildingEntity> getBuildings() {
+        return buildings;
+    }
 
-private void populateJsonString(String status,String message,Object data){
-	Map<String, Object> jsonMap = new HashMap<String, Object>();
-	Gson gson = GsonTaoFun.gson;
-
-	jsonMap.put("result", status);
-	jsonMap.put("message", message);
-	jsonMap.put("data", data);
-
-	jsonStr = gson.toJson(jsonMap);
-}
-
-	public BuildingManager getBuildingManager() {
-		return buildingManager;
-	}
-
-	public void setBuildingManager(BuildingManager buildingManager) {
-		this.buildingManager = buildingManager;
-	}
-
-	public List<BuildingEntity> getBuildings() {
-		return buildings;
-	}
-
-	public void setBuildings(List<BuildingEntity> buildings) {
-		this.buildings = buildings;
-	}
-
-	public String getJsonStr() {
-		return jsonStr;
-	}
-
-	public void setJsonStr(String jsonStr) {
-		this.jsonStr = jsonStr;
-	}
+    public void setBuildings(List<BuildingEntity> buildings) {
+        this.buildings = buildings;
+    }
 }

@@ -6,7 +6,6 @@ import java.util.Map;
 import com.vancondos.entity.VanCityEntity;
 import com.vancondos.service.VanCityManager;
 import com.vancondos.util.Const;
-import org.apache.log4j.Logger;
 
 import com.vancondos.entity.BuildingEntity;
 import com.vancondos.service.BuildingManager;
@@ -15,11 +14,8 @@ import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Result;
 
 public class ListBuildingAction extends BaseAction {
-    private static final long serialVersionUID = 1L;
 
     private static final String ADD_UPDATE = "addOrUpdate";
-    //Logger configured using log4j
-    private static final Logger logger = Logger.getLogger(ListBuildingAction.class);
     //List of buildings; Setter and Getter are below
     private List<BuildingEntity> buildings;
     private List<VanCityEntity> vanCities;
@@ -27,7 +23,7 @@ public class ListBuildingAction extends BaseAction {
     private BuildingEntity building;
     private VanCityEntity vanCity;
 
-    //Building manager injected by spring context; This is cool !!
+    //Building manager injected by spring context;
     private BuildingManager buildingManager;
 
     private VanCityManager vanCityManager;
@@ -86,8 +82,6 @@ public class ListBuildingAction extends BaseAction {
         return ADD_UPDATE;
     }
 
-    //This method will be called before any of Action method is invoked;
-    //So some pre-processing if required.
     @Override
     public void prepare() throws Exception {
         building = null;
