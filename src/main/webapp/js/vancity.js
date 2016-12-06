@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    $( document ).ready(function() {
-        var deschidden = $("#description").text();
-        $("#description").html(deschidden);
-    });
+    var deschidden = $("#description").text();
+    $("#description").html(deschidden);
 });

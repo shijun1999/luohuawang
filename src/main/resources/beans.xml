@@ -18,6 +18,15 @@
     
     <!-- This bean has been referred fron struts.xml file; So type it correctly; -->
     <!-- Make scope prototype; This is really important. -->
+    <bean name="mainAjaxAction" class="com.vancondos.actions.MainAjaxAction" scope="prototype">
+        <property name="buildingManager">
+            <ref bean="buildingManager"/>
+        </property>
+        <property name="userManager">
+            <ref bean="userManager"/>
+        </property>
+    </bean>
+
     <bean name="listBuildingAction" class="com.vancondos.actions.ListBuildingAction" scope="prototype">
 	     <property name="buildingManager">
 	        <ref bean="buildingManager"/>
@@ -57,6 +66,10 @@
     <bean id="vanCityDAO" class="com.vancondos.dao.VanCityDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <bean id="userDAO" class="com.vancondos.dao.UserDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
     <bean id="buildingManager" class="com.vancondos.service.BuildingManagerImpl">
         <property name="buildingDAO" ref="buildingDAO"/>
@@ -68,6 +81,10 @@
 
     <bean id="vanCityManager" class="com.vancondos.service.VanCityManagerImpl">
         <property name="vanCityDAO" ref="vanCityDAO"/>
+    </bean>
+
+    <bean id="userManager" class="com.vancondos.service.UserManagerImpl">
+        <property name="userDAO" ref="userDAO"/>
     </bean>
     
     <!-- Configure jdbc.properties -->

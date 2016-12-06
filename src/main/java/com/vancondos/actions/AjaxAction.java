@@ -1,20 +1,16 @@
 package com.vancondos.actions;
 
 import com.google.gson.Gson;
-import com.vancondos.entity.VanCityEntity;
-import com.vancondos.service.VanCityManager;
-import com.vancondos.util.Const;
 import com.vancondos.util.json.GsonTaoFun;
-import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
-import com.vancondos.util.json.GsonTaoFun;
 
+import org.apache.commons.collections4.CollectionUtils;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 @ParentPackage("json-default")
 @Results({
         @Result(name = "json", type = "json", params = {"root", "jsonStr"})
@@ -58,6 +54,22 @@ public class AjaxAction extends BaseAction {
         HashMap<String, Object> jsonMap = new HashMap<String, Object>();
         jsonMap.put("result", "error");
         jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+        jsonStr = gson.toJson(jsonMap);
+
+        return RETURN_JSON;
+    }
+
+    protected String handleJsonErrorList(List<String> list) {
+        HashMap<String, Object> jsonMap = new HashMap<String, Object>();
+        jsonMap.put("result", "error");
+        String message = "";
+        if (CollectionUtils.isEmpty(list)) {
+            for (String str : list) {
+                message.concat(str).concat("<br>");
+            }
+            message.substring(0,message.lastIndexOf(":<br>"));
+        }
+        jsonMap.put("message", message);
         jsonStr = gson.toJson(jsonMap);
 
         return RETURN_JSON;

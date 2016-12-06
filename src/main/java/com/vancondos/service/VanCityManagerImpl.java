@@ -13,7 +13,7 @@ public class VanCityManagerImpl implements VanCityManager{
     @Override
     @Transactional
     public void addOrUpdateVanCity(VanCityEntity vanCityEntity){
-        vanCityDAO.addOrUpdateBuilding(vanCityEntity);
+        vanCityDAO.addOrUpdateVanCity(vanCityEntity);
     }
 
     @Override

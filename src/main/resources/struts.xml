@@ -67,7 +67,7 @@
         </action>
 
         <action name="test">
-            <result>/WEB-INF/jsp/test/template.jsp</result>
+            <result>/WEB-INF/jsp/login.jsp</result>
         </action>
     </package>
 </struts>

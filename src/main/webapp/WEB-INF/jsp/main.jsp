@@ -4,11 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>温哥华淘房网</title>
-
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
-    <link rel="stylesheet" href="/css/taofun-infobox.css"/>
+   <%@ include file="content.html" %>
 </head>
 
 <body>
@@ -117,12 +113,18 @@
 
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
 </script>
-<script src="/js/jquery-2.2.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/infobubble.js"></script>
-<script src="/js/bootstrap-dialog.min.js"></script>
 
+<script src="/js/jquery.validate.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-dialog.min.js"></script>
+<script src="/js/logininandsignup.js"></script>
+
+
+<!--
 <div class="infobox_outer">
     <img class="img_close" src="icon_close.png" align="right">
     <div class="infobox_inner">
@@ -139,6 +141,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 </body>
 </html>

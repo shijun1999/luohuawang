@@ -19,6 +19,14 @@
   background-color: #2277DD !important;
 }
 
+.taofun-main-color {
+    padding: 10px;
+    color: #2277DD !important;
+}
+
+.taofun-main-color_no_padding {
+    color: #2277DD !important;
+}
 .kootour-main-color {
   color: #2277DD !important;
 }
@@ -242,7 +250,9 @@
     font-weight: bold;
     width: 50%;
 }
-.travel-list .card-price .current {
+
+
+.travel-list .card-price {
     width: 50%;
     margin-right: 10%;
     color: #f5d10a;
@@ -1093,9 +1103,9 @@ select.input-lg,
 }
 section.section {
   padding-top: 15px;
-  padding-bottom: 30px;
-  padding-left: 45px;
-  padding-right: 45px;
+  padding-bottom: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 section.section.section-small {
   padding-top: 15px;

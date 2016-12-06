@@ -14,7 +14,7 @@ public class VanCityDAOImpl implements VanCityDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public void addOrUpdateBuilding(VanCityEntity vanCityEntity){
+    public void addOrUpdateVanCity(VanCityEntity vanCityEntity){
         getSession().saveOrUpdate(vanCityEntity);
     }
 
