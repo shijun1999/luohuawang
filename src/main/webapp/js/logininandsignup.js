@@ -1,138 +1,133 @@
 $(document).ready(function () {
 
-        $('#reg_form').validate({
- /*           errorElement: 'div',
-            errorClass: 'help-block',
-            focusInvalid: false,
-            ignore: "",
-            rules: {
-                firstName: {
-                    required: true
-                },
-                lastName: {
-                    required: true
-                },
-                signupemail: {
-                    required: true,
-                    email: true
-                },
-                signuppassword: {
-                    required: true
-                },
-                resignuppassword: {
-                    required: true,
-                    equalTo: "#signuppassword"
-                },
+    $('#reg_form').validate({
+
+        errorElement: 'div',
+        errorClass: 'help-block',
+        rules: {
+            firstname: "required",
+            lastname: "required",
+            signupemail: {
+                required: true,
+                email: true
             },
-
-            messages: {},
-
-            highlight: function (e) {
-                $(e).closest('.form-validator').removeClass('has-info').addClass('has-error');
+            signuppassword: {
+                required: true,
+                minlength: 5
             },
-
-            success: function (e) {
-                $(e).closest('.form-validator').removeClass('has-error');//.addClass('has-info');
-                $(e).remove();
+            resignuppassword: {
+                required: true,
+                equalTo: "#signuppassword"
             },
+        },
 
-            submitHandler: function (form) {
-                var obj = new Object();
-                obj.firstName = $("#firstName").val();
-                obj.lastName = $("#lastName").val();
-                obj.email = $("#email").val();
-                obj.loginId = $("#email").val();
-                obj.password = $("#password").val();
-                $.ajax({
-                    url: 'localhostSignAjax/regWithEmail',
-                    type: 'post',
-                    dataType: 'json',
-                    data: {"jsonFromWeb": JSON.stringify(obj)},
-                    success: function (json) {
-                        var obj = JSON.parse(json);
-                        if (obj.result == 'success') {
-                            BootstrapDialog.show({
-                                closable: false,
-                                title: 'Success',
-                                message: obj.message,
-                                buttons: [{
-                                    label: 'Go to Next Page',
-                                    action: function (dialog) {
-                                        dialog.close();
-                                        window.location.href = "localhostCourseList!load";
-                                    }
-                                }]
-                            });
-                        } else {
-                            BootstrapDialog.show({
-                                title: 'Error',
-                                message: obj.message,
-                                buttons: [{
-                                    label: 'Close',
-                                    action: function (dialog) {
-                                        dialog.close();
-                                    }
-                                }]
-                            });
-                        }
-                    },
-                    error: function (json) {
-                        var obj = JSON.parse(json);
-                        BootstrapDialog.show({
-                            title: 'Error',
-                            message: obj.message,
-                            buttons: [{
-                                label: 'Close',
-                                action: function (dialog) {
-                                    dialog.close();
-                                }
-                            }]
-                        });
-                    }
-                });
+        // Specify the validation error messages
+        messages: {
+            firstname: "Please enter your first name",
+            lastname: "Please enter your last name",
+            signuppassword: {
+                signupemail: "Please enter a valid email address",
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
             },
-
-            invalidHandler: function (form) {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: 'You missed some fields. They have been highlighted below.',
-                    buttons: [{
-                        label: 'Close',
-                        action: function (dialog) {
-                            dialog.close();
-                        }
-                    }]
-                });
-            } */
-            rules: {
-                firstname: "required",
-                lastname: "required",
-                email: {
-                    required: true,
-                    email: true
-                },
-                password: {
-                    required: true,
-                    minlength: 5
-                },
-                agree: "required"
-            },
-
-            // Specify the validation error messages
-            messages: {
-                firstname: "Please enter your first name",
-                lastname: "Please enter your last name",
-                password: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 5 characters long"
-                },
-                email: "Please enter a valid email address",
-                agree: "Please accept our policy"
-            },
-
-            submitHandler: function(form) {
-                form.submit();
+            resignuppassword: {
+                required: "Please re-enter a password",
+                equalTo: "These passwords don't match"
             }
-        });
+        },
+
+        highlight: function (e) {
+            $(e).closest('.form-validator').removeClass('has-info').addClass('has-error');
+        },
+        submitHandler: function (form) {
+            var obj = new Object();
+            obj.firstname = $("#firstname").val();
+            obj.lastname = $("#lastname").val();
+            obj.email = $("#signupemail").val();
+            obj.password = $("#signuppassword").val();
+            obj.repassword = $("#resignuppassword").val();
+            $.ajax({
+                url: 'signUp',
+                type: 'post',
+                dataType: 'json',
+                data: {"jsonFromWeb": JSON.stringify(obj)},
+                success: function (json) {
+                    var obj = JSON.parse(json);
+                    if (obj.result == 'success') {
+                        $('#reg_form').html("<div></div><div class='taofun-main-color'>Sign up successfully.</div></div>");
+                    } else {
+                        var msg = obj.message;
+                        displayErrorMsg($('#signup_error'), msg);
+                    }
+                },
+                error: function (xhr) {
+                    var msg = "An error occured: " + xhr.status + " " + xhr.statusText;
+                    displayErrorMsg($('#signup_error'), msg);
+                }
+            });
+        },
+    });
+
+    $('#login_form').validate({
+
+        errorElement: 'div',
+        errorClass: 'help-block',
+        rules: {
+            loginemail: {
+                required: true,
+                email: true
+            },
+            loginpassword: {
+                required: true,
+                minlength: 5
+            },
+        },
+
+        // Specify the validation error messages
+        messages: {
+            loginpassword: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
+            },
+            loginemail: "Please enter a valid email address",
+
+        },
+
+        highlight: function (e) {
+            $(e).closest('.form-validator').removeClass('has-info').addClass('has-error');
+        },
+        submitHandler: function (e) {
+            var obj = new Object();
+            obj.email = $("#loginemail").val();
+            obj.password = $("#loginpassword").val();
+            $.ajax({
+                url: 'logIn',
+                type: 'post',
+                dataType: 'json',
+                data: {"jsonFromWeb": JSON.stringify(obj)},
+                success: function (json) {
+                    var obj = JSON.parse(json);
+                    if (obj.result == 'success') {
+                        $("#closeModal").click();
+                        location.reload(true);
+                    } else {
+                        var msg = obj.message;
+                        displayErrorMsg($('#login_error'), msg);
+                    }
+                },
+                error: function (xhr) {
+                    var msg = "An error occured: " + xhr.status + " " + xhr.statusText;
+                    displayErrorMsg($('#login_error'), msg);
+
+
+                }
+            });
+        }
+    });
+
+    function displayErrorMsg(ele, msg) {
+        ele.css({"color": "red", "font-size": "18px", "padding": "10px"});
+        ele.html(msg);
+    }
 
 });

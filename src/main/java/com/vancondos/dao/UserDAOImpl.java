@@ -1,6 +1,8 @@
 package com.vancondos.dao;
 
 import com.vancondos.entity.UserEntity;
+import com.vancondos.exception.BusinessException;
+import com.vancondos.transfer.SignUpObject;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
@@ -14,7 +16,10 @@ public class UserDAOImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public void addOrUpdateUser(UserEntity userEntity){
+    public void addOrUpdateUser(UserEntity userEntity) throws BusinessException{
+        if (getUserByEmail(userEntity.getEmail())!=null){
+            throw new BusinessException("The email has been used,try a different email address" );
+        }
         getSession().saveOrUpdate(userEntity);
     }
 
@@ -41,6 +46,25 @@ public class UserDAOImpl implements UserDAO {
 
         return results.get(0);
 
+    }
+
+    private UserEntity getUserByEmail(String email){
+        String hql = "FROM UserEntity WHERE email = :email";
+        Query query = getSession().createQuery(hql);
+        query.setString("email", email);
+        List<UserEntity> results = query.list();
+        return results.isEmpty()?null:results.get(0);
+    }
+
+    public UserEntity getUserFromLogIn(SignUpObject signUpObject) throws BusinessException{
+        UserEntity userEntity = getUserByEmail(signUpObject.getEmail());
+        if (userEntity == null) {
+            throw new BusinessException("Wrong Email address:" + signUpObject.getEmail());
+        } else if (!userEntity.getPassword().equals(signUpObject.getPassword())){
+            throw new BusinessException("Wrong password, try again" );
+        }
+
+        return userEntity;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

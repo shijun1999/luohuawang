@@ -1,9 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<style>
-
-</style>
 
 <div class="td-header-wrap td-header-style-1">
 
@@ -17,8 +12,8 @@
                             <li id="menu-item-33"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-first td-menu-item td-normal-menu menu-item-33">
                                 <a href="http://www.ladichan.com/?page_id=30">联系我们</a></li>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#loginForm">
-                                Sign Up
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#loginFormModaldialog">
+                                Log In / Sign Up
                             </button>
                         </ul>
                     </div>
@@ -92,7 +87,7 @@
         </div>
     </nav>
 
-    <div class="modal modal--rew fade registrationform modalform" id="loginForm" tabindex="-1" role="dialog"
+    <div class="modal modal--rew fade registrationform modalform" id="loginFormModaldialog" tabindex="-1" role="dialog"
          aria-labelledby="myLargeModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -100,7 +95,7 @@
                 <div class="col-lg-12 col-md-112 col-sm-12 col-xs-12">
                     <section class="section">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-hidden="true">
                                 ×
                             </button>
                             <div class="login-wrap">
@@ -149,32 +144,40 @@
                                     <div class="tab-content">
                                         <!-- Tab for Log In-->
                                         <div class="tab-pane active" id="Login">
-                                            <form role="form" class="form-horizontal" onSubmit="return false;">
-                                                <div class="form-validator form-group">
-                                                    <label for="loginEmail" class="col-sm-2 taofun-main-color">
-                                                        Email</label>
-                                                        <div class="form-validator col-sm-10">
-                                                                <input type="email" class="form-control input-lg gray"
-                                                                       name="loginId"
-                                                                       id="loginEmail" placeholder="Email">
-
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="loginPassword" class="col-sm-2 taofun-main-color">
-                                                        Password</label>
-                                                        <div class="form-validator col-sm-10">
-                                                            <input type="password" class="form-control input-lg gray"
-                                                                   name="password" id="loginPassword"
-                                                                   placeholder="Password">
+                                                <form method="post" id="login_form" novalidate="novalidate" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div id="login_error" style="color:red"></div>
                                                         </div>
-                                                </div>
+                                                    <div class="form-group">
+                                                        <label for="loginemail" class="col-sm-2 taofun-main-color" >
+                                                            Email</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="form-validator">
+                                                                <input type="email"
+                                                                       class="form-control input-lg gray"
+                                                                       name="loginemail"
+                                                                       id="loginemail" placeholder="Email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="loginpassword" class="col-sm-2 taofun-main-color">
+                                                            Password</label>
+                                                        <div class="col-sm-10 ">
+                                                            <div class="form-validator">
+                                                                <input type="password"
+                                                                       class="form-control input-lg gray"
+                                                                       name="loginpassword"
+                                                                       id="loginpassword" placeholder="Password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 <div class="form-group">
                                                     <div class="checkbox col-sm-offset-2 col-sm-10">
                                                         <label class="taofun-main-color_no_padding">
                                                             <input type="checkbox"> Remember me
                                                         </label>
-                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-group">
@@ -189,45 +192,38 @@
 
                                         <!-- Tab for Sign Up-->
                                         <div class="tab-pane" id="signup">
-                                            <form method="post" id="reg_form" novalidate="novalidate"  class="form-horizontal">
-
-                                                <div class="label">First Name</div><input type="text" id="firstname" name="firstname" /><br />
-                                                <div class="label">Last Name</div><input type="text" id="lastname" name="lastname" /><br />
-                                                <div class="label">Email</div><input type="text" id="email" name="email" /><br />
-                                                <div class="label">Password</div><input type="password" id="password" name="password" /><br />
-                                                <div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
-
-                                            </form>
-                                           <!-- <form id="reg_form" role="form" class="form-horizontal">
+                                            <form method="post" id="reg_form" novalidate="novalidate" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div id="signup_error" style="color:red"></div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-2 taofun-main-color">
                                                         Name</label>
                                                     <div class="col-sm-10">
-                                                            <div class="form-validator col-md-6">
-                                                                <input type="text"
-                                                                       class="form-control  input-lg gray" name="firstName"
-                                                                       id="firstName" placeholder="First Name"/>
-                                                            </div>
-                                                            <div class="form-validator col-md-6">
-                                                                <input type="text"
-                                                                       class="form-control  input-lg gray"
-                                                                       name="lastName"
-                                                                       id="lastName" placeholder="Last Name"/>
+                                                        <div class="form-validator col-md-6">
+                                                            <input type="text"
+                                                                   class="form-control  input-lg gray" name="firstname"
+                                                                   id="firstname" placeholder="First Name"/>
+                                                        </div>
+                                                        <div class="form-validator col-md-6">
+                                                            <input type="text"
+                                                                   class="form-control  input-lg gray"
+                                                                   name="lastname"
+                                                                   id="lastname" placeholder="Last Name"/>
 
-                                                            </div>
                                                         </div>
                                                     </div>
-
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="signupemail" class="col-sm-2 taofun-main-color">
                                                         Email</label>
                                                     <div class="col-sm-10">
                                                         <div class="form-validator">
-                                                                <input type="email"
-                                                                       class="form-control input-lg gray"
-                                                                       name="signupemail"
-                                                                       id="signupemail" placeholder="Email">
-                                                            </div>
+                                                            <input type="email"
+                                                                   class="form-control input-lg gray"
+                                                                   name="signupemail"
+                                                                   id="signupemail" placeholder="Email">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -235,11 +231,11 @@
                                                         Password</label>
                                                     <div class="col-sm-10 ">
                                                         <div class="form-validator">
-                                                                <input type="password"
-                                                                       class="form-control input-lg gray"
-                                                                       name="signuppassword"
-                                                                       id="signuppassword" placeholder="Password">
-                                                            </div>
+                                                            <input type="password"
+                                                                   class="form-control input-lg gray"
+                                                                   name="signuppassword"
+                                                                   id="signuppassword" placeholder="Password">
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -249,23 +245,21 @@
                                                         Password</label>
                                                     <div class="col-sm-10 ">
                                                         <div class="form-validator">
-                                                                <input type="signuppassword"
-                                                                       class="form-control input-lg gray"
-                                                                       name="resignuppassword"
-                                                                       id="resignuppassword"
-                                                                       placeholder="Re-enter Password"
-                                                                       required="required">
-                                                            </div>
+                                                            <input type="password"
+                                                                   class="form-control input-lg gray"
+                                                                   name="resignuppassword"
+                                                                   id="resignuppassword"
+                                                                   placeholder="Re-enter Password"
+                                                                   required="required">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-kootour-bold fullwidth">Sign Up
-                                                </button>
+
+                                                <button type="submit" class="btn btn-kootour-bold fullwidth">Sign Up </button>
                                                 <br>
                                                 <br>
-                                                <button type="reset" class="btn btn-kootour-bold fullwidth">Reset
-                                                </button>
-                                                <input type="submit" formnovalidate name="cancel" value="Cancel">
-                                            </form>  -->
+                                                <button type="submit" class="btn btn-kootour-bold fullwidth" onClick="this.form.reset()" >Reset </button>
+                                            </form>
                                         </div>
                                     </div>
 

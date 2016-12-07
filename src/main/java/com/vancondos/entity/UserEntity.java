@@ -1,7 +1,6 @@
 package com.vancondos.entity;
 
 
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;

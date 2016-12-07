@@ -1,6 +1,7 @@
 package com.vancondos.actions;
 
 import com.google.gson.Gson;
+import com.vancondos.exception.BusinessException;
 import com.vancondos.util.json.GsonTaoFun;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -53,7 +54,11 @@ public class AjaxAction extends BaseAction {
     protected String handleJsonError(Throwable e) {
         HashMap<String, Object> jsonMap = new HashMap<String, Object>();
         jsonMap.put("result", "error");
-        jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+        if (e instanceof BusinessException){
+            jsonMap.put("message", e.getMessage());
+        }else {
+            jsonMap.put("message", this.getClass().getName() + ":<br>" + e.getMessage());
+        }
         jsonStr = gson.toJson(jsonMap);
 
         return RETURN_JSON;

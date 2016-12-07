@@ -4,16 +4,12 @@ import com.vancondos.entity.BuildingEntity;
 import com.vancondos.entity.UserEntity;
 import com.vancondos.service.BuildingManager;
 import com.vancondos.service.UserManager;
+import com.vancondos.transfer.LogIn_SignUp;
+import com.vancondos.transfer.SignUpObject;
 import com.vancondos.util.json.GsonTaoFun;
 import org.apache.struts2.convention.annotation.Action;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 
 public class MainAjaxAction extends AjaxAction {
     private BuildingManager buildingManager;
@@ -35,13 +31,30 @@ public class MainAjaxAction extends AjaxAction {
     public String signUp() {
         try {
             SignUpObject signUpObject = GsonTaoFun.gson.fromJson(jsonFromWeb, SignUpObject.class);
-            List<String> errorList = signUpObject.validate();
+            List<String> errorList = signUpObject.validate(LogIn_SignUp.SIGNUP);
             if (errorList.isEmpty()) {
                 UserEntity userEntity = signUpObject.convertToEntity();
                 userManager.addOrUpdateUser(userEntity);
 
                 return handleJsonSuccess(userEntity);
-            }else {
+            } else {
+                return handleJsonErrorList(errorList);
+            }
+        } catch (Exception e) {
+            return handleException(e);
+        }
+    }
+
+    @Action(value = "logIn")
+    public String logIn() {
+        try {
+            SignUpObject signUpObject = GsonTaoFun.gson.fromJson(jsonFromWeb, SignUpObject.class);
+            List<String> errorList = signUpObject.validate(LogIn_SignUp.LOGIN);
+            if (errorList.isEmpty()) {
+                UserEntity userEntity = userManager.getUserFromLogIn(signUpObject);
+
+                return handleJsonSuccess(userEntity);
+            } else {
                 return handleJsonErrorList(errorList);
             }
         } catch (Exception e) {
@@ -73,58 +86,4 @@ public class MainAjaxAction extends AjaxAction {
         this.buildings = buildings;
     }
 
-    private class SignUpObject {
-        String firstname;
-        String lastname;
-        String signupemail;
-        String signuppassword;
-        String resignuppassword;
-
-        List<String> validate(){
-            List<String> list = new ArrayList<String>();
-            if (StringUtils.isEmpty(firstname)){
-                list.add("First Name is required");
-            }
-            if (StringUtils.isEmpty(lastname)){
-                list.add("Last Name is required");
-            }
-
-            if (StringUtils.isEmpty(signupemail)){
-                list.add("Email is required");
-            }else{
-                try {
-                    InternetAddress internetAddress = new InternetAddress(signupemail);
-                    internetAddress.validate();
-                }catch(AddressException ae){
-                    list.add("Invalid Email Address");
-                }
-            }
-
-            if (StringUtils.isEmpty(signuppassword)||StringUtils.isEmpty(resignuppassword)) {
-                if (StringUtils.isEmpty(signuppassword)) {
-                    list.add("Password is required");
-                }
-
-                if (StringUtils.isEmpty(resignuppassword)) {
-                    list.add("Re-Password is required");
-                }
-
-            }else{
-                if (!signuppassword.equals(resignuppassword)){
-                    list.add("Comfirm Password");
-                }
-            }
-
-            return list;
-        }
-
-        UserEntity convertToEntity(){
-            UserEntity userEntity = new UserEntity();
-            userEntity.setFirstName(firstname);
-            userEntity.setLastName(lastname);
-            userEntity.setEmail(signupemail);
-            userEntity.setPassword(signuppassword);
-            return userEntity;
-        }
-    }
 }
