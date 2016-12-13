@@ -111,17 +111,17 @@
 <jsp:include page="taofunfoot.jsp"/>
 
 
+
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="/js/jquery3.1.1.min.js"></script>
 <script src="/js/infobubble.js"></script>
-
 <script src="/js/jquery.validate.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap3.3.7.min.js"></script>
 <script src="/js/bootstrap-dialog.min.js"></script>
+<script src="/js/main.js"></script>
 <script src="/js/logininandsignup.js"></script>
+
 
 
 <!--

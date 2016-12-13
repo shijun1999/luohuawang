@@ -17,10 +17,15 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void addOrUpdateUser(UserEntity userEntity) throws BusinessException{
-        if (getUserByEmail(userEntity.getEmail())!=null){
+        if (userEntity.getId()==null && getUserByEmail(userEntity.getEmail())!=null){
             throw new BusinessException("The email has been used,try a different email address" );
         }
         getSession().saveOrUpdate(userEntity);
+    }
+
+    public UserEntity updateUserWithObjectReturn(UserEntity userEntity){
+        getSession().update(userEntity);
+        return getUserById(userEntity.getId());
     }
 
     @Override

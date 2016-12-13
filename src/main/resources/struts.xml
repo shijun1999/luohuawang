@@ -21,10 +21,6 @@
 
     <!-- Normal Action mappings are defined here -->
     <package name="default" extends="json-default,struts-default">
-        <!-- Two things to Notice:
-             1) class is set to 'editEmployeeAction' which is bean defined by Spring context
-             2) We have given the method to be called here as well;
-           -->
         <interceptors>
             <interceptor name="MyInterceptor" class="com.vancondos.interceptor.MyInterceptor"/>
             <interceptor-stack name="MyInterceptorStack">
@@ -33,10 +29,10 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="MyInterceptorStack"/>
-
+<!--
         <global-results>
-            <result name="exception">/exception.jsp</result>
-            <result name="runtime_exception">/exception/runtimeException.jsp</result>
+            <result name="exception">runtimeException.jsp</result>
+            <result name="runtime_exception">runtimeException.jsp</result>
             <result name="error">/error.jsp</result>
         </global-results>
 
@@ -45,7 +41,7 @@
             <exception-mapping exception="java.lang.Error" result="error"></exception-mapping>
             <exception-mapping exception="java.lang.RuntimeException" result="runtime_exception"></exception-mapping>
         </global-exception-mappings>
-
+-->
         <action name="main">
             <result>/WEB-INF/jsp/main.jsp</result>
         </action>

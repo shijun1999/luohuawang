@@ -6,6 +6,7 @@ import com.vancondos.service.BuildingManager;
 import com.vancondos.service.UserManager;
 import com.vancondos.transfer.LogIn_SignUp;
 import com.vancondos.transfer.SignUpObject;
+import com.vancondos.util.Const;
 import com.vancondos.util.json.GsonTaoFun;
 import org.apache.struts2.convention.annotation.Action;
 
@@ -52,6 +53,7 @@ public class MainAjaxAction extends AjaxAction {
             List<String> errorList = signUpObject.validate(LogIn_SignUp.LOGIN);
             if (errorList.isEmpty()) {
                 UserEntity userEntity = userManager.getUserFromLogIn(signUpObject);
+                getSession().put(Const.LOG_IN_USER_KEY, userEntity);
 
                 return handleJsonSuccess(userEntity);
             } else {
@@ -60,6 +62,12 @@ public class MainAjaxAction extends AjaxAction {
         } catch (Exception e) {
             return handleException(e);
         }
+    }
+
+    @Action(value = "logOut")
+    public String logOut() {
+        getSession().put(Const.LOG_IN_USER_KEY,null);
+        return RETURN_JSON;
     }
 
     public BuildingManager getBuildingManager() {

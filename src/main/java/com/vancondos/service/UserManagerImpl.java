@@ -18,6 +18,12 @@ public class UserManagerImpl implements UserManager{
 
     @Override
     @Transactional
+    public UserEntity updateUserWithObjectReturn(UserEntity userEntity){
+        return userDAO.updateUserWithObjectReturn(userEntity);
+    }
+
+    @Override
+    @Transactional
     public UserEntity getUserById(Integer userId){
         return userDAO.getUserById(userId);
     }
