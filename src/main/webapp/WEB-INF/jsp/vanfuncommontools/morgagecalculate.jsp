@@ -4,10 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
-    <title>温哥华淘房网</title>
-
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
+    <%@ include file="../content.html" %>
 </head>
 
 <body>

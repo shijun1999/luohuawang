@@ -3,12 +3,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-
+    <%@ include file="../content.html" %>
     <link rel='stylesheet' id='js_composer_front-css'  href='http://www.ladichan.com/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=4.11.2' type='text/css' media='all' />
 
-    <script src="/js/jquery-1.12.3.min.js"></script>
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
 </head>
 
 <body>

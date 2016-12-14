@@ -8,12 +8,21 @@
                 <div class="td-header-sp-top-menu">
                     <div class="td_data_time" id="current_date"></div>
                     <div class="td_data_time">
-                        <a href="main">联系我们</a>
+                        <a href="main"><s:text name="header.contact" /></a>
+                    </div>
+                    <s:set var="lang" value="locale.language"/>
+                    <div class="td_data_time">
+                        <s:if test="#lang=='zh'">
+                            <a id="language" href="#">English</a>
+                        </s:if>
+                        <s:else>
+                            <a id="language" href="#">中国（简体）</a>
+                        </s:else>
                     </div>
                     <div class="td_data_time">
                         <s:if test="#session['log_in_user_key']==null">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#loginFormModaldialog">
-                                Log In / Sign Up
+                                <s:text name="header.loginsignup" />
                             </button>
                         </s:if>
                         <s:else>
@@ -26,8 +35,8 @@
 
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="loadAccount">Account</a></li>
-                                    <li><a id="logout" href="javascript:logoutfunc();">Log out</a></li>
+                                    <li><a href="loadAccount"><s:text name="header.account" /></a></li>
+                                    <li><a id="logout" href="javascript:logoutfunc();"><s:text name="header.logout" /></a></li>
                                 </ul>
                             </li>
                         </s:else>
@@ -82,21 +91,18 @@
 
             <div class="collapse navbar-collapse" id="navbar-kootour-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="is-active" href="main">首页</a></li>
-                    <li><a href="/vancities">热门城市</a></li>
-                    <li><a href="/developments">楼花转让</a></li>
-                    <li><a href="/buildings">房产分析</a></li>
-                    <li><a href="/agents">购房指南</a></li>
+                    <li><a class="is-active" href="main"><s:text name="header.main" /></a></li>
+                    <li><a href="/vancities"><s:text name="header.cities" /></a></li>
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><s:text name="header.tool" /><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="morgagecalculate">房屋贷款计算器</a></li>
-                            <li><a href="realestateterm">地产词典</a></li>
+                            <li><a href="morgagecalculate"><s:text name="header.calc" /></a></li>
+                            <li><a href="realestateterm"><s:text name="header.term" /></a></li>
                             <li class="divider"></li>
                             <li><a href="#">Trash</a></li>
                         </ul>
                     </li>
-                    <li><a class="" href="/list">后台管理</a></li>
+                    <li><a class="" href="/list"><s:text name="header.list" /></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
@@ -117,13 +123,13 @@
                                 </button>
                                 <div class="login-wrap">
                                     <div class="login-container">
-                                        <p class="nomargin text-right blue"><b>Log In</b></p>
+                                        <p class="nomargin text-right blue"><b><s:text name="header.login" /></b></p>
                                     </div>
                                     <div class="login-separator">
                                         <p class="nomargin text-center blue">|</p>
                                     </div>
                                     <div class="login-container">
-                                        <p class="nomargin text-left blue">Sign Up</p>
+                                        <p class="nomargin text-left blue"><s:text name="header.signup" /></p>
                                     </div>
                                 </div>
 
@@ -154,8 +160,8 @@
                                     <div class="col-md-12">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#Login" data-toggle="tab">Log In</a></li>
-                                            <li><a href="#signup" data-toggle="tab">Sign Up</a></li>
+                                            <li class="active"><a href="#Login" data-toggle="tab"><s:text name="header.login" /></a></li>
+                                            <li><a href="#signup" data-toggle="tab"><s:text name="header.signup" /></a></li>
                                         </ul>
                                         <!-- Tab panes -->
                                         <div class="tab-content">
@@ -168,7 +174,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="loginemail" class="col-sm-2 taofun-main-color">
-                                                            Email</label>
+                                                            <s:text name="header.email" /></label>
                                                         <div class="col-sm-10">
                                                             <div class="form-validator">
                                                                 <input type="email"
@@ -180,7 +186,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="loginpassword" class="col-sm-2 taofun-main-color">
-                                                            Password</label>
+                                                            <s:text name="header.password" /></label>
                                                         <div class="col-sm-10 ">
                                                             <div class="form-validator">
                                                                 <input type="password"
@@ -193,17 +199,16 @@
                                                     <div class="form-group">
                                                         <div class="checkbox col-sm-offset-2 col-sm-10">
                                                             <label class="taofun-main-color_no_padding">
-                                                                <input type="checkbox"> Remember me
+                                                                <input type="checkbox"> <s:text name="header.rememberme" />
                                                             </label>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <a href="forget-password.html" role="button">Forgot
-                                                            password?</a>
+                                                        <a href="forget-password.html" role="button"><s:text name="header.forgetpassword" /></a>
                                                     </div>
                                                     <button type="submit"
-                                                            class="btn btn-kootour-bold fullwidth">Log me In
+                                                            class="btn btn-kootour-bold fullwidth"><s:text name="header.login" />
                                                     </button>
 
                                                 </form>
@@ -218,7 +223,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-2 taofun-main-color">
-                                                            Name</label>
+                                                            <s:text name="header.name" /></label>
                                                         <div class="col-sm-10">
                                                             <div class="form-validator col-md-6">
                                                                 <input type="text"
@@ -237,7 +242,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="signupemail" class="col-sm-2 taofun-main-color">
-                                                            Email</label>
+                                                            <s:text name="header.email" /></label>
                                                         <div class="col-sm-10">
                                                             <div class="form-validator">
                                                                 <input type="email"
@@ -249,7 +254,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="signuppassword" class="col-sm-2 taofun-main-color">
-                                                            Password</label>
+                                                            <s:text name="header.password" /></label>
                                                         <div class="col-sm-10 ">
                                                             <div class="form-validator">
                                                                 <input type="password"
@@ -263,7 +268,7 @@
                                                     <div class="form-group">
                                                         <label for="resignuppassword"
                                                                class="col-sm-2 taofun-main-color">
-                                                            Password</label>
+                                                            <s:text name="header.repassword" /></label>
                                                         <div class="col-sm-10 ">
                                                             <div class="form-validator">
                                                                 <input type="password"
@@ -276,12 +281,12 @@
                                                         </div>
                                                     </div>
 
-                                                    <button type="submit" class="btn btn-kootour-bold fullwidth">Sign Up
+                                                    <button type="submit" class="btn btn-kootour-bold fullwidth"><s:text name="header.signup" />
                                                     </button>
                                                     <br>
                                                     <br>
                                                     <button type="submit" class="btn btn-kootour-bold fullwidth"
-                                                            onClick="this.form.reset()">Reset
+                                                            onClick="this.form.reset()"><s:text name="header.reset" />
                                                     </button>
                                                 </form>
                                             </div>
@@ -298,25 +303,5 @@
         </div>
     </s:if>
 </div>
-
-<script>
-
-    //$('#myModal').modal('show');
-    var curDt = new Date(Date.now()).toLocaleString();
-    document.getElementById("current_date").innerHTML = curDt;
-
-    function logoutfunc() {
-        $.ajax({
-            url: 'logOut',
-            type: 'post',
-            dataType: 'json',
-            success: function (json) {
-                location.reload(true);
-            },
-            error: function (json) {
-                runErrorDialog(err.responseText);
-            }
-        });
-    }
-
-</script>
+<script src="/js/jquery3.1.1.min.js"></script>
+<script src="/js/header.js"></script>

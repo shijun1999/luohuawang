@@ -4,16 +4,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>温哥华淘房网</title>
-
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
+    <%@ include file="content.html" %>
     <link rel="stylesheet" href="/css/morecontent.css"/>
 </head>
 
 <body>
-
-
 <jsp:include page="taofunheader.jsp"/>
 <div class="td-main-content-wrap td-main-page-wrap">
     <div class="td-container">
@@ -54,10 +49,12 @@
                                                 <td>${emp.lng}</td>
                                                 <td>${emp.address}</td>
                                                 <td>
-                                                    <button id="update-${emp.id}" name="building" type="submit">update</button>
+                                                    <button id="update-${emp.id}" name="building" type="submit">update
+                                                    </button>
                                                 </td>
                                                 <td>
-                                                    <button id="delete-${emp.id}" name="building" type="submit">Delete</button>
+                                                    <button id="delete-${emp.id}" name="building" type="submit">Delete
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -101,14 +98,18 @@
 
                                             <tr>
                                                 <td>${emp.cityNameC} (${emp.cityNameE})</td>
-                                                <td ><div class="more">${emp.description} </div></td>
+                                                <td>
+                                                    <div class="more">${emp.description} </div>
+                                                </td>
 
                                                 <td>${emp.order}</td>
                                                 <td>
-                                                    <button id="update-${emp.id}" name="vanCity" type="submit">update</button>
+                                                    <button id="update-${emp.id}" name="vanCity" type="submit">update
+                                                    </button>
                                                 </td>
                                                 <td>
-                                                    <button id="delete-${emp.id}" name="vanCity" type="submit">Delete</button>
+                                                    <button id="delete-${emp.id}" name="vanCity" type="submit">Delete
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </c:forEach>

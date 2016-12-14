@@ -1,13 +1,9 @@
 <!doctype html >
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-
-<html><!--<![endif]-->
+<html>
 <head>
-    <title>温哥华淘房网</title>
-
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
+    <%@ include file="content.html" %>
     <link rel="stylesheet" href="/css/pagination.css"/>
     <link rel="stylesheet" href="/css/morecontent.css"/>
 </head>

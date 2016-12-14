@@ -17,13 +17,13 @@
                     <div class="form-group">
                         <!--<input type="text" class="form-control" id="name" placeholder="请输入楼花名称或开发商名称"> -->
                         <input id="ui_search_bar_btn" class="searchBtn buttonbg ft" type="button"
-                               value="搜  索"/>
-                        <input id="ui_search_bar_input" placeholder="输入楼花名称 或 开发商名称,支持模糊搜索"
+                               value="<s:text name="main.button" />"/>
+                        <input id="ui_search_bar_input" placeholder="<s:text name="main.button.placeholder" />"
                                class="searchText commonbg ft" type="text" value=""/>
 
                     </div>
                     <div class="form-group">
-                        <label for="region" class="col-sm-2 control-label">地区选择</label>
+                        <label class="col-sm-2 control-label"><s:text name="main.area.checkbox" /></label>
                         <div class="col-sm-10">
                             <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1"
                                                                   value="all">不限</label>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-sm-2 control-label">价格选择</label>
+                        <label class="col-sm-2 control-label"><s:text name="main.price.checkbox" /></label>
                         <div class="col-sm-10">
                             <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1"
                                                                   value="all">不限</label>
@@ -114,7 +114,6 @@
 
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
 </script>
-<script src="/js/jquery3.1.1.min.js"></script>
 <script src="/js/infobubble.js"></script>
 <script src="/js/jquery.validate.min.js"></script>
 <script src="/js/bootstrap3.3.7.min.js"></script>
