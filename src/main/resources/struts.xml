@@ -47,15 +47,15 @@
         </action>
 
         <action name="morgagecalculate">
-            <result>/WEB-INF/jsp/vanfuncommontools/morgagecalculate.jsp</result>
+            <result>/WEB-INF/jsp/morgagecalculate.jsp</result>
         </action>
 
         <action name="affordablepayment">
-            <result>/WEB-INF/jsp/vanfuncommontools/affordablepayment.jsp</result>
+            <result>/WEB-INF/jsp/affordablepayment.jsp</result>
         </action>
 
         <action name="realestateterm">
-            <result>/WEB-INF/jsp/vanfuncommontools/realestateterm.jsp</result>
+            <result>/WEB-INF/jsp/realestateterm.jsp</result>
         </action>
 
         <action name="vancities">

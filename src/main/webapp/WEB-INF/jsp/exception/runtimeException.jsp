@@ -31,7 +31,7 @@ Runtime Exception Stack Trace: <br>
                 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
                 </script>
                 <script src="/js/jquery-2.2.0.min.js"></script>
-                <script src="/js/bootstrap.min.js"></script>
+                <script src="/js/bootstrap3.3.7.min.js"></script>
 
                 <div class="infobox_outer">
                     <img class="img_close" src="icon_close.png" align="right">

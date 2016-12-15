@@ -190,7 +190,7 @@
         });
 </script>
 
-<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js.copy"></script>
 
 <!-- ace scripts -->
 <script src="/js/ace-elements.min.js"></script>

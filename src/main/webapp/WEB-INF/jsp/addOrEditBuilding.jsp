@@ -1,58 +1,14 @@
 <!doctype html >
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>温哥华淘房网</title>
-
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
-    <link rel="stylesheet" href="/css/morecontent.css"/>
-
-    //----------------
-
-
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css"/>
+    <!--<link rel="stylesheet" href="/css/morecontent.css"/> -->
     <link rel="stylesheet" href="/summernote/summernote.css"/>
     <link rel="stylesheet" href="/css/fileinput.min.css"/>
-
-    <!-- text fonts -->
-
-    <!-- ace styles -->
-    <link rel="stylesheet" href="/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
-
-    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
-
-    <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="/css/chosen.min.css"/>
-    <link rel="stylesheet" href="/css/daterangepicker.css"/>
-    <link rel="stylesheet" href="/css/jquery.timepicker.css"/>
+    <link rel="stylesheet" href="/css/ace.min.css">
     <link rel="stylesheet" href="/css/HoldOn.min.css"/>
-
-    <!-- kootour stles -->
-    <link rel="stylesheet" href="/css/kootour.css">
-
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="/css/ace-part2.min.css" class="ace-main-stylesheet"/>
-    <![endif]-->
-
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="/css/ace-ie.min.css"/>
-    <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="/js/ace-extra.min.js"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]> -->
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
+    <%@ include file="content.html" %>
 </head>
 
 <body>
@@ -74,22 +30,22 @@
                                             <ul class="steps">
                                                 <li data-step="1" class="active">
                                                     <span class="step">1</span>
-                                                    <span class="title">项目首页</span>
+                                                    <span class="title"><s:text name="addupdateitem.main" /></span>
                                                 </li>
 
                                                 <li data-step="2">
                                                     <span class="step">2</span>
-                                                    <span class="title">项目详情</span>
+                                                    <span class="title"><s:text name="addupdateitem.detail" /></span>
                                                 </li>
 
                                                 <li data-step="3">
                                                     <span class="step">3</span>
-                                                    <span class="title">楼层计划</span>
+                                                    <span class="title"><s:text name="addupdateitem.floorplan" /></span>
                                                 </li>
 
                                                 <li data-step="4">
                                                     <span class="step kootour-main-color">4</span>
-                                                    <span class="title kootour-main-color">图片</span>
+                                                    <span class="title kootour-main-color"><s:text name="addupdateitem.pic" /></span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -103,7 +59,7 @@
 
                                                     <input type="hidden" id="buildingId" name="buildingId"
                                                            value="<s:property value="#session.updated_building_id_key"/>">
-                                                    <h4 class="lighter block kootour-main-color">1.名称</h4>
+                                                    <h4 class="lighter block kootour-main-color">1.<s:text name="addupdateitem.name" /></h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix">
                                                             <input id="name" type="text" name="name"
@@ -111,7 +67,7 @@
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <h4 class="lighter block kootour-main-color">2.坐标</h4>
+                                                    <h4 class="lighter block kootour-main-color">2.<s:text name="addupdateitem.coordinate" /></h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix">
                                                             <input id="LAT" type="text" name="LAT" class="form-control"
@@ -126,7 +82,7 @@
                                                     </div>
 
                                                     <hr>
-                                                    <h4 class="lighter block kootour-main-color">3.地址</h4>
+                                                    <h4 class="lighter block kootour-main-color">3.<s:text name="addupdateitem.address" /></h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix">
                                                             <input id="address" type="text" name="address"
@@ -135,15 +91,15 @@
                                                     </div>
                                                     <hr>
 
-                                                    <h4 class="lighter block kootour-main-color">4.简述</h4>
+                                                    <h4 class="lighter block kootour-main-color">4.<s:text name="addupdateitem.shortDesc" /></h4>
                                                     <div id="shortDesc" name="shortDesc"></div>
                                                     <hr>
 
-                                                    <h4 class="lighter block kootour-main-color">5.详细描述</h4>
+                                                    <h4 class="lighter block kootour-main-color">5.<s:text name="addupdateitem.longdesc" /></h4>
                                                     <div id="longDesc" name="longDesc"></div>
                                                     <hr>
 
-                                                    <h4 class="lighter block kootour-main-color">6.CITY</h4>
+                                                    <h4 class="lighter block kootour-main-color">6.<s:text name="addupdateitem.city" /></h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix">
                                                             <select multiple="" class="chosen-select form-control"
@@ -166,20 +122,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="step-pane" data-step="2">
-                                                    <h4 class="lighter block kootour-main-color">7.楼层</h4>
+                                                    <h4 class="lighter block kootour-main-color">7.<s:text name="addupdateitem.floors" /></h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix"><input type="text" id="stroys"
                                                                                      name="stroys"></div>
                                                     </div>
                                                     <hr>
-                                                    <h4 class="lighter block kootour-main-color">8.建商</h4>
+                                                    <h4 class="lighter block kootour-main-color">8.<s:text name="addupdateitem.constructer" /></h4>
 
                                                     <div class="form-validator">
                                                         <div class="clearfix"><input type="text" id="construction"
                                                                                      name="construction"></div>
                                                     </div>
                                                     <hr>
-                                                    <h4 class="lighter block kootour-main-color">9.公共交通</h4>
+                                                    <h4 class="lighter block kootour-main-color">9.<s:text name="addupdateitem.publictransit" /></h4>
                                                     <div class="form-validator">
                                                         <div class="clearfix"><input type="text"
                                                                                      id="publicTransportation"
@@ -187,15 +143,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="step-pane" data-step="3">
-                                                    <h4 class="lighter block kootour-main-color">10.楼层平面图</h4>
+                                                    <h4 class="lighter block kootour-main-color">10.<s:text name="addupdateitem.floorplan" /></h4>
                                                     <table id="extra-table"
                                                            class="table table-striped table-bordered table-hover">
                                                         <thead>
                                                         <tr>
-                                                            <th>Level</th>
-                                                            <th>Interior Area</th>
-                                                            <th>Exterior Area</th>
-                                                            <th>Total Area</th>
+                                                            <th><s:text name="addupdateitem.floorplan.floor" /></th>
+                                                            <th><s:text name="addupdateitem.floorplan.interior" /></th>
+                                                            <th><s:text name="addupdateitem.floorplan.exterior" /></th>
+                                                            <th><s:text name="addupdateitem.floorplan.totalarea" /></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -261,15 +217,15 @@
                                                 <div class="step-pane" data-step="4">
 
 
-                                                    <h4 class="lighter block kootour-main-color">11. 图片</h4>
+                                                    <h4 class="lighter block kootour-main-color">11.<s:text name="addupdateitem.picture" /></h4>
                                                     <div class="row clearfix">
                                                         <div id="uploaded-images">
-                                                            <span class="center">There is no image here.</span>
+                                                            <span class="center"><s:text name="addupdateitem.noitem" /></span>
                                                         </div>
                                                     </div>
                                                     <div class="hr hr-8"></div>
 
-                                                    <h4 class="lighter block kootour-main-color">12.上传图片</h4>
+                                                    <h4 class="lighter block kootour-main-color">12.<s:text name="addupdateitem.upload" /></h4>
                                                     <form id="uploadForm" action="" method="post" target="_self"
                                                           enctype="multipart/form-data">
                                                         <input id="input-dim-1" name="file" type="file" multiple
@@ -286,11 +242,11 @@
                                     <div class="wizard-actions">
                                         <button class="btn btn-prev" disabled="disabled">
                                             <i class="ace-icon fa fa-arrow-left"></i>
-                                            Prev
+                                            <s:text name="addupdateitem.prev" />
                                         </button>
 
                                         <button class="btn btn-success btn-next" data-last="Finish">
-                                            Next
+                                            <s:text name="addupdateitem.next" />
                                             <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
                                         </button>
                                     </div>
@@ -308,7 +264,7 @@
 <jsp:include page="taofunfoot.jsp"/>
 
 <script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap3.3.7.min.js"></script>
 
 <!-- ace scripts -->
 <script src="/js/ace-elements.min.js"></script>

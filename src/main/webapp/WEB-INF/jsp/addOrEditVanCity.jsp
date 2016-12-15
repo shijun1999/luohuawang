@@ -108,7 +108,7 @@
 </div><!-- /.main-container -->
 
 <script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap3.3.7.min.js"></script>
 <!-- page specific plugin scripts -->
 <script src="/summernote/summernote.min.js"></script>
 <script src="/js/fileinput.js"></script>

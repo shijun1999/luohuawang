@@ -17,9 +17,9 @@
                 <div class="wpb_wrapper">
                     <div class="wpb_text_column wpb_content_element ">
                         <div class="wpb_wrapper">
-                            <h1 style="text-align: center;"><strong>房屋信息记录管理</strong></h1>
+                            <h2 style="text-align: center;"><strong><s:text name="management.house.title"/></strong></h2>
 
-                            <a href="addBuilding">Add Building</a>
+                            <h3><a href="addBuilding" class="taofun-main-color"><s:text name="management.house.addnewhouse"/></a></h3>
                         </div>
                     </div>
 
@@ -28,17 +28,17 @@
 
                             <input type="hidden" id="buildingId" name="building.id">
 
-                            <div class="wpb_text_column wpb_content_element ">
+                            <div class="wpb_text_column wpb_content_element">
                                 <div class="wpb_wrapper">
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>lat</th>
-                                            <th>lng</th>
-                                            <th>address</th>
-                                            <th>edit</th>
-                                            <th>Delete</th>
+                                            <th class="col-sm-3 taofun-main-color"><s:text name="management.house.name"/></th>
+                                            <th class="col-sm-2 taofun-main-color"><s:text name="management.house.lat"/></th>
+                                            <th class="col-sm-2 taofun-main-color"><s:text name="management.house.lng"/></th>
+                                            <th class="col-sm-3 taofun-main-color"><s:text name="management.house.address"/></th>
+                                            <th class="col-sm-1 taofun-main-color"><s:text name="management.house.edit"/></th>
+                                            <th class="col-sm-1 taofun-main-color"><s:text name="management.house.delete"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -49,11 +49,11 @@
                                                 <td>${emp.lng}</td>
                                                 <td>${emp.address}</td>
                                                 <td>
-                                                    <button id="update-${emp.id}" name="building" type="submit">update
+                                                    <button id="update-${emp.id}" name="building" type="submit"><s:text name="management.house.edit"/>
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button id="delete-${emp.id}" name="building" type="submit">Delete
+                                                    <button id="delete-${emp.id}" name="building" type="submit"><s:text name="management.house.delete"/>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -71,8 +71,8 @@
                 <div class="wpb_wrapper">
                     <div class="wpb_text_column wpb_content_element ">
                         <div class="wpb_wrapper">
-                            <h1 style="text-align: center;"><strong>城市信息记录管理</strong></h1>
-                            <a href="addVanCity">Add VanCity</a>
+                            <h2 style="text-align: center;"><strong><s:text name="management.city.title"/></strong></h2>
+                            <h3><a href="addVanCity" class="taofun-main-color"><s:text name="management.city.addnewcity"/></a></h3>
                         </div>
                     </div>
 
@@ -86,11 +86,11 @@
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th>CityName</th>
-                                            <th>description</th>
-                                            <th>Order</th>
-                                            <th>edit</th>
-                                            <th>Delete</th>
+                                            <th class="col-sm-2 taofun-main-color"><s:text name="management.city.name"/></th>
+                                            <th class="col-sm-7 taofun-main-color"><s:text name="management.city.description"/></th>
+                                            <th class="col-sm-1 taofun-main-color"><s:text name="management.city.order"/></th>
+                                            <th class="col-sm-1 taofun-main-color"><s:text name="management.city.edit"/></th>
+                                            <th class="col-sm-1 taofun-main-color"><s:text name="management.city.delete"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -104,11 +104,11 @@
 
                                                 <td>${emp.order}</td>
                                                 <td>
-                                                    <button id="update-${emp.id}" name="vanCity" type="submit">update
+                                                    <button id="update-${emp.id}" name="vanCity" type="submit"><s:text name="management.city.edit"/>
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button id="delete-${emp.id}" name="vanCity" type="submit">Delete
+                                                    <button id="delete-${emp.id}" name="vanCity" type="submit"><s:text name="management.city.delete"/>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -131,8 +131,6 @@
 </div><!--close content div-->
 
 
-<script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 <script src="/js/listBuilding.js"></script>
 <script src="/js/morecontent.js"></script>
 </body>

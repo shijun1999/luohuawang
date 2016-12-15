@@ -5,6 +5,7 @@
 <html>
 <head>
    <%@ include file="content.html" %>
+    <link rel="stylesheet" href="/css/taofun-infobox.css"/>
 </head>
 
 <body>
@@ -115,11 +116,8 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBhdzyHt37AYtktMH3t2SKcNtdBlm_fvlI&sensor=false">
 </script>
 <script src="/js/infobubble.js"></script>
-<script src="/js/jquery.validate.min.js"></script>
-<script src="/js/bootstrap3.3.7.min.js"></script>
 <script src="/js/bootstrap-dialog.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/logininandsignup.js"></script>
 
 
 

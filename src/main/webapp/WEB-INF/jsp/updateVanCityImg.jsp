@@ -106,7 +106,7 @@
 </div><!-- /.main-container -->
 
 <script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap3.3.7.min.js"></script>
 
 <!-- ace scripts -->
 <script src="/js/ace-elements.min.js"></script>

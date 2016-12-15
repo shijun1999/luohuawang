@@ -1,18 +1,13 @@
 <!doctype html >
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
-    <%@ include file="../content.html" %>
+    <%@ include file="content.html" %>
 </head>
 
 <body>
-
-<!--
-Header style 1
--->
-<jsp:include page="../taofunheader.jsp"/>
+<jsp:include page="taofunheader.jsp"/>
 
 <div class="td-main-content-wrap td-main-page-wrap">
     <div class="td-container">
@@ -22,8 +17,8 @@ Header style 1
                     <div class="wpb_text_column wpb_content_element ">
                         <div class="wpb_wrapper">
                             <p></p>
-                            <h2 style="text-align: center;"><strong>房屋贷款计算器</strong></h2>
-                            <p style="text-align: center;">输入房屋价格，首付款，贷款周期来计算出每个月需要支付的贷款金额。</p>
+                            <h2 style="text-align: center;"><strong><s:text name="morgagecalculate.cal"/></strong></h2>
+                            <p style="text-align: center;"><s:text name="morgagecalculate.desc"/></p>
 
                         </div>
                     </div>
@@ -53,11 +48,10 @@ Header style 1
             </div>
         </div>
     </div>
-</div> <!-- /.td-main-content-wrap -->
+</div>
 
-
-<jsp:include page="../taofunfoot.jsp"/>
-</div><!--close content div-->
+<jsp:include page="taofunfoot.jsp"/>
+</div>
 
 </body>
 </html>

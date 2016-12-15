@@ -11,7 +11,37 @@ $(document).ready(function () {
                 cities = obj.data;
                 totalNumber = cities.length;
 
-                $('#demo').pagination({
+                var options = {
+                    dataSource: cities,
+                    pageSize: 4,
+                    showGoInput: true,
+                    showGoButton: true,
+                    className: 'paginationjs-theme-blue paginationjs-big',
+                    callback: function (data, pagination) {
+                        //set up template
+                        require_template('vancities');
+                        // Grab the template script
+                        var theTemplateScript = $("#template_vancities").html();
+
+                        // Compile the template
+                        var theTemplate = Handlebars.compile(theTemplateScript);
+
+                        var content = {
+                            vanCity: data
+                        };
+
+                        var theCompiledHtml = theTemplate(content);
+
+                        $('#pagination').prev().html(theCompiledHtml);
+
+
+                        morecontent();
+                    }
+                };
+
+                $('#pagination').pagination(options);
+
+               /* $('#demo').pagination({
                     dataSource: cities,
                     pageSize: 2,
                     showGoInput: true,
@@ -37,7 +67,7 @@ $(document).ready(function () {
 
                         morecontent();
                     }
-                })
+                })*/
             } else {
                 runErrorDialog(obj.message);
             }

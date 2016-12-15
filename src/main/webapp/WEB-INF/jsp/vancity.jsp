@@ -6,8 +6,9 @@
 <head>
     <title>温哥华淘房网</title>
 
+    <link rel="stylesheet" href="/css/bootstrap3.3.7.min.css">
     <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
+    <link href="/css/kootour.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/pagination.css"/>
     <link rel="stylesheet" href="/css/morecontent.css"/>
 </head>
@@ -66,7 +67,7 @@
 <jsp:include page="taofunfoot.jsp"/>
 
 <script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap3.3.7.min.js"></script>
 <script src="/js/vancity.js"></script>
 
 </body>
