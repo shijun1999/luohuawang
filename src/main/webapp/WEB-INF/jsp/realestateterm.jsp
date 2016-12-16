@@ -1,7 +1,7 @@
 <!doctype html >
 <%@ page contentType="text/html; charset=UTF-8" %>
 <head>
-    <%@ include file="content.html" %>
+    <%@ include file="content.jsp" %>
     <link rel="stylesheet" href="/css/js_composer4.11.2.min.css">
 </head>
 

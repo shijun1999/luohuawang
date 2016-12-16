@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <%@ include file="content.html" %>
+    <%@ include file="content.jsp" %>
 
     <link rel="stylesheet" href="/css/pagination.css"/>
     <link rel="stylesheet" href="/css/morecontent.css"/>

@@ -63,7 +63,7 @@ $(document).ready(function () {
 
                     if (obj.result == 'success') {
                         HoldOn.close();
-                        window.location.href = "list";
+                        window.location.href = "listBuilding";
                     } else {
                         runErrorDialog(obj.message);
                     }
@@ -212,7 +212,7 @@ function runErrorDialog(msg) {
             label: 'Close',
             action: function (dialog) {
                 dialog.close();
-                window.location.href = "list";
+                window.location.href = "listBuilding";
             }
         }]
     });

@@ -109,7 +109,7 @@ function addEditVanCity() {
         success: function (json) {
             var obj = JSON.parse(json);
             if (obj.result == 'success') {
-                window.location.href = "list";
+                window.location.href = "listCity";
             } else {
                 runErrorDialog(obj.message);
             }
@@ -128,7 +128,7 @@ function runErrorDialog(msg){
             label: 'Close',
             action: function (dialog) {
                 dialog.close();
-                window.location.href = "list";
+                window.location.href = "listCity";
             }
         }]
     });

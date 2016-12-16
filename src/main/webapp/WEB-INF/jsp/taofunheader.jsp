@@ -93,7 +93,7 @@
             <div class="collapse navbar-collapse" id="navbar-kootour-collapse">
                 <ul class="nav navbar-nav">
                     <li><a class="is-active" href="main"><s:text name="header.main"/></a></li>
-                    <li><a href="/vancities"><s:text name="header.cities"/></a></li>
+                    <li><a href="vancities"><s:text name="header.cities"/></a></li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><s:text name="header.tool"/><b
                                 class="caret"></b></a>
@@ -110,8 +110,8 @@
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle"><s:text name="header.management"/><b
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a class="" href="/list"><s:text name="header.list"/></a></li>
-                                <li><a class="" href="/list"><s:text name="header.list"/></a></li>
+                                <li><a href="listBuilding"><s:text name="header.buildinglist"/></a></li>
+                                <li><a href="listCity"><s:text name="header.citylist"/></a></li>
                             </ul>
                         </li>
                     </s:if>

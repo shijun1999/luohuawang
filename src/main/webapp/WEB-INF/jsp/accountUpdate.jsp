@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <%@ include file="content.html" %>
+    <%@ include file="content.jsp" %>
 </head>
 
 <body>

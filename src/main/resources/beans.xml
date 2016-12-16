@@ -33,7 +33,13 @@
 	     </property>
     </bean>
 
-    <bean name="VanCityAction" class="com.vancondos.actions.VanCityAction" scope="prototype">
+    <bean name="listCityAction" class="com.vancondos.actions.ListCityAction" scope="prototype">
+        <property name="vanCityManager">
+            <ref bean="vanCityManager"/>
+        </property>
+    </bean>
+
+    <bean name="vanCityAction" class="com.vancondos.actions.VanCityAction" scope="prototype">
         <property name="vanCityManager">
             <ref bean="vanCityManager"/>
         </property>

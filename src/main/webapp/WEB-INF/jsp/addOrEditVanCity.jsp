@@ -1,27 +1,15 @@
 <!doctype html >
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
-    <title>温哥华淘房网</title>
+    <%@ include file="content.jsp" %>
 
-    <link rel='stylesheet' href='/css/taofun-style.css' type='text/css'/>
-    <link rel="stylesheet" href="/css/taofun.css"/>
     <link rel="stylesheet" href="/css/morecontent.css"/>
-
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-dialog.min.css"/>
     <link rel="stylesheet" href="/summernote/summernote.css"/>
     <link rel="stylesheet" href="/css/fileinput.min.css"/>
-
-    <!-- text fonts -->
     <link rel="stylesheet" href="/css/HoldOn.min.css"/>
-
-    <!-- kootour stles -->
-    <link rel="stylesheet" href="/css/kootour.css">
 </head>
 
 <body>
@@ -42,7 +30,7 @@
                                 <input type="hidden" id="vanCityId" name="vanCityId"
                                        value="<s:property value="#session.updated_van_city_id_key"/>">
                                 <input type="hidden" id="picture" name="picture">
-                                <h4 class="lighter block kootour-main-color">1.City Name (English)</h4>
+                                <h4 class="lighter block kootour-main-color">1.<s:text name="addeditcity.name.english"/></h4>
                                 <div class="form-validator">
                                     <div class="clearfix">
                                         <input id="cityNameE" type="text" name="cityNameE" class="form-control"/>
@@ -50,7 +38,7 @@
                                 </div>
                                 <hr>
 
-                                <h4 class="lighter block kootour-main-color">2.City Name (Chinese)</h4>
+                                <h4 class="lighter block kootour-main-color">2.<s:text name="addeditcity.name.chinese"/></h4>
                                 <div class="form-validator">
                                     <div class="clearfix">
                                         <input id="cityNameC" type="text" name="cityNameC" class="form-control"/>
@@ -58,11 +46,11 @@
                                 </div>
                                 <hr>
 
-                                <h4 class="lighter block kootour-main-color">3.Description</h4>
+                                <h4 class="lighter block kootour-main-color">3.<s:text name="addeditcity.description"/></h4>
                                 <div id="desc" name="desc"></div>
                                 <hr>
 
-                                <h4 class="lighter block kootour-main-color">4.Sort # </h4>
+                                <h4 class="lighter block kootour-main-color">4.<s:text name="addeditcity.sort.no"/> </h4>
                                 <div class="form-validator">
                                     <div class="clearfix">
                                         <input id="sort" type="text" name="sort" class="form-control"/>
@@ -70,19 +58,19 @@
                                 </div>
                                 <hr>
 
-                                <h4 class="lighter block kootour-main-color">5. On the Topbar</h4>
+                                <h4 class="lighter block kootour-main-color">5.<s:text name="addeditcity.topbar"/></h4>
                                 <div class="form-validator">
                                     <div class="clearfix">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" id="onTopbar"> On the Topbar</label>
+                                            <label><input type="checkbox" id="onTopbar"><s:text name="addeditcity.topbar"/></label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <hr>
-                                <h4 class="lighter block kootour-main-color">6.上传图片</h4>
+                                <h4 class="lighter block kootour-main-color">6.<s:text name="addeditcity.upload"/></h4>
                                 <div id="uploaded-images" class="clearfix">
-                                    <span class="center">There is no image here.</span>
+                                    <span class="center"><s:text name="addeditcity.noimage"/></span>
                                 </div>
                                 <hr>
                                 <div class="form-validator">
@@ -93,7 +81,7 @@
                                 </div>
                                 <hr>
                                 <button id="vancity_submit" type="submit" class="btn btn-kootour-bold fullwidth">
-                                    Add/Update
+                                    <s:text name="addeditcity.add"/>
                                 </button>
                             </form>
                         </div>
@@ -107,14 +95,11 @@
     <jsp:include page="taofunfoot.jsp"/>
 </div><!-- /.main-container -->
 
-<script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/bootstrap3.3.7.min.js"></script>
+<!--<script src="/js/jquery-2.2.0.min.js"></script>-->
 <!-- page specific plugin scripts -->
 <script src="/summernote/summernote.min.js"></script>
 <script src="/js/fileinput.js"></script>
-<script src="/js/jquery.validate.min.js"></script>
 <script src="/js/HoldOn.min.js"></script>
-<script src="/js/bootstrap-dialog.min.js"></script>
 <script src="/js/addOrEditVanCity.js"></script>
 
 </body>

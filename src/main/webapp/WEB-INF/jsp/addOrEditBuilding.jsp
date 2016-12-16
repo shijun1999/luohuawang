@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/fileinput.min.css"/>
     <link rel="stylesheet" href="/css/ace.min.css">
     <link rel="stylesheet" href="/css/HoldOn.min.css"/>
-    <%@ include file="content.html" %>
+    <%@ include file="content.jsp" %>
 </head>
 
 <body>
